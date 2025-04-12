@@ -1,0 +1,260 @@
+"Covidence #","prefix","Total Number of Patients","Comment.1","outcome","Measure of Association","value","95% CI","p-value","cancer: Event/Total","Non-cancer: Event/Total","Measure of Association_number_of_semicolons","value_number_of_semicolons","95% CI_number_of_semicolons","p-value_number_of_semicolons","cancer: Event/Total_number_of_semicolons","Non-cancer: Event/Total_number_of_semicolons","same_number_of_semicolons"
+138896,"Total (OF ALL CANCERS)","77",NA,"[ICU]","mOR","1.43","0.90-2.30","0.133","31/77","630/1788",0,0,0,0,0,0,TRUE
+138896,"Total (OF ALL CANCERS)","77",NA,"[mortality]","mOR","2.02","1.18-3.46","0.010","59/77","1106/1788",0,0,0,0,0,0,TRUE
+140255,"Haematological",NA,NA,"[hospitalisation]","mOR","1.72","1.36-1.81",NA,"? [Not stated]/11723",NA,0,0,0,NA,0,NA,TRUE
+140255,"Haematological",NA,NA,"[mortality]","mOR","3.85","3.35-4.42",NA,"? [Not stated]/11723",NA,0,0,0,NA,0,NA,TRUE
+140255,"Haematological",NA,NA,"[severe disease]","mOR","3.18","2.78-3.64",NA,"? [Not stated]/11723",NA,0,0,0,NA,0,NA,TRUE
+140255,"SOLID AGGREGATED [add all solid values]",NA,"NA","[hospitalisation]","mOR","1.08","1.07-1.10",NA,"? [Not stated]/385680",NA,0,0,0,NA,0,NA,TRUE
+140255,"SOLID AGGREGATED [add all solid values]",NA,"NA","[mortality]","mOR","1.85","1.76-1.95",NA,"? [Not stated]/385680",NA,0,0,0,NA,0,NA,TRUE
+140255,"SOLID AGGREGATED [add all solid values]",NA,"NA","[severe disease]","mOR","1.11","1.06-1.18",NA,"? [Not stated]/385680",NA,0,0,0,NA,0,NA,TRUE
+140255,"Total (OF ALL CANCERS)",NA,"OR for cancer diagnosis < 1 yearOR for cancer diagnosis < 1 year","[hospitalisation]","mOR","1.82","1.77-1.87",NA,"44074/397050","40428/397050",0,0,0,NA,0,0,TRUE
+140255,"Total (OF ALL CANCERS)",NA,"OR for cancer diagnosis < 1 yearOR for cancer diagnosis < 1 year","[mortality]","mOR","4.95","4.60-5.34",NA,"4015/397050","2110/397050",0,0,0,NA,0,0,TRUE
+140255,"Total (OF ALL CANCERS)",NA,"OR for cancer diagnosis < 1 yearOR for cancer diagnosis < 1 year","[severe disease]","mOR","2.29","2.09-2.50",NA,"1543/397050","1562/397050",0,0,0,NA,0,0,TRUE
+141132,"Breast","2200","Severe disease: Mechanical ventilation","[hospitalisation]","mOR","0.98","0.88-1.10","0.74",NA,NA,0,0,0,0,NA,NA,TRUE
+141132,"Breast","2200","Severe disease: Mechanical ventilation","[ICU]","mOR","1.07","0.84-1.37","0.57",NA,NA,0,0,0,0,NA,NA,TRUE
+141132,"Breast","2200","Severe disease: Mechanical ventilation","[mortality]","mOR","0.8","0.57-1.13","0.21",NA,NA,0,0,0,0,NA,NA,TRUE
+141132,"Breast","2200","Severe disease: Mechanical ventilation","[severe disease]","mOR","0.88","0.63-1.22","0.43",NA,NA,0,0,0,0,NA,NA,TRUE
+141132,"Total (OF ALL CANCERS)","2200","Severe disease: Mechanical ventilation","[hospitalisation]","mOR","0.98","0.88-1.10","0.74",NA,NA,0,0,0,0,NA,NA,TRUE
+141132,"Total (OF ALL CANCERS)","2200","Severe disease: Mechanical ventilation","[ICU]","mOR","1.07","0.84-1.37","0.57",NA,NA,0,0,0,0,NA,NA,TRUE
+141132,"Total (OF ALL CANCERS)","2200","Severe disease: Mechanical ventilation","[mortality]","mOR","0.8","0.57-1.13","0.21",NA,NA,0,0,0,0,NA,NA,TRUE
+141132,"Total (OF ALL CANCERS)","2200","Severe disease: Mechanical ventilation","[severe disease]","mOR","0.88","0.63-1.22","0.43",NA,NA,0,0,0,0,NA,NA,TRUE
+141173,"Total (OF ALL CANCERS)","15416","Intubation","[hospitalisation]","aOR","3.01","2.101-2.435","<0.0001",NA,NA,0,0,0,0,NA,NA,TRUE
+141173,"Total (OF ALL CANCERS)","15416","Intubation","[ICU]","aOR","1.00","0.411-2.435","1.00",NA,NA,0,0,0,0,NA,NA,TRUE
+141173,"Total (OF ALL CANCERS)","15416","Intubation","[mortality]","aOR","1.00","0.411-2.435","1",NA,NA,0,0,0,0,NA,NA,TRUE
+141173,"Total (OF ALL CANCERS)","15416","Intubation","[severe disease]","aOR","1.00","0.411-2.435","1.00",NA,NA,0,0,0,0,NA,NA,TRUE
+62120,"Total (OF ALL CANCERS)","117",NA,"[mortality]","uHR; mHR","0.74; 0.98","0.53-1.03; 0.58-1.67",">.05; 0.894","29/117; 0.248","100/468; 0.214",1,1,1,1,1,1,TRUE
+62120,"Total (OF ALL CANCERS)","117",NA,"[severe disease]","mHR","0.80","0.57-1.13",">.05",NA,NA,0,0,0,0,NA,NA,TRUE
+62182,"Breast","8",NA,"[mortality]","aHR","1.56","0.55-4.38","0.40","0.500 (4/8)",NA,0,0,0,0,0,NA,TRUE
+62182,"Gynecological (vaginal, uterine, cervical, ovarian, vulval, endometrial, leiomyosarcoma etc)","9","NANA","[mortality]","aHR","0.60","0.19-1.96","0.40","0.333 (3/9)",NA,0,0,0,0,0,NA,TRUE
+62182,"Thoracic (lung, mesothelioma)","15",NA,"[mortality]","aHR","0.70","0.28-1.79","0.46","0.333 (5/15)",NA,0,0,0,0,0,NA,TRUE
+62182,"Total (OF ALL CANCERS)","58","total = active cancer only, subtypes include active and non-active","[mortality]","aHR","1.64","1.03-2.6","0.04","0.448 (26/58)",NA,0,0,0,0,0,NA,TRUE
+62182,"Urology (ureter, bladder, prostate)","24",NA,"[mortality]","aHR","1.65","0.85-3.19","0.14","0.542 (13/24)",NA,0,0,0,0,0,NA,TRUE
+65844,"Total (OF ALL CANCERS)","46",NA,"[mortality]","uHR; mHR","2.79; 2.26","1.76-4.42; 1.39-3.657","<0.001; <0.001","0.500 (23/46); 0.500 (23/46)","0.202 (103/511); 0.202 (103/511)",1,1,1,1,1,1,TRUE
+66861,"Total (OF ALL CANCERS)","14287","No recent treatment;Recent treatmentNo recent treatment;recent treatment","[hospitalisation]","aOR (No recent treatment);aOR (recent treatment)","0.79;1.19","0.75-0.83;1.11-1.27","<0.001;<0.001","0.251 (2508/9991);0.357 (1534/4296)","0.146 (71981/493020);0.016 (7888/493020)",1,1,1,1,1,1,TRUE
+66861,"Total (OF ALL CANCERS)","14287","No recent treatment;Recent treatmentNo recent treatment;recent treatment","[ICU]","aOR (No recent treatment);aOR (recent treatment)","0.98 (No recent treatment);1.69 (Recent treatment)","0.91-1.06 (No recent treatment);1.54-1.87 (Recent treatment)","0.61 (No recent treatment);<0.001 (Recent treatment)","0.075 (749/9991) (No recent treatment);0.137 (589/4296) (Recent treatment)","0.033 (16270/493020);0.033 (16270/493020)",1,1,1,1,1,1,TRUE
+66861,"Total (OF ALL CANCERS)","14287","No recent treatment;Recent treatmentNo recent treatment;recent treatment","[mortality]","aOR (No recent treatment);aOR (recent treatment)","0.93 (No recent treatment);1.74 (Recent treatment)","0.84-1.02 (No recent treatment);1.54-1.96 (Recent treatment)","0.12 (No recent treatment);<0.001 (Recent treatment)","0.049 (No recent treatment);0.087 (Recent treatment)","0.016 (7888/493020);0.016 (7888/493020)",1,1,1,1,1,1,TRUE
+66861,"Total (OF ALL CANCERS)","14287","No recent treatment;Recent treatmentNo recent treatment;recent treatment","[severe disease]","aOR (No recent treatment);aOR (recent treatment)","0.61 (No recent treatment);1.00 (recent treatment)","0.54-0.68 (No recent treatment);0.88-1.13 (recent treatment)","<0.001 (No recent treatment);0.94 (recent treatment)","0.038 (380/9991) (No recent treatment); 0.073 (314/4296) (recent treatment)","0.022 (10846/493020);0.022 (10846/493020)",1,1,1,1,1,1,TRUE
+67122,"Breast","34","Breast","[hospitalisation]","uOR","1.82","0.84-3.95","0.131","0.357 (10/28)","0.234 (4685/20047)",0,0,0,0,0,0,TRUE
+67122,"Breast","34","Breast","[ICU]",NA,NA,NA,NA,"0.000 (0/34)","0.035 (734/20777)",NA,NA,NA,NA,0,0,NA
+67122,"Breast","34","Breast","[mortality]","uOR","1.61","0.62-4.17","0.333","0.147 (5/34)","0.097 (2008/20777)",0,0,0,0,0,0,TRUE
+67122,"Haematological","41",NA,"[hospitalisation]","uOR","8.53","4.11-17.69","1.790E-08","0.722 (26/36)","0.234 (4685/20047)",0,0,0,0,0,0,TRUE
+67122,"Haematological","41",NA,"[ICU]","uOR","1.40","0.34-5.81","0.659","0.049 (2/41)","0.035 (734/20777)",0,0,0,0,0,0,TRUE
+67122,"Haematological","41",NA,"[mortality]","uOR","8.07","4.36-14.94","9.317E-11","0.463 (19/41)","0.097 (2008/20777)",0,0,0,0,0,0,TRUE
+67122,"Lower GI (colorectal, small bowel)","34 (colorectal)","Colorectal","[hospitalisation]","uOR","3.53","1.66-7.52","0.0011","0.519 (14/27)","0.234 (4685/20047)",0,0,0,0,0,0,TRUE
+67122,"Lower GI (colorectal, small bowel)","34 (colorectal)","Colorectal","[ICU]","uOR","4.71","1.82-12.20","0.0015","0.147 (5/34)","0.035 (734/20777)",0,0,0,0,0,0,TRUE
+67122,"Lower GI (colorectal, small bowel)","34 (colorectal)","Colorectal","[mortality]","uOR","5.10","2.52-10.32","7.996E-06","0.353 (12/34)","0.097 (2008/20777)",0,0,0,0,0,0,TRUE
+67122,"Other","129","Others","[hospitalisation]","uOR","3.92","2.65-5.81","3.303E-11","0.545 (55/101)","0.234 (4685/20047)",0,0,0,0,0,0,TRUE
+67122,"Other","129","Others","[ICU]","uOR","1.33","0.59-3.03","0.508","0.047 (6/129)","0.035 (734/20777)",0,0,0,0,0,0,TRUE
+67122,"Other","129","Others","[mortality]","uOR","4.35","3.00-6.33","7.188e-14","0.318 (41/129)","0.097 (2008/20777)",0,0,0,0,0,0,TRUE
+67122,"Thoracic (lung, mesothelioma)","23 (lung)","Lung","[hospitalisation]","uOR","9.18","3.31-25.50","2.663E-05","0.737 (14/19)","0.234 (4685/20047)",0,0,0,0,0,0,TRUE
+67122,"Thoracic (lung, mesothelioma)","23 (lung)","Lung","[ICU]","uOR","1.24","0.17-9.22","0.845","0.001 (1/23)","0.035 (734/20777)",0,0,0,0,0,0,TRUE
+67122,"Thoracic (lung, mesothelioma)","23 (lung)","Lung","[mortality]","uOR","7.19","3.15-16.42","3.987E-06","0.435 (10/23)","0.097 (2008/20777)",0,0,0,0,0,0,TRUE
+67122,"Total (OF ALL CANCERS)","324",NA,"[hospitalisation]","uOR;mOR","4.22;2.883","3.30-5.40;2.215-3.762","<0.001; NR","0.562 (198/263); 0.562 (198/263)","0.234 (4685/20047); 0.234 (4685/20047)",1,1,1,1,1,1,TRUE
+67122,"Total (OF ALL CANCERS)","324",NA,"[ICU]","uOR;mOR","1.61;1.049","0.993-2.599;0.621-1.664","0.053; NR","0.056 (18/324); 0.056 (18/324)","0.035 (734/20777); 0.035 (734/20777)",1,1,1,1,1,1,TRUE
+67122,"Total (OF ALL CANCERS)","324",NA,"[mortality]","uOR;mOR","4.48;3.013","3.535-5.681;2.290-3.949","<0.001; NR","0.324 (105/324); 0.324 (105/324)","0.097 (2008/20777); 0.097 (2008/20777)",1,1,1,1,1,1,TRUE
+67122,"Urology (ureter, bladder, prostate)","63 (prostate, urology)","Urinary Bladder+Prostate","[hospitalisation]","uOR","3.17","1.90-5.29","1.293E-05","0.492 (29/59)","0.234 (4685/20047)",0,0,0,0,0,0,TRUE
+67122,"Urology (ureter, bladder, prostate)","63 (prostate, urology)","Urinary Bladder+Prostate","[ICU]","uOR","1.85","0.67-5.11","0.240","0.063 (4/63)","0.035 (734/20777)",0,0,0,0,0,0,TRUE
+67122,"Urology (ureter, bladder, prostate)","63 (prostate, urology)","Urinary Bladder+Prostate","[mortality]","uOR","3.74","2.16-6.47","3.482E-06","0.286 (18/63)","0.097 (2008/20777)",0,0,0,0,0,0,TRUE
+67144,"Total (OF ALL CANCERS)","421","the paper did not specify severity, but specified sepsis which I have included in the severity column   unspecified = multiple sites ","[ICU]","mOR","1.04","0.80-1.34","1.0","82/421","913/5135",0,0,0,0,0,0,TRUE
+67144,"Total (OF ALL CANCERS)","421","the paper did not specify severity, but specified sepsis which I have included in the severity column   unspecified = multiple sites ","[mortality]","mOR","1.02 ","0.81-1.29","0.86","129/421","1272/5135",0,0,0,0,0,0,TRUE
+67144,"Total (OF ALL CANCERS)","421","the paper did not specify severity, but specified sepsis which I have included in the severity column   unspecified = multiple sites ","[severe disease]","mOR ","1.31","1.06-1.61","0.05","253/421","2821/5135",0,0,0,0,0,0,TRUE
+67898,"Haematological","51",NA,"[mortality]","uOR; mOR","3.19; 4.144","1.38-7.37; 1.24-13.83","0.0065; 0.0262","NR; NR","0.274 (86/315); 0.274 (86/315)",1,1,1,1,1,1,TRUE
+67898,"SOLID AGGREGATED [add all solid values]","54","NA","[mortality]","uOR; mOR","1.88; 2.344","0.82-4.27; 0.87-6.31","0.13; 0.0262","NR; NR","0.274 (86/315); 0.274 (86/315)",1,1,1,1,1,1,TRUE
+67898,"Total (OF ALL CANCERS)","105",NA,"[mortality]","uOR","2.3","1.24-4.28","0.0082","0.562 (59/105)","0.274 (86/315)",0,0,0,0,0,0,TRUE
+68083,"Breast","2143",NA,"[hospitalisation]","mRR","0.99   ","0.90–1.09","0.876 ","NR","0.099 (25092/253179)",0,0,0,0,0,0,TRUE
+68083,"Breast","2143",NA,"[ICU]","mRR","0.92","0.74–1.13","0.409  ","NR","0.025 (6449/253179)",0,0,0,0,0,0,TRUE
+68083,"Breast","2143",NA,"[mortality]","mRR","1.08","0.88–1.32","0.47","NR","0.019 (4854/253179)",0,0,0,0,0,0,TRUE
+68083,"Breast","2143",NA,"[severe disease]","mRR","1.06","0.78–1.45","0.7","NR","0.011 (2855/253179)",0,0,0,0,0,0,TRUE
+68083,"Gynecological (vaginal, uterine, cervical, ovarian, vulval, endometrial, leiomyosarcoma etc)","291","NANA","[hospitalisation]","mRR","1.15  ","0.90–1.46","0.27","NR","0.099 (25092/253179)",0,0,0,0,0,0,TRUE
+68083,"Gynecological (vaginal, uterine, cervical, ovarian, vulval, endometrial, leiomyosarcoma etc)","291","NANA","[ICU]","mRR","1.58","1.03–2.41","0.04","NR","0.025 (6449/253179)",0,0,0,0,0,0,TRUE
+68083,"Gynecological (vaginal, uterine, cervical, ovarian, vulval, endometrial, leiomyosarcoma etc)","291","NANA","[mortality]","mRR","1.62","0.96–2.74","0.07","NR","0.019 (4854/253179)",0,0,0,0,0,0,TRUE
+68083,"Gynecological (vaginal, uterine, cervical, ovarian, vulval, endometrial, leiomyosarcoma etc)","291","NANA","[severe disease]","mRR","1.53","0.81–2.90","0.19","NR","0.011 (2855/253179)",0,0,0,0,0,0,TRUE
+68083,"Haematological","2224",NA,"[hospitalisation]","mRR","1.31 ","1.22–1.40"," <0.001 ","NR","0.099 (25092/253179)",0,0,0,0,0,0,TRUE
+68083,"Haematological","2224",NA,"[ICU]","mRR","1.27","1.10–1.46","0.001","NR","0.025 (6449/253179)",0,0,0,0,0,0,TRUE
+68083,"Haematological","2224",NA,"[mortality]","mRR","1.48 "," 1.30–1.68","<0.001 ","NR","0.019 (4854/253179)",0,0,0,0,0,0,TRUE
+68083,"Haematological","2224",NA,"[severe disease]","mRR","1.41","1.16–1.72","0.001","NR","0.011 (2855/253179)",0,0,0,0,0,0,TRUE
+68083,"Head and neck","476","NANA","[hospitalisation]","mRR","0.76   ","0.59–0.9","0.035","NR","0.099 (25092/253179)",0,0,0,0,0,0,TRUE
+68083,"Head and neck","476","NANA","[ICU]","mRR","0.58","0.30–1.11","0.10  ","NR","0.025 (6449/253179)",0,0,0,0,0,0,TRUE
+68083,"Head and neck","476","NANA","[mortality]","mRR","0.83","0.46–1.51","0.55  ","NR","0.019 (4854/253179)",0,0,0,0,0,0,TRUE
+68083,"Head and neck","476","NANA","[severe disease]","mRR","0.38","0.12–1.19","0.1","NR","0.011 (2855/253179)",0,0,0,0,0,0,TRUE
+68083,"Hepatobiliary (liver, pancreas, gall bladder)","207 (liver); 121 (pancreas)","NA","[hospitalisation]","mRR (liver); mRR (pancreas)","1.23 (liver); 0.98 (pancreas)","1.00–1.51 (liver); 0.71–1.35 (pancreas)","0.05 (liver); 0.91  (pancreas)","NR (liver); NR (pancreas)","0.099 (25092/253179) (liver); 0.099 (25092/253179) (pancreas)",1,1,1,1,1,1,TRUE
+68083,"Hepatobiliary (liver, pancreas, gall bladder)","207 (liver); 121 (pancreas)","NA","[ICU]","mRR (liver); mRR (pancreas)","0.96 (liver);0.72 (pancreas)","0.62–1.49 (liver); 0.35–1.46 (pancreas)","0.85 (liver); 0.363 (pancreas) ","NR (liver); NR (pancreas)","0.025 (6449/253179) (liver); 0.025 (6449 /253179) (pancreas)",1,1,1,1,1,1,TRUE
+68083,"Hepatobiliary (liver, pancreas, gall bladder)","207 (liver); 121 (pancreas)","NA","[mortality]","mRR (liver); mRR (pancreas)","2.46 (liver); 1.94 (pancreas)","1.80–3.36 (liver); 1.19–3.16 (pancreas)","<0.001 (liver); 0.008 (pancreas)","NR (liver); NR (pancreas)","0.019 (4854/253179) (liver); 0.019 (4854/253179) (pancreas)",1,1,1,1,1,1,TRUE
+68083,"Hepatobiliary (liver, pancreas, gall bladder)","207 (liver); 121 (pancreas)","NA","[severe disease]","mRR (liver); mRR (pancreas)","1.14 (liver); 0.84 (pancreas)","0.63–2.05 (liver); 0.33–2.12 (pancreas)","0.67 (liver); 0.71 (pancreas)","NR (liver); NR (pancreas)","0.011 (2855/253179) (liver); 0.011 (2855/253179) (pancreas)",1,1,1,1,1,1,TRUE
+68083,"Lower GI (colorectal, small bowel)","794",NA,"[hospitalisation]","mRR","1.05  ","0.93–1.20","0.42","NR","0.099 (25092/253179)",0,0,0,0,0,0,TRUE
+68083,"Lower GI (colorectal, small bowel)","794",NA,"[ICU]","mRR","0.81","0.61–1.07","0.14","NR","0.025 (6449/253179)",0,0,0,0,0,0,TRUE
+68083,"Lower GI (colorectal, small bowel)","794",NA,"[mortality]","mRR","0.91","0.69–1.19","0.50  ","NR","0.019 (4854/253179)",0,0,0,0,0,0,TRUE
+68083,"Lower GI (colorectal, small bowel)","794",NA,"[severe disease]","mRR","0.9","0.61–1.35","0.62","NR","0.011 (2855/253179)",0,0,0,0,0,0,TRUE
+68083,"Renal","474","NANA","[hospitalisation]","mRR","1.06","0.91–1.22","0.46","NR","0.099 (25092/253179)",0,0,0,0,0,0,TRUE
+68083,"Renal","474","NANA","[ICU]","mRR","0.8","0.57–1.13","0.202","NR","0.025 (6449/253179)",0,0,0,0,0,0,TRUE
+68083,"Renal","474","NANA","[mortality]","mRR","1.15","0.86–1.53","0.34","NR","0.019 (4854/253179)",0,0,0,0,0,0,TRUE
+68083,"Renal","474","NANA","[severe disease]","mRR","0.79","0.49–1.30","0.36","NR","0.011 (2855/253179)",0,0,0,0,0,0,TRUE
+68083,"Skin (including melanoma)","409","NANA","[hospitalisation]","mRR","0.86","0.69–1.06","0.163","NR","0.099 (25092/253179)",0,0,0,0,0,0,TRUE
+68083,"Skin (including melanoma)","409","NANA","[ICU]","mRR","0.89","0.57–1.38","0.61","NR","0.025 (6449/253179)",0,0,0,0,0,0,TRUE
+68083,"Skin (including melanoma)","409","NANA","[mortality]","mRR","0.96","0.67–1.38","0.82","NR","0.019 (4854/253179)",0,0,0,0,0,0,TRUE
+68083,"Skin (including melanoma)","409","NANA","[severe disease]","mRR","0.58","0.27–1.27","0.177","NR","0.011 (2855/253179)",0,0,0,0,0,0,TRUE
+68083,"SOLID AGGREGATED [add all solid values]","8952","NA","[hospitalisation]","mRR","1.05","1.00–1.09","0.03","NR","0.099 (25092/253179)",0,0,0,0,0,0,TRUE
+68083,"SOLID AGGREGATED [add all solid values]","8952","NA","[ICU]","mRR","0.97","0.89–1.06","0.52","NR","0.025 (6449/253179)",0,0,0,0,0,0,TRUE
+68083,"SOLID AGGREGATED [add all solid values]","8952","NA","[mortality]","mRR","1.12  ","1.04–1.22","0.004","NR","0.019 (4854/253179)",0,0,0,0,0,0,TRUE
+68083,"SOLID AGGREGATED [add all solid values]","8952","NA","[severe disease]","mRR","0.95","0.84–1.08","0.453","NR","0.011 (2855/253179)",0,0,0,0,0,0,TRUE
+68083,"Thoracic (lung, mesothelioma)","887",NA,"[hospitalisation]","mRR","1.31","1.19-1.44","<0.001","NR","0.099 (25092/253179)",0,0,0,0,0,0,TRUE
+68083,"Thoracic (lung, mesothelioma)","887",NA,"[ICU]","mRR","1.35","1.12–1.63","0.002","NR","0.025 (6449/253179)",0,0,0,0,0,0,TRUE
+68083,"Thoracic (lung, mesothelioma)","887",NA,"[mortality]","mRR","1.85","1.58–2.17","<0.001","NR","0.019 (4854/253179)",0,0,0,0,0,0,TRUE
+68083,"Thoracic (lung, mesothelioma)","887",NA,"[severe disease]","mRR","1.21","0.89–1.63","0.22","NR","0.011 (2855/253179)",0,0,0,0,0,0,TRUE
+68083,"Total (OF ALL CANCERS)","10426",NA,"[hospitalisation]","mRR","1.10","1.06-1.14","<0.001","0.24 (2476/10426)","0.099 (25092/253179)",0,0,0,0,0,0,TRUE
+68083,"Total (OF ALL CANCERS)","10426",NA,"[ICU]","mRR","1.02","0.95-1.11","0.54","0.065 (674/10426)","0.025 (6449/253179)",0,0,0,0,0,0,TRUE
+68083,"Total (OF ALL CANCERS)","10426",NA,"[mortality]","mRR","1.17","1.08-1.25","<0.001","0.075 (781/10426)","0.019 (4854/253179)",0,0,0,0,0,0,TRUE
+68083,"Total (OF ALL CANCERS)","10426",NA,"[severe disease]","mRR","1.05","0.93-1.17","0.45","0.032 (332/10426)","0.011 (2855/253179)",0,0,0,0,0,0,TRUE
+68083,"Urology (ureter, bladder, prostate)","1781 ",NA,"[hospitalisation]","mRR","0.95","0.88–1.02 ","0.177","NR","0.099 (25092/253179)",0,0,0,0,0,0,TRUE
+68083,"Urology (ureter, bladder, prostate)","1781 ",NA,"[ICU]","mRR","0.81","0.68–0.96","0.017","NR","0.025 (6449/253179)",0,0,0,0,0,0,TRUE
+68083,"Urology (ureter, bladder, prostate)","1781 ",NA,"[mortality]","mRR","0.82","0.70–0.96","0.015","NR","0.019 (4854/253179)",0,0,0,0,0,0,TRUE
+68083,"Urology (ureter, bladder, prostate)","1781 ",NA,"[severe disease]","mRR","0.78","0.60–1.01","0.055","NR","0.011 (2855/253179)",0,0,0,0,0,0,TRUE
+68513,"Total (OF ALL CANCERS)","89",NA,"[mortality]","uOR; mOR ","2.56; 4.59","1.47-4.47; 2.26-9.30","< 0.001; < 0.001","41/89; 41/89","43/156; 43/156",1,1,1,1,1,1,TRUE
+69998,"Breast","673",NA,"[ICU]","mHR","0.98","0.48-2.00","NR","0.0119 (8/673)","0.013 (502/3826)",0,0,0,0,0,0,TRUE
+69998,"Breast","673",NA,"[mortality]","mHR","0.92","0.72-1.17","NR","0.104 (70/673)","0.0500 (1914/38268)",0,0,0,0,0,0,TRUE
+69998,"Haematological","280",NA,"[ICU]","mHR","1.50","0.83-2.73","NR","0.0393 (11/280)","0.013 (502/3826)",0,0,0,0,0,0,TRUE
+69998,"Haematological","280",NA,"[mortality]","mHR","1.79","1.36-2.34","NR","0.193 (54/280)","0.0500 (1914/38268)",0,0,0,0,0,0,TRUE
+69998,"Lower GI (colorectal, small bowel)","407",NA,"[ICU]","mHR","1.40","0.86-2.27","NR","0.0418 (17/407)","0.013 (502/3826)",0,0,0,0,0,0,TRUE
+69998,"Lower GI (colorectal, small bowel)","407",NA,"[mortality]","mHR","1.34","1.10-1.65","NR","0.241 (98/407)","0.0500 (1914/38268)",0,0,0,0,0,0,TRUE
+69998,"SOLID AGGREGATED [add all solid values]","2818","NA","[ICU]","mHR","1.04","0.82-1.32","NR","0.0291 (82/2818)","0.013 (502/3826)",0,0,0,0,0,0,TRUE
+69998,"SOLID AGGREGATED [add all solid values]","2818","NA","[mortality]","mHR","1.19","1.07-1.31","NR","0.172 (486/2818)","0.0500 (1914/38268)",0,0,0,0,0,0,TRUE
+69998,"Total (OF ALL CANCERS)","466",NA,"[ICU]","mHR","0.90","0.52-1.56","NR","0.0280 (13/466)","0.013 (502/3826)",0,0,0,0,0,0,TRUE
+69998,"Total (OF ALL CANCERS)","466",NA,"[mortality]","mHR","1.93","1.61-2.33","NR","0.255 (119/466)","0.0500 (1914/38268)",0,0,0,0,0,0,TRUE
+69998,"Urology (ureter, bladder, prostate)","460",NA,"[ICU]","mHR","1.15","0.77-1.71","NR","0.0587 (27/460)","0.013 (502/3826)",0,0,0,0,0,0,TRUE
+69998,"Urology (ureter, bladder, prostate)","460",NA,"[mortality]","mHR","1.04","0.85-1.27","NR","0.235 (108/460)","0.0500 (1914/38268)",0,0,0,0,0,0,TRUE
+70019,"Total (OF ALL CANCERS)","77","Primary outcome is defined as ""mortality OR admission to hospice"". Severity defined as ARDSTable 4 and 5","[ICU]","uOR;mOR","0.53; 0.39","0.29-0.96; 0.17-0.89","0.03; 0.03",NA,NA,1,1,1,1,NA,NA,NA
+70019,"Total (OF ALL CANCERS)","77","Primary outcome is defined as ""mortality OR admission to hospice"". Severity defined as ARDSTable 4 and 5","[mortality]","uOR;mOR","1.98; 2.18","0.99-3.96; 0.82-5.77","0.053; 0.12",NA,NA,1,1,1,1,NA,NA,NA
+70019,"Total (OF ALL CANCERS)","77","Primary outcome is defined as ""mortality OR admission to hospice"". Severity defined as ARDSTable 4 and 5","[severe disease]","uOR;aOR","0.65;0.54","0.34-1.16;0.23-1.24","0.14;0.15",NA,NA,1,1,1,1,NA,NA,NA
+70896,"Breast","3340",NA,"[mortality]","mOR","0.96","0.73-1.27","0.763","0.103 (345/3340)",NA,0,0,0,0,0,NA,TRUE
+70896,"Haematological","13550","leukemia;lymphoma;multiple myeloma","[mortality]","mOR;mOR;mOR","1.22;1.30;1.20","1.02-1.45;1.05-1.61;0.94-1.52","0.028;0.016;0.137","0.224;0.156;0.108",NA,2,2,2,2,2,NA,NA
+70896,"Lower GI (colorectal, small bowel)","1675","colorectal","[mortality]","mOR","1.45","1.07-1.96","0.015","0.191 (320/1675)",NA,0,0,0,0,0,NA,TRUE
+70896,"SOLID AGGREGATED [add all solid values]","13495","NA","[mortality]",NA,NA,NA,NA,"0.175 (2360/13495)",NA,NA,NA,NA,NA,0,NA,NA
+70896,"Thoracic (lung, mesothelioma)","4400","lung","[mortality]","mOR","1.57","1.31-1.88","<0.001","0.209 (920/4400)",NA,0,0,0,0,0,NA,TRUE
+70896,"Total (OF ALL CANCERS)","27760",NA,"[ICU]","mOR(mechanical_ventilation)","0.98","0.88-1.09","0.767",NA,NA,0,0,0,0,NA,NA,TRUE
+70896,"Total (OF ALL CANCERS)","27760",NA,"[mortality]","mOR","1.21","1.12-1.31","<0.001","0.176 (4880/27760)","0.120 (122451/1022285)",0,0,0,0,0,0,TRUE
+70896,"Total (OF ALL CANCERS)","27760",NA,"[severe disease]","OR","0.93"," 0.8–1.07","0.31","0.499","0.522",0,0,0,0,0,0,TRUE
+70896,"Urology (ureter, bladder, prostate)","4080","prostate","[mortality]","mOR","0.94","0.77-1.14","0.533","0.190 (775/4080)",NA,0,0,0,0,0,NA,TRUE
+71402,"Total (OF ALL CANCERS)","6143","Composite Outcome as above most recent diagnosis within past 3 years","[hospitalisation]","mOR","1.43","1.29-1.58",NA,"NR (NR/6143)","NR (NR/38267) ",0,0,0,NA,0,0,TRUE
+71402,"Total (OF ALL CANCERS)","6143","Composite Outcome as above most recent diagnosis within past 3 years","[ICU]","mOR","1.19","0.97-1.46",NA,"NR (NR/6143) ","NR (NR/38267)",0,0,0,NA,0,0,TRUE
+71402,"Total (OF ALL CANCERS)","6143","Composite Outcome as above most recent diagnosis within past 3 years","[mortality]","mOR","1.68","1.39-2.04",NA,"NR (NR/6143)","NR (NR/38267)",0,0,0,NA,0,0,TRUE
+71402,"Total (OF ALL CANCERS)","6143","Composite Outcome as above most recent diagnosis within past 3 years","[severe disease]","mOR","1.48","1.35-1.63",NA,"NR (NR/6143) ","NR (NR/38267)",0,0,0,NA,0,0,TRUE
+71512,"Breast","611",NA,"[mortality]","uOr; mOR","1.47; 1.57","1.14-1.88; 1.21-2.03","<0.001; <0.001","nr; nr","0.092 (8384/90700); 0.092 (8384/90700)",1,1,1,1,1,1,TRUE
+71512,"Haematological","2482",NA,"[mortality]","uOr; mOR","2.02; 1.71","1.80-2.26; 1.52-1.92","<0.001; <0.001","nr; nr","0.092 (8384/90700); 0.092 (8384/90700)",1,1,1,1,1,1,TRUE
+71512,"Lower GI (colorectal, small bowel)","1062",NA,"[mortality]","uOr; mOR","1.70; 1.40","1.42-2.04; 1.17-1.69","<0.001; <0.001","nr; nr","0.092 (8384/90700); 0.092 (8384/90700)",1,1,1,1,1,1,TRUE
+71512,"SOLID AGGREGATED [add all solid values]","2012 (metastatic); 2012 (metastatic); 4337 (solid tumour without metastasis);  4337 (solid tumour without metastasis)","NA","[mortality]","uOR (metastatic); mOR (metastatic);  uOR (solid tumour without metastasis); mOR  (solid tumour without metastasis)","2.28 (metastatic); 1.94 (metastatic); 1.82 (solid tumour without metastasis); 1.48 (solid tumour without metastasis)","2.01-2.58 (metastatic); 1.71-2.21 (metastatic); 1.66-1.99 (solid tumour without metastasis); 1.35-1.62 (solid tumour without metastasis)","<0.001 (metastatic); <0.001 (metastatic); <0.001 (solid tumour without metastasis);  <0.001 (solid tumour without metastasis)","nr (metastatic); nr (metastatic); nr (solid tumour without metastasis); nr (solid tumour without metastasis)","0.092 (8384/90700) (metastatic); 0.092 (8384/90700) (metastatic); 0.092 (8384/90700) (solid tumour without metastasis); 0.092 (8384/90700) (solid tumour without metastasis)",3,3,3,3,3,3,FALSE
+71512,"Thoracic (lung, mesothelioma)","732",NA,"[mortality]","uOr; mOR","2.47; 1.93","2.04-2.99; 1.59-2.36","<0.001; <0.001","nr; nr","0.092 (8384/90700); 0.092 (8384/90700)",1,1,1,1,1,1,TRUE
+71512,"Total (OF ALL CANCERS)","7141",NA,"[ICU]","uOR; mOR","1.31; 1.24","1.24-1.39; 1.17-1.32","<0.001; <0.001","0.247 (1763/7141); 0.247(1763/7141)","0.199 (18063/90700); 0.199 (18063/90700)",1,1,1,1,1,1,TRUE
+71512,"Total (OF ALL CANCERS)","7141",NA,"[mortality]","uOr; mOR","1.91; 1.58","1.78-2.06; 1.46-1.70","<0.001; <0.001","0.146 (1040/7141); 0.146(1040/7141)","0.092 (8384/90700); 0.092 (8384/90700)",1,1,1,1,1,1,TRUE
+71512,"Urology (ureter, bladder, prostate)","628",NA,"[mortality]","uOr; mOR","1.88; 1.05","1.49-2.36; 0.83-1.33","<0.001; 0.66","nr; nr","0.092 (8384/90700); 0.092 (8384/90700)",1,1,1,1,1,1,TRUE
+71628,"Total (OF ALL CANCERS)","5116","Noninvasive;invasive","[ICU]","mOR","0.77","0.70-0.85","<0.001","0.867 (4437/5116)","0.154 (20710/134598)",0,0,0,0,0,0,TRUE
+71628,"Total (OF ALL CANCERS)","5116","Noninvasive;invasive","[mortality]","mOR","2.00","1.87-2.15","<0.001","0.355 (1818/5116)","0.213 (28608/134598)",0,0,0,0,0,0,TRUE
+71628,"Total (OF ALL CANCERS)","5116","Noninvasive;invasive","[severe disease]","mOR;mOR","0.93;0.65","0.86-1.01;0.56-0.76","0.095;<0.001","0.179 (918/5116);0.0461(236/5116)","0.182 (24445/134598);0.0644 (8665/134598)",1,1,1,1,1,1,TRUE
+71633,"Total (OF ALL CANCERS)","1115","Hospitalisation referred to hospital re-admission within 30 days of COVID-19 diagnosis","[hospitalisation]","cRR","(63/481)/(60/806)=1.76",NA,"<0.0001","63/481=13.1%","60/806=7.44%",0,0,NA,0,0,0,TRUE
+71633,"Total (OF ALL CANCERS)","1115","Hospitalisation referred to hospital re-admission within 30 days of COVID-19 diagnosis","[ICU]","cRR","(141/1100)/(225/1846)=1.05",NA,"0.62","141/1100","225/1846",0,0,NA,0,0,0,TRUE
+71633,"Total (OF ALL CANCERS)","1115","Hospitalisation referred to hospital re-admission within 30 days of COVID-19 diagnosis","[mortality]","mOR (multiple imputations)","1.23","0.87-1.75","0.24",NA,NA,0,0,0,0,NA,NA,TRUE
+71633,"Total (OF ALL CANCERS)","1115","Hospitalisation referred to hospital re-admission within 30 days of COVID-19 diagnosis","[severe disease]",NA,NA,NA,"0.98","135/1096=12.3%","130/1052=12.4%",NA,NA,NA,0,0,0,NA
+71915,"Haematological","1842",NA,"[mortality]","aOR","2.154","1.788-2.597","<0.0001","0.095(175/1842)","0.048(509/10696)",0,0,0,0,0,0,TRUE
+71915,"Lower GI (colorectal, small bowel)","475","Colon Cancer","[mortality]","aOR","1.458","0.98-2.170",">0.001","0.061(29/475)","0.048(509/10696)",0,0,0,0,0,0,TRUE
+71915,"SOLID AGGREGATED [add all solid values]","8513","NA","[mortality]","aOR","0.960","0.835-1.105",">0.001","0.043(370/8513)","0.048(509/10696)",0,0,0,0,0,0,TRUE
+71915,"Thoracic (lung, mesothelioma)","728",NA,"[mortality]","aOR","1.955","1.486-2.572","<0.0001","0.095(69/728)","0.048(509/10696)",0,0,0,0,0,0,TRUE
+71915,"Total (OF ALL CANCERS)","10355",NA,"[mortality]","aOR","1.168","1.028-1.326","p>0.001","0.052 (545/10355)","0.048(509/10696)",0,0,0,0,0,0,TRUE
+71915,"Urology (ureter, bladder, prostate)","3224","Prostate","[mortality]","aOR","0.698","0.559-0.870",">0.001","0.032(102/3224) ","0.048(509/10696)",0,0,0,0,0,0,TRUE
+72593,"Total (OF ALL CANCERS)","33","Severity = invasive ventilator No p values or absolute numbers stated. Also have pooled outcomes, ED visit, non invasive ventilation cancer vs non cancer if relevant.","[hospitalisation]","mOR","1.55","0.67-3.59","NR","NR","NR",0,0,0,0,0,0,TRUE
+72593,"Total (OF ALL CANCERS)","33","Severity = invasive ventilator No p values or absolute numbers stated. Also have pooled outcomes, ED visit, non invasive ventilation cancer vs non cancer if relevant.","[ICU]","mOR","1.30","0.41-4.08","NR","NR","NR",0,0,0,0,0,0,TRUE
+72593,"Total (OF ALL CANCERS)","33","Severity = invasive ventilator No p values or absolute numbers stated. Also have pooled outcomes, ED visit, non invasive ventilation cancer vs non cancer if relevant.","[mortality]","mOR","2.78","0.92-8.43","NR","NR","NR",0,0,0,0,0,0,TRUE
+72593,"Total (OF ALL CANCERS)","33","Severity = invasive ventilator No p values or absolute numbers stated. Also have pooled outcomes, ED visit, non invasive ventilation cancer vs non cancer if relevant.","[severe disease]","mOR","0.81","0.18-3.75","NR","NR","NR",0,0,0,0,0,0,TRUE
+72854,"Haematological","341",NA,"[mortality]","cOR","NR","NR","NR","0.237 (81/341)","0.220 (2000/9089)",0,0,0,0,0,0,TRUE
+72854,"SOLID AGGREGATED [add all solid values]","1172","NA","[mortality]","cOR","NR","NR","NR","0.234 (274/1172)","0.220 (2000/9089)",0,0,0,0,0,0,TRUE
+72854,"Total (OF ALL CANCERS)","1513",NA,"[mortality]","mOR","1.685","1.686 - 2.064","NR","0.235 (355/1513)","0.220 (2000/9089)",0,0,0,0,0,0,TRUE
+73383,"Breast","1272",NA,"[hospitalisation]",NA,NA,NA,NA,"0.134 (171/1272)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Breast","1272",NA,"[mortality]",NA,NA,NA,NA,"0.061 (78/1272)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"CNS","47","NANA","[hospitalisation]",NA,NA,NA,NA,"0.255 (12/47)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"CNS","47","NANA","[mortality]",NA,NA,NA,NA,"0.128 (6/47)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Gynecological (vaginal, uterine, cervical, ovarian, vulval, endometrial, leiomyosarcoma etc)","1797","NANA","[hospitalisation]",NA,NA,NA,NA,"0.0573 (103/1797)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Gynecological (vaginal, uterine, cervical, ovarian, vulval, endometrial, leiomyosarcoma etc)","1797","NANA","[mortality]",NA,NA,NA,NA,"0.015 (27/1797)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Haematological","1193","adjusted HRs taken from eTable10 in supps","[hospitalisation]","aHR","1.75","1.57-1.96",NA,"0.269 (321/1193)",NA,0,0,0,NA,0,NA,TRUE
+73383,"Haematological","1193","adjusted HRs taken from eTable10 in supps","[ICU]","aHR","1.14","0.93-1.40",NA,"0.405 (130/321)",NA,0,0,0,NA,0,NA,TRUE
+73383,"Haematological","1193","adjusted HRs taken from eTable10 in supps","[mortality]","aHR","2.04","1.74-2.38",NA,"0.137 (163/1193)",NA,0,0,0,NA,0,NA,TRUE
+73383,"Head and neck","698","NANA","[hospitalisation]",NA,NA,NA,NA,"0.113 (79/698)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Head and neck","698","NANA","[mortality]",NA,NA,NA,NA,"0.016 (11/698)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Hepatobiliary (liver, pancreas, gall bladder)","71","NA","[hospitalisation]",NA,NA,NA,NA,"0.225 (16/71)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Hepatobiliary (liver, pancreas, gall bladder)","71","NA","[mortality]",NA,NA,NA,NA,"0.113 (8/71)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Lower GI (colorectal, small bowel)","676",NA,"[hospitalisation]",NA,NA,NA,NA,"0.204 (138/676)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Lower GI (colorectal, small bowel)","676",NA,"[mortality]",NA,NA,NA,NA,"0.095 (64/676)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Other","439; 357","other solid tumour; other haematological malignancy ","[hospitalisation]",NA,NA,NA,NA,"0.173 (76/439); 0.303 (108/357)",NA,NA,NA,NA,NA,1,NA,NA
+73383,"Other","439; 357","other solid tumour; other haematological malignancy ","[mortality]",NA,NA,NA,NA,"0.107 (47/439); 0.151 (54/357)",NA,NA,NA,NA,NA,1,NA,NA
+73383,"Renal","271","NANA","[hospitalisation]",NA,NA,NA,NA,"0.155 (42/271)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Renal","271","NANA","[mortality]",NA,NA,NA,NA,"0.077 (21/271)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Skin (including melanoma)","125","NANA","[hospitalisation]",NA,NA,NA,NA,"0.096 (12/125)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Skin (including melanoma)","125","NANA","[mortality]",NA,NA,NA,NA,"0.080 (10/125)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"SOLID AGGREGATED [add all solid values]","7185","NAadjusted HRs taken from eTable10 in supps","[hospitalisation]","aHR","1.11","1.05-1.18",NA,"0.148 (1061/7185)",NA,0,0,0,NA,0,NA,TRUE
+73383,"SOLID AGGREGATED [add all solid values]","7185","NAadjusted HRs taken from eTable10 in supps","[ICU]","aHR","0.93","0.82-1.05",NA,"0.366 (388/1060)",NA,0,0,0,NA,0,NA,TRUE
+73383,"SOLID AGGREGATED [add all solid values]","7185","NAadjusted HRs taken from eTable10 in supps","[mortality]","aHR","1.31","1.19-1.44",NA,"0.066 (475/7185)",NA,0,0,0,NA,0,NA,TRUE
+73383,"Thoracic (lung, mesothelioma)","321",NA,"[hospitalisation]",NA,NA,NA,NA,"0.312 (100/321)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Thoracic (lung, mesothelioma)","321",NA,"[mortality]",NA,NA,NA,NA,"0.178 (57/321)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Total (OF ALL CANCERS)","8378","non-cancer EVENT/TOTAL taken from graphs in figure 1. We have subtracted number survived at end of period from number survived at start of period to get number who died.   cancer EVENT/TOTAL taken from eTable11 in supps","[hospitalisation]",NA,NA,NA,NA,NA,"0.094 (42886/456034)",NA,NA,NA,NA,NA,0,NA
+73383,"Total (OF ALL CANCERS)","8378","non-cancer EVENT/TOTAL taken from graphs in figure 1. We have subtracted number survived at end of period from number survived at start of period to get number who died.   cancer EVENT/TOTAL taken from eTable11 in supps","[ICU]",NA,NA,NA,NA,NA,"0.345 (10207/29582)",NA,NA,NA,NA,NA,0,NA
+73383,"Total (OF ALL CANCERS)","8378","non-cancer EVENT/TOTAL taken from graphs in figure 1. We have subtracted number survived at end of period from number survived at start of period to get number who died.   cancer EVENT/TOTAL taken from eTable11 in supps","[mortality]",NA,NA,NA,NA,NA,"0.0466 (21267/456188)",NA,NA,NA,NA,NA,0,NA
+73383,"Upper GI (gastric, oesophageal)","132","NA","[hospitalisation]",NA,NA,NA,NA,"0.257 (34/132)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Upper GI (gastric, oesophageal)","132","NA","[mortality]",NA,NA,NA,NA,"0.106 (14/132)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Urology (ureter, bladder, prostate)","1336",NA,"[hospitalisation]",NA,NA,NA,NA,"0.208 (278/1336)",NA,NA,NA,NA,NA,0,NA,NA
+73383,"Urology (ureter, bladder, prostate)","1336",NA,"[mortality]",NA,NA,NA,NA,"0.099 (132/1336)",NA,NA,NA,NA,NA,0,NA,NA
+73804,"Breast",NA,NA,"[hospitalisation]","uOR;mOR","1.78;1.14","1.64-1.93;1.05-1.24","<0.00001;0.00308",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Breast",NA,NA,"[ICU]","uOR;mOR","0.56;0.58","0.29-1.07;0.29-1.16","0.07973;0.12508",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Breast",NA,NA,"[mortality]","uOR;mOR","2.53;1.66","2.23-2.88;1.45-1.91","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"CNS",NA,"NANA","[hospitalisation]","uOR;mOR","4.64;4.02","3.64-5.92;3.07-5.28","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"CNS",NA,"NANA","[ICU]","uOR;mOR","4.05;4.37","1.30-12.60;1.40-13.60","0.01554;0.01098",NA,NA,1,1,1,1,NA,NA,NA
+73804,"CNS",NA,"NANA","[mortality]","uOR;mOR","9.94;11.35","7.26-13.61;7.93-16.23","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Gynecological (vaginal, uterine, cervical, ovarian, vulval, endometrial, leiomyosarcoma etc)",NA,"NANA","[hospitalisation]","uOR;mOR","2.64;1.77","2.34-2.98;1.56-2.02","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Gynecological (vaginal, uterine, cervical, ovarian, vulval, endometrial, leiomyosarcoma etc)",NA,"NANA","[ICU]","uOR;mOR","2.06;1.78","1.11-3.84;0.96-3.31","0.02220;0.06927",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Gynecological (vaginal, uterine, cervical, ovarian, vulval, endometrial, leiomyosarcoma etc)",NA,"NANA","[mortality]","uOR;mOR","4.32;2.80","3.61-5.18;2.30-3.41","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Haematological",NA,NA,"[hospitalisation]","uOR;mOR","7.82;4.12","7.41-8.25;3.89-4.37","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Haematological",NA,NA,"[ICU]","uOR;mOR","13.05;7.70","10.96-15.54;6.43-9.22","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Haematological",NA,NA,"[mortality]","uOR;mOR","11.46;4.27","10.57-12.42;3.91-4.66","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Head and neck",NA,"NANA","[hospitalisation]","uOR;mOR","3.86;2.24","3.24-4.60;1.86-2.70","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Head and neck",NA,"NANA","[ICU]","uOR;mOR","7.77;5.24","4.50-13.41;3.03-9.06","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Head and neck",NA,"NANA","[mortality]","uOR;mOR","5.32;2.79","4.03-7.03;2.08-3.74","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Lower GI (colorectal, small bowel)",NA,NA,"[hospitalisation]","uOR;mOR (colorectal only)","4.49;2.01","4.17-4.84;1.86-2.18","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Lower GI (colorectal, small bowel)",NA,NA,"[ICU]","uOR;mOR (colorectal only)","4.91;2.76","3.60-6.71;2.01-3.79","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Lower GI (colorectal, small bowel)",NA,NA,"[mortality]","uOR;mOR (colorectal only)","8.11;2.36","7.31-9.00;2.10-2.64","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Other",NA,NA,"[hospitalisation]","uOR;mOR of endocrine glands","1.91;2.00","1.46-2.49;1.50-2.66","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Other",NA,NA,"[ICU]","uOR;mOR of endocrine glands","1.48;0.00","0.37-5.93;0.00-5.11E+46","0.57912;0.87726",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Other",NA,NA,"[mortality]","uOR;mOR of endocrine glands","1.92;2.29","1.15-3.19;1.30-4.04",NA,NA,NA,1,1,1,NA,NA,NA,NA
+73804,"Sarcoma (including Musculo skeletal)",NA,"NANA","[hospitalisation]","uOR;mOR","5.02;2.51","4.12-6.11;2.03-3.11","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Sarcoma (including Musculo skeletal)",NA,"NANA","[ICU]","uOR;mOR","2.80;1.78","0.90-8.71;0.57-5.52","0.07451;0.32148",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Sarcoma (including Musculo skeletal)",NA,"NANA","[mortality]","uOR;mOR","10.43;4.08","8.08-13.47;3.09-5.39","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"SOLID AGGREGATED [add all solid values]",NA,"NA","[hospitalisation]","uOR;mOR","3.67;1.80","3.56-3.78;1.74-1.86","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"SOLID AGGREGATED [add all solid values]",NA,"NA","[ICU]","uOR;mOR","2.77;1.64","2.38-3.23;1.39-1.92","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"SOLID AGGREGATED [add all solid values]",NA,"NA","[mortality]","uOR;mOR","6.42;2.27","6.15-6.71;2.17-2.38","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Thoracic (lung, mesothelioma)",NA,NA,"[hospitalisation]","uOR;mOR of respiratory and intrathoracic organs; uOR;mOR of lungs ","9.55;3.60;7.28;3.39","8.83-10.33;3.32-3.92;5.71-9.28;2.60-4.41","<0.00001;<0.00001;<0.00001;<0.00001",NA,NA,3,3,3,3,NA,NA,NA
+73804,"Thoracic (lung, mesothelioma)",NA,NA,"[ICU]","uOR;mOR of respiratory and intrathoracic organs; uOR;mOR of lungs ","13.5;6.47;5.58;2.53","6.40-28.45;2.88-14.51;3.70-8.42;1.64-3.89","<0.00001;<0.00001;<0.00001;0.00003",NA,NA,3,3,3,3,NA,NA,NA
+73804,"Thoracic (lung, mesothelioma)",NA,NA,"[mortality]","uOR;mOR of respiratory and intrathoracic organs; uOR;mOR of lungs ","12.13;4.43;18.55;4.97","8.62-17.08;3.04-6.44;16.75-20.55;4.45-5.56","<0.00001;<0.00001;<0.00001;<0.00001",NA,NA,3,3,3,3,NA,NA,NA
+73804,"Total (OF ALL CANCERS)","127322",NA,"[hospitalisation]","uOR;mOR","4.22;2.10","4.11-4.33;2.04 - 2.16","<0.00001;<0.00001","0.128;0.128","0.0261;0.0261",1,1,1,1,1,1,TRUE
+73804,"Total (OF ALL CANCERS)","127322",NA,"[ICU]","uOR;mOR","4.22;2.53","3.76-4.74;2.24 - 2.86","<0.00001;<0.00001","0.00892;0.00892","0.00229;0.00229",1,1,1,1,1,1,TRUE
+73804,"Total (OF ALL CANCERS)","127322",NA,"[mortality]","uOR;mOR","7.12;2.54","6.85-7.40;2.44-2.65","<0.00001;<0.00001","0.0752; 0.0752","0.00715; 0.00715",1,1,1,1,1,1,TRUE
+73804,"Unspecified",NA,"NANA","[mortality]","uOR;mOR",NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+73804,"Upper GI (gastric, oesophageal)",NA,"NA","[hospitalisation]","uOR;mOR (including small bowel and hepatobiliary)","7.48;3.17","6.72-8.33;2.83-3.55","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Upper GI (gastric, oesophageal)",NA,"NA","[ICU]","uOR;mOR (includes small bowel and hepatobiliary)","1.51;0.78","0.56-4.02;0.29-2.09","0.41298;0.62780",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Upper GI (gastric, oesophageal)",NA,"NA","[mortality]","uOR;mOR (includes small bowel and hepatobiliary)","17.34;5.85","15.22-19.76;5.08-6.74","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Urology (ureter, bladder, prostate)",NA,NA,"[hospitalisation]","uOR;mOR of male urological;uOR;mOR of prostate; uOR;mOR of urinary tract","1.65;2.04;3.19;1.25;4.93;1.78","1.19-2.29;1.43-2.90;2.98-3.41;1.16-1.34;4.49-5.41;1.61-1.97","0.00271;0.00007;<0.00001;<0.00001;<0.00001;<0.00001",NA,NA,5,5,5,5,NA,NA,NA
+73804,"Urology (ureter, bladder, prostate)",NA,NA,"[ICU]","uOR;mOR of male urological; uOR;mOR of prostate; uOR;mOR of urinary tract","1.95;2.13;2.38;0.89;4.18;1.80","0.49-7.80;0.53-8.53;1.69-3.36;0.61-1.28;2.69-6.49;1.13-2.86","0.34593;0.28740;<0.00001;0.52082;<0.00001;0.01341",NA,NA,5,5,5,5,NA,NA,NA
+73804,"Urology (ureter, bladder, prostate)",NA,NA,"[mortality]","uOR;mOR of male urological; uOR;mOR of prostate; uOR;mOR of urinary tract","2.19;2.76;4.76;1.08; 8.99;1.86","1.27-3.78;1.54-4.95;4.30-5.28;0.97-1.20;7.89-10.23;1.62-2.15","0.00502;0.00069;<0.00001;0.18331;<0.00001;<0.00001",NA,NA,5,5,5,5,NA,NA,NA
+74954,"Total (OF ALL CANCERS)","1625",NA,"[ICU]",NA,NA,NA,NA,"0.294 (477/1625)","0.276 (8076/29284)",NA,NA,NA,NA,0,0,NA
+74954,"Total (OF ALL CANCERS)","1625",NA,"[mortality]","mOR","2.10","1.88-2.35","<0.01","0.349 (530/1519)","0.203 (5483/27015)",0,0,0,0,0,0,TRUE
+74954,"Total (OF ALL CANCERS)","1625",NA,"[severe disease]","mOR","0.82","0.72-0.94","<0.01",NA,NA,0,0,0,0,NA,NA,TRUE
+75065,"Breast","27","outcome = severe COVID-19 composite outcome in hospitalized patients","[severe disease]","aHR","2.73","0.76 - 9.79","0.1222",NA,NA,0,0,0,0,NA,NA,TRUE
+75065,"Lower GI (colorectal, small bowel)","colorectal 11","outcome = severe COVID-19 composite outcome in hospitalized patients","[severe disease]","aHR","5.07","1.5 - 17.17 ","0.0091",NA,NA,0,0,0,0,NA,NA,TRUE
+75065,"Other","85","outcome = severe COVID-19 composite outcome in hospitalized patients","[severe disease]","aHR","1.34","0.58 - 3.11","0.4897",NA,NA,0,0,0,0,NA,NA,TRUE
+75065,"Thoracic (lung, mesothelioma)","lung 9","outcome = severe COVID-19 composite outcome in hospitalized patients","[severe disease]","aHR","3.19","0.88 - 11.54","0.0766",NA,NA,0,0,0,0,NA,NA,TRUE
+75065,"Total (OF ALL CANCERS)","154","outcome = severe COVID-19 composite outcome in hospitalized patients; Composite outcome of intubation ICU admission and/or 30-day mortality","[severe disease]","aHR","3.77","1.63 - 8.72 ","0.0019",NA,NA,0,0,0,0,NA,NA,TRUE
+75065,"Upper GI (gastric, oesophageal)","gastrointestinal 14","outcome = severe COVID-19 composite outcome in hospitalized patientsNA","[severe disease]","aHR","3.79","1.12 - 12.88","0.0325",NA,NA,0,0,0,0,NA,NA,TRUE
+75065,"Urology (ureter, bladder, prostate)","genitourinary 8","outcome = severe COVID-19 composite outcome in hospitalized patients","[severe disease]","aHR","2.63","0.67 - 10.31","0.1659",NA,NA,0,0,0,0,NA,NA,TRUE
+75567,"Total (OF ALL CANCERS)","64",NA,"[ICU]","uHR; mHR","10.8; 6.68","5.11-22.72; 2.97-15.01","<0.001; <0.001","0.563 (36/64); 0.563 (36/64)","0.266 (68/256); 0.266 (68/256)",1,1,1,1,1,1,TRUE
+75567,"Total (OF ALL CANCERS)","64",NA,"[mortality]","uHR; mHR","2.79; 2.27","1.70-4.59; 1.25-4.13","<0.001; 0.007","0.453 (29/64); 0.453 (29/64)","0.137 (35/256); 0.137 (35/256)",1,1,1,1,1,1,TRUE
+78588,"Thoracic (lung, mesothelioma)","31",NA,"[ICU]","mHR","4.72","1.19 - 18.72","0.027","0.322 (10/31)",NA,0,0,0,0,0,NA,TRUE
+78588,"Thoracic (lung, mesothelioma)","31",NA,"[mortality]","mHR","3.87","1.02 - 14.71","0.047","0.258 (8/31)",NA,0,0,0,0,0,NA,TRUE
+78588,"Thoracic (lung, mesothelioma)","31",NA,"[severe disease]","mHR","4.28","1.44 - 12.71","0.009","0.548 (17/31)",NA,0,0,0,0,0,NA,TRUE
+78588,"Total (OF ALL CANCERS)","31",NA,"[ICU]","mHR","4.72","1.19 - 18.72","0.027","0.322 (10/31)",NA,0,0,0,0,0,NA,TRUE
+78588,"Total (OF ALL CANCERS)","31",NA,"[mortality]","mHR","3.87","1.02 - 14.71","0.047","0.258 (8/31)",NA,0,0,0,0,0,NA,TRUE
+78588,"Total (OF ALL CANCERS)","31",NA,"[severe disease]","mHR","4.28","1.44 - 12.71","0.009","0.548 (17/31)",NA,0,0,0,0,0,NA,TRUE
+81620,"Total (OF ALL CANCERS)","53","table5: Rates of death due to COVID-19 and/or admission to hospital due to COVID-19","[severe disease]","uOR; mOR","5.37; 2.08","3.08-9.35; 1.14-3.80",NA,"0.400 (21/53); 0.400 (21/53)","0.110 (854/7841); 0.110 (854/7841)",1,1,1,NA,1,1,NA

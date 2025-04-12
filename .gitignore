@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+data/lineage/metadata.tsv/
+data/lineage/metadata.tsv.zst
+data/lineage/public-latest.metadata.tsv.gz
+*.png
+renv/
+code/.R_outbreak-info-token

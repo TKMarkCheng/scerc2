@@ -1,0 +1,690 @@
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+library(patchwork)
+library(ggh4x)
+library(scales)
+```
+
+
+```{r}
+#although there is a daily version, the temporal resolution is unnecessary, and it some countries cases, cases are reported at the end of every week, leading to series of 6 zeros, followed by that week's total 
+weekly_global_cases_deaths <- read.csv(url("https://srhdpeuwpubsa.blob.core.windows.net/whdh/COVID/WHO-COVID-19-global-data.csv")) %>% 
+  mutate(across(where(is.numeric), ~ replace(.,is.na(.),0)))
+weekly_global_cases_deaths
+```
+
+
+```{r}
+df_location_date <- read.csv("../output/Timeline_and_Lineage_Imputation/Totalcount_LAPIS_GISAID.csv",check.names = TRUE) %>%
+  arrange(desc(Study.End.Date))
+df_location_date
+
+WholeStudyOrder <- df_location_date %>% filter(!grepl("\\(",Study.ID)) %>% distinct(Study.ID,.keep_all = TRUE) %>% arrange(desc(Study.End.Date)) %>% pull(Study.ID)
+
+StudyOrder <- df_location_date %>% 
+  tidyr::separate(Study.ID,remove = FALSE,sep = "\\(",into=c("Whole.Study.ID","period")) %>% 
+  mutate(Whole.Study.ID = factor(Whole.Study.ID,levels =WholeStudyOrder)) %>%
+  arrange(Whole.Study.ID,desc(Study.End.Date)) %>%
+  distinct(Study.ID) %>%
+  pull(Study.ID)
+
+StudyOrder
+```
+
+```{r}
+df_location_date_WHO <- df_location_date %>% select(Study.ID,query_LAPIS_country, Outbreak_query_country,Study.Start.Date,Study.End.Date)
+
+WHO_countries <- weekly_global_cases_deaths %>% distinct(Country)
+
+outbreak_who_country_mapping <- df_location_date %>% 
+  distinct(Outbreak_query_country) %>% 
+  mutate(WHO_query_country = map(Outbreak_query_country, ~WHO_countries$Country[str_detect(WHO_countries$Country,fixed(.x))])) %>%
+  mutate(WHO_query_country = map_chr(WHO_query_country, ~ if(length(.x) > 0) paste(.x, collapse = "; ") else NA)) %>%
+  mutate(WHO_query_country = if_else(Outbreak_query_country == "United States","United States of America",WHO_query_country),
+         WHO_query_country = if_else(Outbreak_query_country == "South Korea","Republic of Korea",WHO_query_country),
+         WHO_query_country = if_else(Outbreak_query_country == "England","United Kingdom of Great Britain and Northern Ireland",WHO_query_country)
+         )
+outbreak_who_country_mapping
+
+df_location_date_WHO <- df_location_date_WHO %>% left_join(outbreak_who_country_mapping,by = "Outbreak_query_country")
+
+df_location_date_WHO
+```
+
+
+```{r}
+df_study_WHOCaseDeaths <- df_location_date_WHO %>% 
+  left_join(weekly_global_cases_deaths,by=c("WHO_query_country"="Country")) %>% 
+  mutate(
+    Date_reported = as.Date(Date_reported),
+    Study.Start.Date = as.Date(Study.Start.Date),
+    Study.End.Date = as.Date(Study.End.Date),
+    within_study = if_else(Date_reported <= Study.End.Date & Date_reported >= Study.Start.Date,TRUE,FALSE)
+    )
+df_study_WHOCaseDeaths
+
+df_study_WHOCaseDeaths %>%
+  ggplot() +
+  geom_line(aes(x=Date_reported,y=New_cases+1,color = within_study,group=1)) +
+  geom_vline(aes(xintercept=Study.Start.Date),linetype = "dashed") +
+  geom_vline(aes(xintercept=Study.End.Date),linetype = "dashed") +
+  scale_y_log10() + 
+  scale_x_date(date_breaks = "3 month",date_labels = "%Y-%m") +
+  theme(axis.text.x = element_text(angle = 90,hjust=-0.2,vjust = 0.3)) + 
+  facet_wrap(facets = vars(Study.ID))
+
+```
+
+```{r}
+df_study_WHOCaseDeaths %>% filter(Study.ID == "71633_Raad 2023") %>% group_by(Study.ID,Date_reported,WHO_query_country) %>% summarise(New_cases = sum(New_cases,na.rm = TRUE)) %>% tail(100)
+```
+
+## Weekly variant information
+need to perform 1_Dominant_Lineage_assignment.Rmd LAPIS and Outbreak queries, but on a weekly basis
+
+```{r}
+#keep only study period
+df_study_WHOCaseDeaths_study_period <- df_study_WHOCaseDeaths %>% filter(within_study == TRUE)
+df_study_WHOCaseDeaths_study_period
+
+# fix missing data by assuming for each study period/country, there will be a fixed case/death ratio 
+model_predict_deaths <- lme4::lmer(log10(New_deaths) ~ log10(New_cases) + (1|Study.ID) + (1|WHO_query_country),
+                    data = df_study_WHOCaseDeaths_study_period %>% 
+                      mutate(Study.ID = factor(Study.ID),
+                             WHO_query_country = factor(WHO_query_country)),
+                    subset = (New_cases >0 & New_deaths >0))
+
+model_predict_cases <- lme4::lmer(log10(New_cases) ~ log10(New_deaths) + (1|Study.ID) + (1|WHO_query_country),
+                    data = df_study_WHOCaseDeaths_study_period %>% 
+                      mutate(Study.ID = factor(Study.ID),
+                             WHO_query_country = factor(WHO_query_country)),
+                    subset = (New_cases >0 & New_deaths >0))
+
+df_study_WHOCaseDeaths_study_period <- df_study_WHOCaseDeaths_study_period %>%
+  mutate(
+    New_deaths = if_else(New_deaths==0,
+                                   10**predict(model_predict_deaths,newdata=df_study_WHOCaseDeaths_study_period),
+                                   New_deaths),
+    New_cases = if_else(New_cases==0,
+                                  10**predict(model_predict_cases,newdata=df_study_WHOCaseDeaths_study_period),
+                                  New_cases
+  ))
+
+```
+
+```{r}
+df_study_WHOCaseDeaths_study_period <- df_study_WHOCaseDeaths_study_period %>% 
+  mutate(search_week_start=Date_reported - 6,
+         search_week_end=Date_reported,
+                                               )
+df_study_WHOCaseDeaths_study_period
+
+df_study_WHOCaseDeaths_study_period_distinct <- df_study_WHOCaseDeaths_study_period %>% distinct(Study.ID,Outbreak_query_country,Date_reported,.keep_all=TRUE)
+df_study_WHOCaseDeaths_study_period_distinct # remove instances of repeat queries
+
+
+df_study_WHOCaseDeaths_study_period_distinct %>% summarise(New_cases = sum(New_cases,na.rm = T),
+                                                           New_deaths = sum(New_deaths,na.rm = T))
+```
+
+## LAPIS query
+Takes roughly 50 minutes to run.
+```{r}
+# # Query LAPIS
+# df_study_LAPIS_strains <- data.frame(
+#   Study.ID = character(),
+#   LAPIS_query_country=character(),
+#   startdate=character(),
+#   enddate=character(),
+#   #nextcladePangoLineage=character(),
+#   nextstrainClade=character(),
+#   count=integer()
+# )
+# 
+# query_aggregated_LAPIS <- function(filters="",stratify_fields=""){
+#   #https://arxiv.org/pdf/2206.01210.pdf section 2.1
+#   #possible filter and stratification are found at https://lapis.cov-spectrum.org/open/docs/
+#   query_link <- "https://lapis.cov-spectrum.org/open/v2/sample/aggregated?"
+#   if (filters != "" && stratify_fields != ""){
+#     query_link=paste0(query_link,filters,"&",stratify_fields)
+#   }
+#   else if (filters != ""){
+#     query_link = paste0(query_link,filters)
+#   }
+#   else if (stratify_fields!=""){
+#     query_link = paste0(query_link,stratify_fields)
+#   }
+#   else if(filters=="" && stratify_fields == ""){
+#     query_link = query_link
+#   }
+#   response <- jsonlite::fromJSON(query_link)
+#   #sanity check
+#   # print(paste0("queried:",query_link))
+# 
+#   # Check for errors
+#   errors <- response$errors
+#   if (length(errors) > 0) {
+#     stop("Errors")
+#   }
+#   # Check for deprecation
+#   deprecationDate <- response$info$deprecationDate
+#   if (!is.null(deprecationDate)) {
+#     warning(paste0("This version of the API will be deprecated on ", deprecationDate,
+#                    ". Message: ", response$info$deprecationInfo))
+#   }
+# 
+#   # The data is good to be used!
+#   data <- response$data
+# 
+#   # handling when empty list is returned by creating a placeholder df with NA as holders in the fields.
+#   if (length(data)==0){
+#     #create a placeholder df using stratifying fields
+#     headers = sub("^fields=","",stratify_fields)
+#     headers = strsplit(headers,",")[[1]]
+#     headers = c(headers,"count")
+# 
+#     data <- data.frame(matrix(NA,nrow=1,ncol=length(headers)))
+#     names(data) <- headers
+#   }
+#   # adding the filter terms as columns for clarity
+#   if (filters != ""){
+#     filter_key_value_pairs = strsplit(filters,"&")[[1]]
+#     # dynamically assign and create df
+#     headers <- sapply(filter_key_value_pairs, function(pair) strsplit(pair, "=")[[1]][1])
+#     values <- sapply(filter_key_value_pairs, function(pair) strsplit(pair, "=")[[1]][2])
+#     df <- data.frame(matrix(values, ncol = length(headers), byrow = TRUE))
+#     colnames(df) <- headers
+#     ## check if there are columns of the same name, in cases where the same thing term is used for both filter and stratify fields.
+#     duplicated_names_mask <- names(data) %in% names(df)
+#     data <- data[,!duplicated_names_mask,drop=FALSE]
+#     ## if there are NAs in nextstrainClade or count, in the cases where no sequences is in the database
+#     data$nextstrainClade <- replace(data$nextstrainClade,is.na(data$nextstrainClade),"No results")
+#     data$count <- replace(data$count,is.na(data$count),0)
+#     # merge into data
+#     data <- cbind(data,df)
+#   }
+#   return(data)
+# }
+# 
+# for (i in 1:nrow(df_study_WHOCaseDeaths_study_period_distinct)){
+#   print(glue::glue("{i}/{nrow(df_study_WHOCaseDeaths_study_period_distinct)}"))
+#   
+#   ID <- df_study_WHOCaseDeaths_study_period_distinct[[i,"Study ID"]]
+#   startdate <- df_study_WHOCaseDeaths_study_period_distinct[[i,"search_week_start"]]
+#   enddate <- df_study_WHOCaseDeaths_study_period_distinct[[i,"search_week_end"]]
+#   LAPIS_query_country <- df_study_WHOCaseDeaths_study_period_distinct[[i,"query_LAPIS_country"]]
+# 
+#   df_strain <- query_aggregated_LAPIS(filters = glue("country={LAPIS_query_country}&dateFrom={startdate}&dateTo={enddate}"),
+#                                     stratify_fields = "fields=country,nextstrainClade")
+#   df_strain$Study.ID <- ID
+# 
+#   df_study_LAPIS_strains <- rbind(df_study_LAPIS_strains,df_strain)
+# }
+# 
+# # add back study ID for easier plotting
+# df_study_WHOCaseDeaths_study_period_distinct_lapis <- left_join(
+#   df_study_WHOCaseDeaths_study_period_distinct,
+#   df_study_LAPIS_strains %>% mutate(dateFrom = as.Date(dateFrom),dateTo = as.Date(dateTo)),
+#   by=c("query_LAPIS_country"="country","search_week_start"="dateFrom","search_week_end"="dateTo")
+#   )
+# df_study_WHOCaseDeaths_study_period_distinct_lapis <- df_study_WHOCaseDeaths_study_period_distinct_lapis[
+#   order(match(df_study_WHOCaseDeaths_study_period_distinct_lapis$Study.ID,StudyOrder)),] #reorder it correctly
+# 
+# df_study_WHOCaseDeaths_study_period_distinct_lapis
+# 
+# write.csv(df_study_WHOCaseDeaths_study_period_distinct_lapis,"../output/Timeline_and_Lineage_Imputation/Totalcount_lineages_LAPIS_summed_weekly.csv",row.names = FALSE)
+df_study_WHOCaseDeaths_study_period_distinct_lapis <- read.csv(
+  "../output/Timeline_and_Lineage_Imputation/Totalcount_lineages_LAPIS_summed_weekly.csv")
+
+```
+
+### LAPIS Lineage Assignment
+```{r}
+#https://github.com/nextstrain/ncov-clades-schema?tab=readme-ov-file
+#https://nextstrain.org/ncov/gisaid/global/6m
+clade_names <- read.csv("../data/lineage/Nextstrain_clade_alias.csv",skip = 3)
+clade_names
+
+#manual corrections
+clade_names <- clade_names %>%
+  mutate(variant=case_when(
+    common_name==""~"Early-clades",
+    startsWith(common_name,"JN")~"Omicron_JN",
+    startsWith(common_name,"XBB")~"Omicron_XBB",
+    startsWith(common_name,"BA")~"Omicron_BA",
+    startsWith(common_name,"JN")~"Omicron_BA",
+    common_name=="Omicron,B.1.1.628"~"Omicron_BA",
+    common_name=="BQ.1"~"Omicron_BA",
+    common_name=="CH.1.1"~"Omicron_BA",
+    common_name=="EG.5.1"~"Omicron_XBB",
+    common_name=="HK.3"~"Omicron_XBB",
+    TRUE~common_name
+  )) %>%
+  arrange(nextstrain_clade)
+clade_names
+
+desired_variant_order <- unique(clade_names$variant)
+
+```
+
+```{r}
+df_study_LAPIS_strains_common_names <- merge(df_study_WHOCaseDeaths_study_period_distinct_lapis,
+                                             clade_names,by.x = "nextstrainClade",by.y="nextstrain_clade",all.x = TRUE)%>%
+  mutate(variant=ifelse(
+    nextstrainClade=="recombinant","recombinant",variant))
+df_study_LAPIS_strains_common_names <- df_study_LAPIS_strains_common_names[!duplicated(df_study_LAPIS_strains_common_names),] # remove duplicates
+#df_study_LAPIS_strains_common_names<- df_study_LAPIS_strains_common_names[!is.na(df_study_LAPIS_strains_common_names$color),] # remove NAs
+df_study_LAPIS_strains_common_names <- df_study_LAPIS_strains_common_names %>% 
+  arrange(desc(search_week_end)) %>% #arrange by dateTo
+  mutate(Date_reported =as.Date(Date_reported))
+df_study_LAPIS_strains_common_names
+```
+
+```{r}
+df_study_LAPIS_strains_common_names %>% distinct(Date_reported) %>% arrange(Date_reported)
+df_study_WHOCaseDeaths %>% filter(within_study == TRUE) %>%  distinct(Date_reported) %>% arrange(Date_reported)
+
+df_study_WHOCaseDeaths %>% 
+  mutate(Study.ID = factor(Study.ID,StudyOrder)
+         ) %>%
+  group_by(Study.ID,Outbreak_query_country,Date_reported,within_study) %>%
+  summarise(across(where(is.numeric),sum,na.rm=TRUE)) %>%
+  ungroup() %>% select(-Cumulative_deaths,-Cumulative_cases) %>%
+  pivot_longer(cols = c("New_cases","New_deaths"),names_to = "case_or_deaths",values_to = "case_or_death_count") %>%
+  arrange(Study.ID,case_or_deaths,Date_reported) %>%
+  mutate(case_or_death_moving_average = zoo::rollmean(case_or_death_count,k=4,fill=NA,align = "center")) %>%
+  filter(within_study == TRUE) %>% ungroup() %>% distinct(Date_reported) %>% arrange(Date_reported)
+```
+## outbreak query
+```{r}
+# Takes just over 8 hours to run. Beware manual confirmation required for certain countries.
+
+library("outbreakinfo")
+library("glue")
+authenticateUser()
+# 
+# df_study_Outbreak_strains <- data.frame(
+#   Study.ID = character(),
+#   location=character(),
+#   startdate=character(),
+#   enddate=character(),
+#   lineage=character(),
+#   total_lineage_count=integer()
+# )
+# 
+# query_aggregated_Outbreak <- function(location,
+#                                       start_date="2020-01-01",
+#                                       end_date="2023-12-31"){
+#   # queries all sequences from the location
+#   outbreakinfo_lineages <- getAllLineagesByLocation(location=location,
+#                          other_threshold=0.03,
+#                          nday_threshold = 3, #low threshold ensures nothing gets grouped under other
+#                          ndays=3000) #go back as far as possible to get all sequences
+#   # filter it down to the study relevant dates
+#   outbreakinfo_lineages_summary <- outbreakinfo_lineages %>%
+#     filter(date > start_date, date < end_date) %>% #filter by study date
+#     group_by(lineage) %>% #group by lineage...
+#     summarise(total_lineage_count=sum(lineage_count)) %>% # then add up lineage_counts
+#     mutate(location=location,
+#            start_date=start_date,end_date=end_date) %>% #insert study ID, location, dates
+#     select(location,start_date,end_date,
+#            lineage,total_lineage_count) # reorder columns explicitly
+#   return (outbreakinfo_lineages_summary)
+#   }
+# 
+# 
+# for (i in 1:nrow(df_study_WHOCaseDeaths_study_period_distinct)){
+#   ID <- df_study_WHOCaseDeaths_study_period_distinct[[i,"Study.ID"]]
+#   Outbreak_query_country <- df_study_WHOCaseDeaths_study_period_distinct[[i,"Outbreak_query_country"]]
+#   startdate <- df_study_WHOCaseDeaths_study_period_distinct[[i,"search_week_start"]]
+#   enddate <- df_study_WHOCaseDeaths_study_period_distinct[[i,"search_week_end"]]
+#   print(ID)
+# 
+#   print(glue(
+#     "query {i} out of {nrow(df_study_WHOCaseDeaths_study_period_distinct)},between {startdate} and {enddate} in {Outbreak_query_country}"
+#   ))
+#   df_Outbreak_lineage <- query_aggregated_Outbreak(location=Outbreak_query_country,
+#                                                    start_date = startdate,
+#                                                    end_date = enddate)
+#   df_Outbreak_lineage$`Study ID` <- ID
+#   df_study_Outbreak_strains <- rbind(df_study_Outbreak_strains,df_Outbreak_lineage)
+# }
+# df_study_Outbreak_strains
+# 
+# write.csv(df_study_Outbreak_strains,"../output/Timeline_and_Lineage_Imputation/Totalcount_lineages_OutbreakInfo_summed_weekly.csv",row.names = FALSE)
+```
+
+```{r}
+df_study_Outbreak_strains <- read.csv("../output/Timeline_and_Lineage_Imputation/Totalcount_lineages_OutbreakInfo_summed_weekly.csv")
+df_study_Outbreak_strains <- df_study_Outbreak_strains %>% mutate(lineage = toupper(lineage)) #change lineage names to all upper case
+df_study_Outbreak_strains
+```
+
+```{r}
+# Assign nextclade and WHO name using Pangolin lineage
+#https://bioinformatics.stackexchange.com/questions/18137/correspondence-of-sars-cov-2-annotations-nextstrain-clades-pango-lineages
+
+pango_to_nextclade_json <- jsonlite::fromJSON("https://raw.githubusercontent.com/corneliusroemer/pango-sequences/main/data/pango-consensus-sequences_summary.json",flatten = TRUE)
+
+wanted_columns <- c("lineage","unaliased","parent","children","nextstrainClade")
+
+pango_to_nextclade_json_selected <- lapply(names(pango_to_nextclade_json), function(lineage) {
+  pango_to_nextclade_json[[lineage]][wanted_columns]
+})
+
+pango_to_nextclade_df_selected <- data.frame(
+  do.call(rbind,pango_to_nextclade_json_selected)) %>% # convert into dataframe 
+  mutate_all(~ ifelse(lengths(.) == 0, NA, .)) %>% # replace empty list with NA
+  unnest(everything()) # convert lists to values
+pango_to_nextclade_df_selected
+
+#sanity check - are all children in lineage? This should return an empty df
+pango_to_nextclade_df_selected[(!pango_to_nextclade_df_selected$children %in% pango_to_nextclade_df_selected$lineage)& # find any children not in lineage AND 
+                                !(is.na(pango_to_nextclade_df_selected$children)),] # that children is NOT an empty NA value
+# only keep unique lineage and nextstrainClade pairs
+pango_to_nextclade_df_selected_lineage <- pango_to_nextclade_df_selected %>% distinct(lineage,nextstrainClade)
+#merge aliases and WHO names
+pango_to_nextclade_df_selected_lineage<- merge(pango_to_nextclade_df_selected_lineage,by.x="nextstrainClade",
+                                               clade_names,by.y="nextstrain_clade")
+pango_to_nextclade_df_selected_lineage
+```
+
+```{r}
+df_study_Outbreak_strains_summary <- merge(df_study_Outbreak_strains,by.x = "lineage",pango_to_nextclade_df_selected_lineage,by.y = "lineage") %>% 
+  group_by(Study.ID,start_date,end_date,variant,location) %>%
+  summarise(Outbreak_count = sum(total_lineage_count)) %>%
+  rename(Outbreak_query_country=location) %>%
+  mutate(Date_reported = as.Date(end_date))
+df_study_Outbreak_strains_summary
+```
+
+```{r}
+# plot studies with VOCs
+study_country_group <- c("Alsakarneh 2024","Li 2024","Starkey 2023","Konermann 2023","Konermann 2023(Omicron)",
+                         "Konermann 2023(WT to Delta)","Park 2024","Turtle 2023","Turtle 2023(wave 4−Omicron)",
+                         "Turtle 2023(wave 3−Delta)","Turtle 2023(wave 2−Alpha)","Turtle 2023(wave 1−D614G)","Salvatore 2023",
+                         "Leuva 2022","Hosseini−Moghaddam 2023","Sullivan 2023","Nolan 2023","Kodde 2023","Udovica 2022")
+study_country_pattern <- paste(study_country_group,collapse = "|")
+study_country_group_name <- "variant_included_studies"
+# 
+# # plot Raad, the multinational study 
+# study_country_group <- c("Raad 2023")
+# study_country_pattern <- paste(study_country_group,collapse = "|")
+# study_country_group_name <- "Raad2023"
+```
+
+```{r}
+colors <- colorRampPalette(c("red","yellow","cyan","blue"))(length(unique(df_study_LAPIS_strains_common_names$variant)))
+
+desired_variant_order_appended <- append(desired_variant_order,c("Recombinant","NA"))
+
+custom_palette <- setNames(colors,desired_variant_order_appended)
+custom_palette["Early-clades"] <- "grey"
+custom_palette["recombinant"] <- "black"
+
+# plot 1 - stack bar chart
+
+p1 <- df_study_LAPIS_strains_common_names %>% 
+  mutate(Study.ID = factor(Study.ID,StudyOrder),
+         variant = factor(variant,desired_variant_order_appended)
+         )%>%
+  filter(grepl(study_country_pattern,Study.ID)) %>%
+  ggplot() +
+  # axis 1
+  geom_bar(aes(x=Date_reported,y=count,fill=variant),position="stack",stat="identity") +
+  scale_fill_manual(values= custom_palette,
+                    na.value = "white")+
+  scale_y_continuous(
+    name = "LAPIS variant count",
+    labels = function(x) scientific(x,digits = 1)) + 
+  # scale_x and others
+  scale_x_date(date_breaks = "2 month",date_labels = "%Y-%m") +
+  theme(axis.text.x = element_text(angle = 90,hjust=-0.2,vjust = 0.3)) + 
+  facet_nested(cols = vars(Study.ID,Outbreak_query_country), scales="free",independent= "y",
+             labeller = as_labeller(
+               function(x) sapply(strsplit(gsub("\\(","\n\\(",as.character(x)), "_"), 
+                                  function(y) tail(y, 1))),
+             render_empty = FALSE
+             )+
+  theme(strip.text.y = element_text(angle = 0,),strip.text.x = element_text(size=4),
+        axis.title.x = element_blank(),axis.ticks.x = element_blank(),axis.text.x=element_blank())
+p1
+
+p2 <- df_study_Outbreak_strains_summary %>% 
+  mutate(Study.ID = factor(Study.ID,StudyOrder),
+         variant = factor(variant,desired_variant_order_appended)
+         )%>%
+  filter(grepl(study_country_pattern,Study.ID)) %>%
+  ggplot() +
+  # axis 1
+  geom_bar(aes(x=Date_reported,y=Outbreak_count,fill=variant),position="stack",stat="identity") +
+  scale_fill_manual(values= custom_palette,
+                    na.value = "white",guide="none")+
+  scale_y_continuous(
+    name = "Outbreak variant count",
+    labels = function(x) scientific(x,digits = 1)) + 
+  # scale_x and others
+  scale_x_date(date_breaks = "2 month",date_labels = "%Y-%m") +
+  theme(axis.text.x = element_text(angle = 90,hjust=-0.2,vjust = 0.3)) + 
+  facet_nested(cols = vars(Study.ID,Outbreak_query_country), scales="free",independent= "y",
+             labeller = as_labeller(function(x) sapply(strsplit(as.character(x), "_"), function(y) tail(y, 1))), 
+             render_empty = FALSE
+             )+
+  theme(strip.text.y = element_text(angle = 0,),
+        axis.text.y = element_text(hjust=0),
+        strip.text.x = element_blank(),
+        axis.title.x = element_blank(),axis.ticks.x = element_blank(),axis.text.x=element_blank())
+  
+p2
+```
+
+
+```{r}
+p3 <- df_study_WHOCaseDeaths_study_period %>% 
+  mutate(Study.ID = factor(Study.ID,StudyOrder)
+         ) %>%
+  filter(grepl(study_country_pattern,Study.ID)) %>%
+  group_by(Study.ID,Outbreak_query_country,Date_reported,within_study) %>%
+  summarise(across(where(is.numeric),sum,na.rm=TRUE)) %>%
+  ungroup() %>% select(-Cumulative_deaths,-Cumulative_cases) %>%
+  pivot_longer(cols = c("New_cases","New_deaths"),names_to = "case_or_deaths",values_to = "case_or_death_count") %>%
+  arrange(Study.ID,case_or_deaths,Date_reported) %>%
+  mutate(case_or_death_moving_average = zoo::rollmean(case_or_death_count,k=4,fill=NA,align = "center")) %>%
+  filter(within_study == TRUE) %>%
+  ggplot() +
+  geom_line(aes(x=Date_reported,y=case_or_death_count,color = case_or_deaths)) +
+  scale_alpha_manual(values=c(`FALSE` = 0.3,`TRUE` = 1.0)) +
+  scale_color_manual(values=c("black","red3")) +
+  # scale_y_continuous("new_cases",sec.axis = sec_axis(~ . * 0.0001, name = "new_deaths")) +
+  scale_y_log10(name="WHO case/death count(log)",labels = function(x) scientific(x,digits = 1),) +
+  # scale_x and others
+  scale_x_date(breaks=scales::pretty_breaks(n = 4,min.n=3), date_labels = "%Y-%m",date_minor_breaks = "2 month") +
+  theme(axis.text.x = element_text(angle = 90,hjust=-0.2,vjust = 0.3)) + 
+  facet_nested(cols = vars(Study.ID,Outbreak_query_country), scales="free",independent= "y",
+             labeller = as_labeller(function(x) sapply(strsplit(as.character(x), "_"), function(y) tail(y, 1))),
+             render_empty = FALSE
+             )+
+  theme(strip.text.y = element_text(angle = 0,),strip.text.x = element_blank(),)
+  # theme(strip.text.y = element_text(angle = 0,size=6))+
+  # theme(legend.key.size = unit(0.5, 'cm'))
+p3
+
+pdf(glue::glue("../output/Timeline_and_Lineage_Imputation/WHO_case_death_weekly_byStudyCountries_{study_country_group_name}.pdf"),
+    width=14,height=8.3)
+p1 + p2 + p3 + 
+  plot_layout(nrow = 3,guides="collect") & 
+  theme(axis.text.y = element_text(size=4),
+        strip.text.y = element_text(size=5),
+        panel.grid.minor = element_blank(),
+        legend.position = 'bottom')
+dev.off()
+```
+
+```{r}
+## geom_col of infection, deaths, and sequencing rate
+
+p_column <- dplyr::left_join(df_study_LAPIS_strains_common_names %>% 
+                   select(Study.ID,variant,Outbreak_query_country,New_cases,New_deaths,count) %>%
+                   group_by(Study.ID,Outbreak_query_country) %>%
+                   summarise(across(c("New_cases","New_deaths","count"),~sum(.x,na.rm=TRUE))),
+                 df_study_Outbreak_strains_summary %>% ungroup() %>% 
+                   select(Study.ID,variant,Outbreak_query_country,Outbreak_count)%>%
+                   group_by(Study.ID,Outbreak_query_country) %>%
+                   summarise(across(c("Outbreak_count"),~sum(.x,na.rm=TRUE))),
+                 by = c("Study.ID","Outbreak_query_country")
+                
+) %>% 
+  mutate(Study.ID = factor(Study.ID,StudyOrder)) %>%
+  group_by(Study.ID,Outbreak_query_country) %>%
+  mutate(Study_and_location = factor(paste0(Study.ID," [",Outbreak_query_country,"]")),
+         death_per_1000case = 1000* New_deaths/New_cases,
+         LAPIS_per_1000case = 1000* count/New_cases,
+         Outbreak_per_1000case = 1000 * Outbreak_count/New_cases) %>%
+  filter(!is.na(Study.ID)) %>% 
+  pivot_longer(c("New_cases","New_deaths","death_per_1000case","count","LAPIS_per_1000case","Outbreak_count","Outbreak_per_1000case")) %>%
+  mutate(name = if_else(name=="count","LAPIS_count",name),
+         name=factor(name,levels=c("New_cases","New_deaths","death_per_1000case","LAPIS_count","LAPIS_per_1000case","Outbreak_count","Outbreak_per_1000case"))) %>%
+  ggplot() +
+  scale_x_log10(name="",labels = function(x) scientific(x,digits = 1))+
+  geom_col(aes(y=Study_and_location,x=value,fill=name)) +
+  facet_nested(rows = vars(Study.ID,Outbreak_query_country),cols=vars(name),scales = "free",switch = "y",
+               labeller = as_labeller(function(x) sub("_per_1000","/1000",sub("^[0-9]+_","",x))) # remove Covidence ID in front of Study ID
+             )+
+  scale_fill_manual(values=c("black","red2","red4","green2","green4","blue2","blue4")) +
+  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.title.y = element_blank(),
+        strip.text.y.left = element_text(angle = 0,size=6),
+        axis.text.x = element_text(angle = 90,hjust = 0.95,vjust = 0.2),
+        legend.title = element_blank(),legend.position ="none",
+        panel.grid.minor = element_blank(),
+        panel.spacing.y=unit(0.2, "lines"))
+
+pdf("../output/Timeline_and_Lineage_Imputation/WHO_case_death_LAPIS_Outbreak_byCases.pdf",width = 11.7,height=8.3)
+p_column
+dev.off()
+
+```
+
+## alternative weighting of sequences
+
+```{r}
+df_study_Outbreak_strains_weekly <-merge(df_study_Outbreak_strains,by.x = "lineage",pango_to_nextclade_df_selected_lineage,by.y = "lineage") %>% 
+  group_by(Study.ID,start_date,end_date,variant,location) %>%
+  summarise(Outbreak_count = sum(total_lineage_count))
+
+
+df_study_LAPIS_outbreak_weekly <- left_join(
+  df_study_LAPIS_strains_common_names%>%
+    select(Study.ID,Outbreak_query_country,search_week_start,search_week_end,variant,count) %>%
+    group_by(Study.ID,Outbreak_query_country,search_week_start,search_week_end,variant) %>%
+    summarise(count = sum(count)) %>% ungroup(),
+  df_study_Outbreak_strains_weekly %>% 
+    select(Study.ID,location,start_date,end_date,Outbreak_count,variant),
+  by = c("Study.ID","Outbreak_query_country"="location","search_week_start"="start_date","search_week_end"="end_date","variant")) %>%
+  rename(LAPIS_count=count)
+
+df_study_LAPIS_outbreak_weekly <- df_study_LAPIS_outbreak_weekly %>%
+  group_by(Study.ID,Outbreak_query_country,search_week_start,search_week_end) %>%
+  mutate(across(where(is.numeric), ~ replace_na(., 0))) %>%
+  mutate(LAPIS_variant_proportion = LAPIS_count/sum(LAPIS_count),
+         Oubreak_variant_proportion = Outbreak_count/sum(Outbreak_count))
+df_study_LAPIS_outbreak_weekly
+```
+
+```{r}
+# get the weighting of weekly case and weekly death per Study country 
+df_weekly_case_death_proportion_trends <- df_study_WHOCaseDeaths_study_period %>%
+  select(Study.ID,Outbreak_query_country,search_week_start,search_week_end,New_cases,New_deaths) %>%
+  distinct()
+
+
+df_study_LAPIS_outbreak_WHO_weekly <- left_join(
+  df_study_LAPIS_outbreak_weekly %>% mutate(search_week_start = as.Date(search_week_start),search_week_end = as.Date(search_week_end)),
+  df_weekly_case_death_proportion_trends,
+  by = join_by(Study.ID, Outbreak_query_country, search_week_start, search_week_end)
+) %>%
+  mutate(LAPIS_adjusted_new_case = LAPIS_variant_proportion * New_cases,
+         Outbreak_adjusted_new_case = Oubreak_variant_proportion * New_cases,
+         LAPIS_adjusted_new_death = LAPIS_variant_proportion * New_deaths,
+         Outbreak_adjusted_new_death = Oubreak_variant_proportion * New_deaths)
+
+df_study_LAPIS_outbreak_WHO_weekly %>% filter(grepl("wave 4",Study.ID))
+```
+
+```{r}
+df_plot_adjusted_variant_proportion <- df_study_LAPIS_outbreak_WHO_weekly %>%
+  group_by(Study.ID,Outbreak_query_country,variant) %>%
+  mutate(LAPIS_adjusted_raw_count=LAPIS_count,
+         Outbreak_adjusted_raw_count=Outbreak_count)%>%
+  summarise(across(contains("_adjusted_"),
+            sum,na.rm=TRUE)) %>%
+  pivot_longer(cols = matches("_adjusted_"),
+               names_to = "name",
+               values_to = "count") %>%
+  separate(name,into=c("query_platform","adjustment_method"),
+           sep = "_",extra="merge") %>%
+  mutate(adjustment_method = gsub("^adjusted_","",adjustment_method)) %>%
+  group_by(Study.ID,query_platform,adjustment_method) %>%
+  mutate(freq = count/sum(count),
+         per=scales::label_percent(accuracy=1.0)(freq),
+         variant = factor(variant,desired_variant_order)) 
+
+p_study_variant_proportion_with_weighting <-  ggplot(df_plot_adjusted_variant_proportion ,
+       aes(fill=variant,x=Study.ID,y=freq))+
+  geom_bar(position="stack",stat="identity") +
+  coord_flip()+
+  geom_text(color="#000000",# only labels values > 5%
+    aes(label=per),size = 2, position = position_stack(vjust = 0.50),
+    data = df_plot_adjusted_variant_proportion %>% filter(freq>0.05)
+    )+
+  scale_x_discrete(
+    limits=rev(StudyOrder), # enforce reverse Stdyorder so it matches earlier gantt chart
+    labels = function(x) sapply(strsplit(as.character(x), "_"), function(y) tail(y, 1))) + #remove covidence ID
+  scale_y_reverse(expand=c(0,0),labels=c("100%","75%","50%","25%","0%"),name="weighted percentage")+ # reverse (mirros so Early-clades start from the left, and ensures the ylims do not expand out of 0 to 1 range)
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.background = element_rect(fill="white"))+ #remove grid lines, and turn background white
+  scale_fill_manual(values= custom_palette,
+                    na.value = "white",na.translate=F)+
+  theme(axis.text.x = element_text(angle = 90,hjust = 0.95,vjust = 0.2))+
+  facet_grid(cols = vars(query_platform),rows = vars(adjustment_method),)+
+  theme(panel.spacing=unit(1,"lines"))
+
+
+p_study_variant_proportion_with_weighting
+pdf("../output/Timeline_and_Lineage_Imputation/studies_LAPIS_Outbreak_variant_percentage_WHO_cases_death_weighting.pdf",width = 8.3,height=14)
+p_study_variant_proportion_with_weighting
+dev.off()
+```
+
+```{r}
+#########################
+
+p_study_variant_proportion_with_weighting <-  ggplot(df_plot_adjusted_variant_proportion %>%filter(adjustment_method == "new_case") ,
+       aes(fill=variant,x=Study.ID,y=freq))+
+  geom_bar(position="stack",stat="identity") +
+  coord_flip()+
+  geom_text(color="#000000",# only labels values > 3%
+    aes(label=per),size = 2, position = position_stack(vjust = 0.50),
+    data = df_plot_adjusted_variant_proportion %>%filter(adjustment_method == "new_case") %>% filter(freq>0.04)
+    )+
+  scale_x_discrete(
+    limits=rev(StudyOrder), # enforce reverse Stdyorder so it matches earlier gantt chart
+    labels = function(x) sapply(strsplit(as.character(x), "_"), function(y) tail(y, 1))) + #remove covidence ID
+  scale_y_reverse(expand=c(0,0),labels=c("100%","75%","50%","25%","0%"),name="weighted percentage")+ # reverse (mirros so Early-clades start from the left, and ensures the ylims do not expand out of 0 to 1 range)
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.background = element_rect(fill="white"))+ #remove grid lines, and turn background white
+  scale_fill_manual(values= custom_palette,
+                    na.value = "white",na.translate=F)+
+  theme(axis.text.x = element_text(angle = 90,hjust = 0.95,vjust = 0.2))+
+  facet_grid(cols = vars(query_platform),
+             # rows = vars(adjustment_method),
+             )+
+  theme(panel.spacing=unit(1,"lines"))
+
+
+p_study_variant_proportion_with_weighting
+pdf("../output/Timeline_and_Lineage_Imputation/studies_LAPIS_Outbreak_variant_percentage_WHO_cases_weighting.pdf",width = 8.3,height=11.7)
+p_study_variant_proportion_with_weighting
+dev.off()
+
+```

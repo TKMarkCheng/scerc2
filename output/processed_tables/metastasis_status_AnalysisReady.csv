@@ -1,0 +1,65 @@
+"Covidence #","prefix","Total number of Patients","Comment.1","outcome","Measure of Association","value","95% CI","p-value","cancer: Event/Total","Non-cancer: Event/Total","Measure of Association_number_of_semicolons","value_number_of_semicolons","95% CI_number_of_semicolons","p-value_number_of_semicolons","cancer: Event/Total_number_of_semicolons","Non-cancer: Event/Total_number_of_semicolons","same_number_of_semicolons","cancer(event/total)","cancer(event count)","cancer(total count)","non-cancer(event/total)","non-cancer(event count)","non-cancer(total count)"
+62182,"M0/Stage I-III: No metastasis","58","NANA","[mortality]",NA,NA,NA,NA,"0.448 (26/58)","0.341 (77/226)",NA,NA,NA,NA,0,0,NA,0.448,26,58,0.341,77,226
+62182,"M1/Stage IV: metastatic disease","19","NANA","[mortality]","uHR","1.13","0.54-2.37","0.75","0.474 (9/19)","0.341 (77/226)",0,0,0,0,0,0,TRUE,0.474,9,19,0.341,77,226
+68083,"M1/Stage IV: metastatic disease","1580","NANA","[hospitalisation]","mRR","1.26   ","1.16–1.37","<0.001 ","0.24 (2476/10426)","0.099 (25092/253179)",0,0,0,0,0,0,TRUE,0.24,2476,10426,0.099,25092,253179
+68083,"M1/Stage IV: metastatic disease","1580","NANA","[ICU]","mRR","1.33","1.13–1.56","0.001","NR","0.025 (6449/253179)",0,0,0,0,0,0,TRUE,NA,NA,NA,0.025,6449,253179
+68083,"M1/Stage IV: metastatic disease","1580","NANA","[mortality]","mRR","2.09","1.82–2.39","<0.001","NR","0.019 (4854/253179)",0,0,0,0,0,0,TRUE,NA,NA,NA,0.019,4854,253179
+68083,"M1/Stage IV: metastatic disease","1580","NANA","[severe]","mRR","1.32","1.04-1.68","0.021","NR","0.011 (2855/253179)",0,0,0,0,0,0,TRUE,NA,NA,NA,0.011,2855,253179
+70019,"Unknown","77 (100%)",NA,"[ICU]","uOR","0.53","0.29-0.96","0.03",NA,NA,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+70019,"Unknown","77 (100%)",NA,"[ICU]","mOR"," 0.39"," 0.17-0.89"," 0.03",NA,NA,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+70019,"Unknown","77 (100%)",NA,"[mortality]","uOR","1.98","0.99-3.96","0.053",NA,NA,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+70019,"Unknown","77 (100%)",NA,"[mortality]","mOR"," 2.18"," 0.82-5.77"," 0.12",NA,NA,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+70019,"Unknown","77 (100%)",NA,"[severe]","uOR","0.65","0.34-1.16","0.14",NA,NA,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+70019,"Unknown","77 (100%)",NA,"[severe]","aOR","0.54","0.23-1.24","0.15",NA,NA,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+71402,"Unknown","6143","Most recent diagnosis within past 3 years","[hospitalisation]","mOR","1.43","1.29-1.58",NA,"NR (NR/6143)","NR (NR/38267)",0,0,0,NA,0,0,TRUE,NA,NA,6143,NA,NA,38267
+71402,"Unknown","6143","Most recent diagnosis within past 3 years","[ICU]","mOR","1.19","0.97-1.46",NA,"NR (NR/6143)","NR (NR/38267)",0,0,0,NA,0,0,TRUE,NA,NA,6143,NA,NA,38267
+71402,"Unknown","6143","Most recent diagnosis within past 3 years","[mortality]","mOR","1.68","1.39-2.04",NA,"NR (NR/6143)","NR (NR/38267) ",0,0,0,NA,0,0,TRUE,NA,NA,6143,NA,NA,38267
+71402,"Unknown","6143","Most recent diagnosis within past 3 years","[severe]","mOR","1.48","1.35-1.63",NA,"NR (NR/6143)","NR (NR/38267)",0,0,0,NA,0,0,TRUE,NA,NA,6143,NA,NA,38267
+71512,"M0/Stage I-III: No metastasis","4337","NANA","[mortality]","uOR","1.82","1.66-1.99","<0.001","nr","0.92 (8384/90700)",1,1,1,1,1,1,TRUE,NA,NA,NA,0.92,8384,90700
+71512,"M0/Stage I-III: No metastasis","4337","NANA","[mortality]"," mOR"," 1.48"," 1.35-1.62"," <0.001"," nr"," 0.92 (8384/90700)",1,1,1,1,1,1,TRUE,NA,NA,NA,0.92,8384,90700
+71512,"M1/Stage IV: metastatic disease","2012","NANA","[mortality]","uOR","2.28","2.01-2.58","<0.001","nr","0.92 (8384/90700)",1,1,1,1,1,1,TRUE,NA,NA,NA,0.92,8384,90700
+71512,"M1/Stage IV: metastatic disease","2012","NANA","[mortality]"," mOR"," 1.94"," 1.71-2.21"," <0.001"," nr"," 0.92 (8384/90700)",1,1,1,1,1,1,TRUE,NA,NA,NA,0.92,8384,90700
+71628,"Unknown","5116","Noninvasive;invasive","[ICU]","mOR","0.77","0.70-0.85","<0.001","0.873 (4437/5116)","0.155 (20710/134598)",0,0,0,0,0,0,TRUE,0.873,4437,5116,0.155,20710,134598
+71628,"Unknown","5116","Noninvasive;invasive","[mortality]","mOR","2.00","1.87-2.15","<0.01","0.365 (1818/5116)","0.219 (28608/134598)",0,0,0,0,0,0,TRUE,0.365,1818,5116,0.219,28608,134598
+71628,"Unknown","5116","Noninvasive;invasive","[severe]","mOR","0.93","0.86-1.01","0.095","0.182 (918/5116)","0.185 (24445/134598)",1,1,1,1,1,1,TRUE,0.182,918,5116,0.185,24445,134598
+71628,"Unknown","5116","Noninvasive;invasive","[severe]","mOR","0.65","0.56-0.76","<0.001","0.047(236/5116)","0.066 (8665/134598)",1,1,1,1,1,1,TRUE,0.047,236,5116,0.066,8665,134598
+71915,"Unknown","10355",NA,"[mortality]","aOR","1.168","1.028-1.326 ",">0.001","0.052 (545/10355) ","0.048(509/10696)",0,0,0,0,0,0,TRUE,0.052,545,10355,0.048,509,10696
+72593,"Unknown","33",NA,"[hospitalisation]","mOR","1.55","0.67-3.59","NR","NR","NR",0,0,0,0,0,0,TRUE,NA,NA,NA,NA,NA,NA
+72593,"Unknown","33",NA,"[ICU]","mOR","1.30","0.41-4.08","NR","NR","NR",0,0,0,0,0,0,TRUE,NA,NA,NA,NA,NA,NA
+72593,"Unknown","33",NA,"[mortality]","mOR","2.78","0.92-8.43","NR","NR","NR",0,0,0,0,0,0,TRUE,NA,NA,NA,NA,NA,NA
+72593,"Unknown","33",NA,"[severe]","mOR","0.81","0.18-3.75","NR","NR","NR",0,0,0,0,0,0,TRUE,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[hospitalisation]","uOR","2.62","2.46-2.80","<0.00001",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[hospitalisation]","mOR stage I","1.29","1.21-1.39","<0.00001",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[hospitalisation]"," uOR","3.12","2.88-3.37","<0.00001",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[hospitalisation]","mOR stage II","1.57","1.44-1.70","<0.00001",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[hospitalisation]"," uOR","4.46","4.15-4.79","<0.00001",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[hospitalisation]","mOR stage III","2.01","1.86-2.16","<0.00001",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[ICU]","uOR","1.89","1.33-2.69","0.00042",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[ICU]","mOR stage I","1.12","0.77-1.63","0.53783",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[ICU]"," uOR","3.32","2.37-4.65","<0.00001",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[ICU]","mOR stage II","2.11","1.48-3.01","0.00004",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[ICU]"," uOR","1.70","1.02-2.82","0.04105",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[ICU]","mOR stage III","0.86","0.51-1.46","0.58374",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[mortality]","uOR","3.68","3.31-4.09","<0.00001",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[mortality]","mOR stage I","1.38","1.23-1.54","<0.00001",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[mortality]"," uOR","4.55","4.03-5.14","<0.00001",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[mortality]","mOR stage II","1.75","1.54-1.99","<0.00001",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[mortality]"," uOR","8.22","7.44-9.08","<0.00001",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M0/Stage I-III: No metastasis",NA,"NANA","[mortality]","mOR stage III","2.66","2.39-2.95","<0.00001",NA,NA,5,5,5,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M1/Stage IV: metastatic disease",NA,"NANA","[hospitalisation]","uOR","7.66","6.98-8.40","<0.00001",NA,NA,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M1/Stage IV: metastatic disease",NA,"NANA","[hospitalisation]","mOR ","3.57","3.24-3.94","<0.00001",NA,NA,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M1/Stage IV: metastatic disease",NA,"NANA","[ICU]","uOR","8.36","5.79-12.05","<0.00001",NA,NA,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M1/Stage IV: metastatic disease",NA,"NANA","[ICU]","mOR","3.98","2.70-5.87","<0.00001",NA,NA,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M1/Stage IV: metastatic disease",NA,"NANA","[mortality]","uOR","19.71","17.69-21.97","<0.00001",NA,NA,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+73804,"M1/Stage IV: metastatic disease",NA,"NANA","[mortality]","mOR","6.66","5.90-7.52","<0.00001",NA,NA,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+78588,"M0/Stage I-III: No metastasis","15","NANA","[ICU]",NA,NA,NA,NA,"0.267 (4/15)",NA,NA,NA,NA,NA,0,NA,NA,0.267,4,15,NA,NA,NA
+78588,"M0/Stage I-III: No metastasis","15","NANA","[mortality]",NA,NA,NA,NA,"0.267 (4/15)",NA,NA,NA,NA,NA,0,NA,NA,0.267,4,15,NA,NA,NA
+78588,"M0/Stage I-III: No metastasis","15","NANA","[severe]",NA,NA,NA,NA,"0.467 (7/15)",NA,NA,NA,NA,NA,0,NA,NA,0.467,7,15,NA,NA,NA
+78588,"M1/Stage IV: metastatic disease","12","NANA","[ICU]",NA,NA,NA,NA,"0.333 (4/12)",NA,NA,NA,NA,NA,0,NA,NA,0.333,4,12,NA,NA,NA
+78588,"M1/Stage IV: metastatic disease","12","NANA","[mortality]",NA,NA,NA,NA,"0.250 (3/12)",NA,NA,NA,NA,NA,0,NA,NA,0.25,3,12,NA,NA,NA
+78588,"M1/Stage IV: metastatic disease","12","NANA","[severe]",NA,NA,NA,NA,"0.583 (7/12)",NA,NA,NA,NA,NA,0,NA,NA,0.583,7,12,NA,NA,NA
+78588,"Unknown","4",NA,"[ICU]",NA,NA,NA,NA,"0.500 (2/4)",NA,NA,NA,NA,NA,0,NA,NA,0.5,2,4,NA,NA,NA
+78588,"Unknown","4",NA,"[mortality]",NA,NA,NA,NA,"0.250 (1/12)",NA,NA,NA,NA,NA,0,NA,NA,0.25,1,12,NA,NA,NA
+78588,"Unknown","4",NA,"[severe]",NA,NA,NA,NA,"0.500 (2/4)",NA,NA,NA,NA,NA,0,NA,NA,0.5,2,4,NA,NA,NA
+81620,"Unknown","53;53","Non cancer mortality and /or hospitalisation due covid not given but stated as comparison group ","[severe]","uOR","5.37","3.08-9.35",NA,"0.396 (21/53)","0.110 (854/7841)",1,1,1,NA,1,1,NA,0.396,21,53,0.11,854,7841
+81620,"Unknown","53;53","Non cancer mortality and /or hospitalisation due covid not given but stated as comparison group ","[severe]"," mOR"," 2.08"," 1.14-3.80",NA,"0.396 (21/53)","0.110 (854/7841)",1,1,1,NA,1,1,NA,0.396,21,53,0.11,854,7841

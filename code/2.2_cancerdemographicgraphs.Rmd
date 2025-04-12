@@ -1,0 +1,123 @@
+Supplementary Figure  - Number of patients on different forms of anti-cancer therapy and number of studies describing each
+
+```{r}
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(stringr)
+library(ggforce)
+```
+
+```{r}
+
+###Cancer Treatments Bar graph
+cancer_treatments <- read_excel("../output/abe_tables_graphs/30CancerTherapies.xlsx")
+
+#Create summary data
+sums  <- cancer_treatments %>% #total patients on each treatment type 
+  select(-"Total patients with SARS-CoV-2 and cancer (n)") %>%
+  select(-"Reference") %>%
+  summarise(across(everything(), ~sum(as.numeric(.),na.rm=TRUE))) %>%
+  mutate(Variable = "patients by treatment")
+study_counts <- cancer_treatments %>%         #total number of studies 
+  select(-"Total patients with SARS-CoV-2 and cancer (n)") %>%
+  select(-"Reference") %>%
+  summarise(across(everything(), ~sum(!is.na(as.numeric(.))))) %>%
+  as.data.frame() %>%
+  mutate(Variable = "study counts")
+
+
+#Reformat data to make plot 
+summarycancer_treatments <- bind_rows(sums, study_counts) %>%
+  as.data.frame()
+rownames(summarycancer_treatments) <- summarycancer_treatments$Variable
+summarycancer_treatments$Variable <- NULL  # Remove the "Source" column
+summarycancer_treatments <- as.data.frame(t(summarycancer_treatments))
+summarycancer_treatments$Treatment <- row.names(summarycancer_treatments)
+colnames(summarycancer_treatments) <- gsub(" ", "_", colnames(summarycancer_treatments))
+summarycancer_treatments$study_counts <- paste("studies=", summarycancer_treatments$study_counts)
+
+#Bar chart with data labels
+cancertreatmentsbar <-ggplot(summarycancer_treatments, aes(x=Treatment, y=patients_by_treatment)) + 
+  geom_col(fill = "skyblue") + 
+# scale_y_continuous(trans='log10') +
+ # facet_zoom(ylim = c(0, 100), zoom.size=0.5) +
+  geom_label(aes(label = study_counts),
+              position = position_stack(vjust =0.75),
+             size = 4, fontface = "bold", family = "",
+             ## turn into white box without outline
+             fill = "white", label.size = 0  ) +
+  scale_fill_identity(guide = "none") +
+  labs(y="Number of Patients", title = "Number of Patients by Treatment Type") +
+  theme(
+    axis.text.y = element_text(size = 14, hjust = 1, family = ""),
+    plot.margin = margin(rep(15, 4)) 
+  )
+print(cancertreatmentsbar)
+
+
+# save as both pdf and svg
+output_file_path_treatment = "../output/abe_tables_graphs/CancerTreatmentsBar"
+
+mapply(function(filenames) ggsave(filenames,plot = cancertreatmentsbar,width = 25, height = 12,scale=1,dpi=1200),
+       filenames=c(paste0(output_file_path_treatment,'.pdf'),
+                   paste0(output_file_path_treatment,'.png'))
+)
+
+###Cancer Types Bar Graph
+cancer_type <- read_excel("../output/abe_tables_graphs/30CancerTypes.xlsx")
+
+
+#Create summary data
+sums_cancertype  <- cancer_type %>% #total patients on each treatment type 
+  select(-"Total patients with SARS-CoV-2 and cancer (n)") %>%
+  select(-"Reference") %>%
+  summarise(across(everything(), ~sum(as.numeric(.),na.rm=TRUE))) %>%
+  mutate(Variable = "patients by cancer type")
+study_counts_cancertype <- cancer_type %>%         #total number of studies 
+  select(-"Total patients with SARS-CoV-2 and cancer (n)") %>%
+  select(-"Reference") %>%
+  summarise(across(everything(), ~sum(!is.na(as.numeric(.))))) %>%
+  as.data.frame() %>%
+  mutate(Variable = "study counts")
+
+#Reformat data to make plot 
+summarycancer_types <- bind_rows(sums_cancertype, study_counts_cancertype) %>%
+  as.data.frame() %>%
+  select(-"Solid (total)", -"Metastatic", -"Non-Metastatic")
+
+rownames(summarycancer_types) <- summarycancer_types$Variable
+summarycancer_types$Variable <- NULL  # Remove the "Source" column
+summarycancer_types <- as.data.frame(t(summarycancer_types))
+summarycancer_types$Cancertype <- row.names(summarycancer_types)
+colnames(summarycancer_types) <- gsub(" ", "_", colnames(summarycancer_types))
+summarycancer_types$study_counts <- paste("studies=", summarycancer_types$study_counts)
+
+#Bar chart with data labels
+cancertypesbar <-ggplot(summarycancer_types, aes(x=Cancertype, y=patients_by_cancer_type)) + 
+  geom_col(fill = "skyblue") + 
+  geom_label(aes(label = study_counts),
+             position = position_stack(vjust = 1),
+             size = 4, fontface = "bold", family = "",
+             ## turn into white box without outline
+             fill = "white", label.size = 0  ) +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 1)) +
+  scale_fill_identity(guide = "none") +
+  labs(y="Number of Patients", title = "Number of Patients by Cancer Type", x="Cancer Type") +
+  theme(
+    axis.text.y = element_text(size = 14, hjust = 1, family = ""),
+    plot.margin = margin(rep(15, 4))
+  )
+
+print(cancertypesbar)
+
+
+# save as both pdf and svg
+output_file_path_cancertypes = "../output/abe_tables_graphs/CancerTypesBar"
+
+mapply(function(filenames) ggsave(filenames,plot = cancertypesbar,width = 25, height = 12,scale=1,dpi=1200),
+       filenames=c(paste0(output_file_path_cancertypes,'.pdf'),
+                   paste0(output_file_path_cancertypes,'.png'))
+)
+``` 

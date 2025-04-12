@@ -1,0 +1,55 @@
+#https://nextstrain.org/ncov/gisaid/global/all-time,,,,
+#https://github.com/nextstrain/ncov/blob/f79bb86c0ba20f685a877e8fa7fbe803ddcf2d9f/defaults/clade_hierarchy.tsv#L1,,,,
+#https://github.com/nextstrain/ncov-clades-schema,,,,
+nextstrain_clade,common_name,color,parent,WHO
+19A,,#f1f6fa,,
+19B,,#e6ecf0,19A,
+20A,,#dbdfe6,19A,
+20B,,#bec0ca,20A,
+20C,,#d1d5dd,20A,
+20D,,#b4b6c0,20B,
+20E,,#a3a3a3,20A,
+20F,,#9b9b9b,20B,
+20G,,#929292,20C,
+20H,Beta,#6c00c1,20C,Beta
+20I,Alpha,#5e00d9,20B,Alpha
+20J,Gamma,#5b1aee,20B,Gamma
+21A,Delta,#6148f8,20A,Delta
+21B,Kappa,#6270d8,20A,Kappa
+21C,Epsilon,#6a84d5,20C,Epsilon
+21D,Eta,#80a3f5,20A,Eta
+21E,Theta,#78a1c3,20B,Theta
+21F,Iota,#7facb7,20C,Iota
+21G,Lambda,#86b7ab,20D,Lambda
+21H,Mu,#8dbe9d,20A,Mu
+21I,Delta,#5455cb,21A,Delta
+21J,Delta,#758af9,21A,Delta
+21K,BA.1,#8bbae9,21M,Omicron
+21L,BA.2,#95cad7,21M,Omicron
+21M,"Omicron,B.1.1.628",#a1b5af,20B,Omicron
+22A,BA.4,#a9e3b0,21L,Omicron
+22B,BA.5,#b4e99f,21L,Omicron
+22C,BA.2.12.1,#c0ef8f,21L,Omicron
+22D,BA.2.75,#ccf282,21L,Omicron
+22E,BQ.1,#daf578,22B,Omicron
+22F,XBB,#e6f370,21L,Omicron
+23A,XBB.1.5,#f1ee6a,22F,Omicron
+23B,XBB.1.16,#f4e865,22F,Omicron
+23C,CH.1.1,#f1dc60,22D,Omicron
+23D,XBB.1.9,#edcb5b,22F,Omicron
+23E,XBB.2.3,#e8b555,22F,Omicron
+23F,EG.5.1,#e49b4e,23D,Omicron
+23G,XBB.1.5.70,#df7b46,23A,Omicron
+23H,HK.3,#dc5c40,23F,Omicron
+23I,BA.2.86,#da3f3a,21L,Omicron
+24A,JN.1,#ee4029,23I,Omicron
+24B,JN.1.11.1,#eb2b26,24A,Omicron
+24C,JN.1 descent (KP.3),,24B,Omicron
+24D,JN.1 descent (XDV.1),,,
+24E,JN.1 descent (KP.3.1.1),,24C,Omicron
+24F,JN.1 descent (XEC),,24B,Omicron
+24H,JN.1 descent (LF.7),,24A,Omicron
+24G,JN.1 descent (KP.2.3),,,
+24H,JN.1 descent (LF.7),,,
+24I,JN.1 descent (MV.1),,24A,Omicron
+recombinant,,,,

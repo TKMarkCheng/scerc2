@@ -1,0 +1,25 @@
+"Covidence #","prefix","Total Number of patients","Percentage","Comment.1","outcome","Measure of Association","value","95% CI","p-value","cancer: Event/Total","Non-cancer: Event/Total","Measure of Association_number_of_semicolons","value_number_of_semicolons","95% CI_number_of_semicolons","p-value_number_of_semicolons","cancer: Event/Total_number_of_semicolons","Non-cancer: Event/Total_number_of_semicolons","same_number_of_semicolons"
+67898,"Unspecified/Total","420","100","NANA","[mortality]","uOR","2.3","1.24-4.28","0.0082","0.562 (59/105)","0.274 (86/315)",0,0,0,0,0,0,TRUE
+70019,"Unspecified/Total","77","100%","NANA","[ICU]","uOR;mOR","0.53; 0.39","0.29-0.96; 0.17-0.89","0.03; 0.03",NA,NA,1,1,1,1,NA,NA,NA
+70019,"Unspecified/Total","77","100%","NANA","[mortality]","uOR;mOR","1.98; 2.18","0.99-3.96; 0.82-5.77","0.053; 0.12",NA,NA,1,1,1,1,NA,NA,NA
+70019,"Unspecified/Total","77","100%","NANA","[severe]","uOR;aOR","0.65;0.54","0.34-1.16;0.23-1.24","0.14;0.15",NA,NA,1,1,1,1,NA,NA,NA
+71402,"Unspecified/Total","6143","100","NANAMost recent initial diagnosis Within past 3 years ","[hospitalisation]","mOR","1.43","1.29-1.58",NA,"NR (NR/6143)","NR (NR/38267)",0,0,0,NA,0,0,TRUE
+71402,"Unspecified/Total","6143","100","NANAMost recent initial diagnosis Within past 3 years ","[ICU]","mOR","1.19","0.97-1.46",NA,"NR (NR/6143)","NR (NR/38267)",0,0,0,NA,0,0,TRUE
+71402,"Unspecified/Total","6143","100","NANAMost recent initial diagnosis Within past 3 years ","[mortality]","mOR","1.68","1.39-2.04",NA,"NR (NR/6143)","NR (NR/38267)",0,0,0,NA,0,0,TRUE
+71402,"Unspecified/Total","6143","100","NANAMost recent initial diagnosis Within past 3 years ","[severe]","mOR","1.48","1.35-1.63",NA,"NR (NR/6143)","NR (NR/38267)",0,0,0,NA,0,0,TRUE
+71628,"Delta",NA,NA,"Compared to immunocompetent wave 1 hence may not be usefulCompared to immunocompetent wave 1 hence may not be usefulNA","[mortality]","mOR","0.83","0.76-0.91","<0.001",NA,NA,0,0,0,0,NA,NA,TRUE
+71628,"Omicron",NA,NA,"Compared to immunocompetent wave 1 hence may not be usefulCompared to immunocompetent wave 1 hence may not be usefulNA","[mortality]","mOR","0.66","0.54-0.80","<0.001",NA,NA,0,0,0,0,NA,NA,TRUE
+71628,"Other","Alpha",NA,"Alpha: Compared to immunocompetent wave 1 hence may not be usefulAlpha: Compared to immunocompetent wave 1 hence may not be usefulNA","[mortality]","mOR","1.19","1.12-1.26","<0.001",NA,NA,0,0,0,0,NA,NA,TRUE
+71628,"WT/Wu-1",NA,NA,"Compared to immunocompetent wave 1 hence may not be usefulCompared to immunocompetent wave 1 hence may not be usefulNA","[mortality]","mOR","1.28","1.20-1.36","<0.001",NA,NA,0,0,0,0,NA,NA,TRUE
+71915,"Unspecified/Total","10355","100","NANA","[mortality]","aOR","1.168","1.028-1.326 ",">0.001","0.052 (545/10355) ","0.048(509/10696)",0,0,0,0,0,0,TRUE
+72593,"Unspecified/Total","4413","100","NANANR","[hospitalisation]","mOR","1.55","0.67-3.59","NR","NR","NR",0,0,0,0,0,0,TRUE
+72593,"Unspecified/Total","4413","100","NANANR","[ICU]","mOR","1.30","0.41-4.08","NR","NR","NR",0,0,0,0,0,0,TRUE
+72593,"Unspecified/Total","4413","100","NANANR","[mortality]","mOR","2.78","0.92-8.43","NR","NR","NR",0,0,0,0,0,0,TRUE
+72593,"Unspecified/Total","4413","100","NANANR","[severe]","mOR","0.81","0.18-3.75","NR","NR","NR",0,0,0,0,0,0,TRUE
+72854,"Omicron","736 cancer patients","48.6 of cancer patients","NA","[mortality]","mOR","2.864","2.354 - 3.486","NR","0.196 (144/736)","0.0783 (776/9914)",0,0,0,0,0,0,TRUE
+72854,"Unspecified/Total","1513","100","NANA","[mortality]","cOR",NA,NA,NA,"0.235 (355/1513)","0.220 (2000/9089)",0,NA,NA,NA,0,0,TRUE
+72854,"WT/Wu-1","WT/D cancer patients 777","51.4 of cancer patients","NA","[mortality]","mOR","1.94","1.646 - 2.285","NR","0.272 (211/777)","0.161 (2418/14998)",0,0,0,0,0,0,TRUE
+73804,"Unspecified/Total","15928326","100","NANA","[hospitalisation]","uOR;mOR","4.22;2.53","3.76-4.74;2.24-2.86","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Unspecified/Total","15928326","100","NANA","[ICU]","uOR;mOR","4.22;2.53","3.76-4.74;2.24-2.86","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+73804,"Unspecified/Total","15928326","100","NANA","[mortality]","uOR;mOR","7.12;2.54","6.85-7.40;2.44-2.65","<0.00001;<0.00001",NA,NA,1,1,1,1,NA,NA,NA
+81620,"Other","53",NA,"NA","[severe]","uOR; mOR","5.37; 2.08","3.08-9.35; 1.14-3.80",NA,"0.400 (21/53)",NA,1,1,1,NA,0,NA,FALSE

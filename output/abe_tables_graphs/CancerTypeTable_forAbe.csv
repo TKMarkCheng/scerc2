@@ -1,0 +1,31 @@
+"","Covidence #","Study ID","Thoracic (lung, mesothelioma) Total Number of Patients","Breast Total Number of Patients","Upper GI (gastric, oesophageal) Total Number of Patients","Lower GI (colorectal, small bowel) Total Number of Patients","Hepatobiliary (liver, pancreas, gall bladder) Total Number of Patients","Renal Total Number of Patients","Urology (ureter, bladder, prostate) Total Number of Patients","Gynecological (vaginal, uterine, cervical, ovarian, vulval, endometrial, leiomyosarcoma etc) Total Number of Patients","CNS Total Number of Patients","Head and neck Total Number of Patients","Skin (including melanoma) Total Number of Patients","Sarcoma (including Musculo skeletal) Total Number of Patients","SOLID AGGREGATED [add all solid values] Total Number of Patients","Haematological Total Number of Patients","Other Total Number of Patients","Unspecified Total Number of Patients","Total (OF ALL CANCERS) Total Number of Patients"
+"1",141173,"Alsakarneh 2024","",NA,"","","",NA,"",NA,NA,NA,NA,NA,"",NA,"",NA,15416
+"2",138896,"Li 2024","",NA,"","","",NA,"",NA,NA,NA,NA,NA,"",NA,"",NA,77
+"3",73804,"Starkey 2023","",NA,"","","",NA,"",NA,NA,NA,NA,NA,"",NA,"",NA,127322
+"4",72854,"Konermann 2023","",NA,"","","",NA,"",NA,NA,NA,NA,NA,"1172",341,"",NA,1513
+"5",140255,"Park 2024","",NA,"","","",NA,"",NA,NA,NA,NA,NA,"",NA,"",NA,NA
+"6",71628,"Turtle 2023","",NA,"","","",NA,"",NA,NA,NA,NA,NA,"",NA,"",NA,5116
+"7",71402,"Salvatore 2023","",NA,"","","",NA,"",NA,NA,NA,NA,NA,"",NA,"",NA,6143
+"8",71915,"Leuva 2022","728",NA,"","475","",NA,"3224",NA,NA,NA,NA,NA,"8513",1842,"",NA,10355
+"9",73383,"Hosseini-Moghaddam 2023","321",1272,"132","676","71",271,"1336",1797,47,698,125,NA,"7185",1193,"439; 357",NA,8378
+"10",141132,"Sullivan 2023","",2200,"","","",NA,"",NA,NA,NA,NA,NA,"",NA,"",NA,2200
+"11",71512,"Nolan 2023","732",611,"","1062","",NA,"628",NA,NA,NA,NA,NA,"2012 (metastatic); 2012 (metastatic); 4337 (solid tumour without metastasis);  4337 (solid tumour without metastasis)",2482,"",NA,7141
+"12",74954,"Kodde 2023","",NA,"","","",NA,"",NA,NA,NA,NA,NA,"",NA,"",NA,1625
+"13",68513,"Udovica 2022","10",9,"15","","",NA,"8",4,NA,5,3,NA,"54",35,"",NA,89
+"14",75567,"Bazgir 2022","",NA,"","","",NA,"",NA,NA,NA,NA,NA,"",NA,"",NA,64
+"15",67898,"Plais 2022","12",6,"8","10","",NA,"2",2,1,NA,2,NA,"54",51,"Endocrine: 2 ",NA,105
+"16",66861,"Chavez-MacGregor 2022","",NA,"","","",NA,"",NA,NA,NA,NA,NA,"",NA,"",NA,14287
+"17",70896,"Abuhelwa 2022","4400",3340,"","1675","",NA,"4080",NA,NA,NA,NA,NA,"13495",13550,"",NA,27760
+"18",69998,"Serraino 2021","",673,"","407","",NA,"460",NA,NA,NA,NA,NA,"2818",280,"",NA,466
+"19",68083,"Kim 2022","887",2143,"","794","207 (liver); 121 (pancreas)",474,"1781 ",291,NA,476,409,NA,"8952",2224,"",NA,10426
+"20",75065,"Zhou 2023","lung 9",27,"gastrointestinal 14","colorectal 11","",NA,"genitourinary 8",NA,NA,NA,NA,NA,"",NA,"85",NA,154
+"21",71633,"Raad 2023","64",NA,"","","",NA,"",NA,NA,NA,NA,NA,"632",283,"",NA,1115
+"22",67122,"Rugge 2022","23 (lung)",34,"","34 (colorectal)","",NA,"63 (prostate, urology)",NA,NA,NA,NA,NA,"",41,"129",NA,324
+"23",72593,"Anantharaman 2021","",9,"","","",NA,"",NA,NA,NA,NA,NA,"",7,"",NA,33
+"24",81620,"Johannesen 2021","",NA,"","","",NA,"",NA,NA,NA,NA,NA,"",NA,"",NA,53
+"25",62182,"Sng 2020","15",8,"","","",NA,"24",9,NA,NA,NA,NA,"",NA,"",NA,58
+"26",67144,"Alpert 2021","19",46,"5","32","32",13,"81",20,NA,10,15,NA,"273",96,"26",26,421
+"27",65844,"Bertuzzi 2021","9",3,"","","",NA,"",NA,NA,NA,NA,NA,"33",13,"6 (all GU); 10 (all GI)",NA,46
+"28",62120,"Brar 2020","1",15,"","","",NA,"22",6,NA,NA,NA,NA,"75",42,"19",NA,117
+"29",70019,"Klein 2021","",NA,"","","",NA,"",NA,NA,NA,NA,NA,"",NA,"",NA,77
+"30",78588,"Dai 2020","31",NA,"","","",NA,"",NA,NA,NA,NA,NA,"",NA,"",NA,31

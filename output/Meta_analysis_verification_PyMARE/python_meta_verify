@@ -1,0 +1,52 @@
+module: python_code.py
+data: 'raw_data.csv'
+
+input: 
+  meta('Total Cancer Cohort', 'Mortality', 'OR', determine_var_from='se',log_transform=True, show_data=False)
+  meta('Total Cancer Cohort', 'Hospitalisation', 'OR', determine_var_from='se',log_transform=True, show_data=False)
+  meta('Total Cancer Cohort', 'ICU Admission', 'OR', determine_var_from='se',log_transform=True, show_data=False)
+  meta('Total Cancer Cohort', 'Severe Disease', 'OR', determine_var_from='se',log_transform=True, show_data=False)
+
+  meta('Breast', 'Mortality', 'OR', determine_var_from='se',log_transform=True, show_data=False)
+  meta('Lower GI', 'Mortality', 'OR', determine_var_from='se',log_transform=True, show_data=False)
+  meta('Metastatic', 'Mortality', 'OR', determine_var_from='se',log_transform=True, show_data=False)
+
+  meta('Total Cancer Cohort', 'Mortality', 'HR', determine_var_from='se',log_transform=True, show_data=False)
+  meta('Total Cancer Cohort', 'ICU Admission', 'HR', determine_var_from='se',log_transform=True, show_data=False)
+
+output:
+  Odds Ratio of Mortality in Total Cancer Cohort = 1.64 [1.36-1.96]
+  Number of study arms: 17
+  Heterogeneity: X²(16), p<.01
+ 
+  Odds Ratio of Hospitalisation in Total Cancer Cohort = 1.42 [1.04-1.96]
+  Number of study arms: 7
+  Heterogeneity: X²(6), p<.01
+   
+  Odds Ratio of ICU Admission in Total Cancer Cohort = 1.24 [0.95-1.62]
+  Number of study arms: 12
+  Heterogeneity: X²(11), p<.01
+ 
+  Odds Ratio of Severe Disease in Total Cancer Cohort = 0.99 [0.84-1.17]
+  Number of study arms: 11
+  Heterogeneity: X²(10), p=.28
+ 
+  Odds Ratio of Mortality in Breast = 1.31 [0.89-1.93]
+  Number of study arms: 3
+  Heterogeneity: X²(2), p=.25
+ 
+  Odds Ratio of Mortality in Lower GI = 1.69 [1.25-2.29]
+  Number of study arms: 4
+  Heterogeneity: X²(3), p=.43
+ 
+  Odds Ratio of Mortality in Metastatic = 3.60 [1.07-12.05]
+  Number of study arms: 2
+  Heterogeneity: X²(1), p<.01
+ 
+  Hazard Ratio of Mortality in Total Cancer Cohort = 1.91 [1.26-2.87]
+  Number of study arms: 5
+  Heterogeneity: X²(4), p=.63
+ 
+  Hazard Ratio of ICU Admission in Total Cancer Cohort = 2.18 [0.88-5.38]
+  Number of study arms: 5
+  Heterogeneity: X²(4), p=.02

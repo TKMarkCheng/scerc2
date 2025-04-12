@@ -1,0 +1,134 @@
+# QA using NOS scale
+
+```{r}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(dplyr ,gt)
+```
+
+
+```{r}
+data_directory = "../data/"
+data_directory_files = paste0(data_directory,list.files(data_directory))
+
+QA_csv = data_directory_files[str_detect(data_directory_files,
+                                         "_QA.csv")] # directly imported from Covidence
+
+df_QA <- read.csv(QA_csv,header = TRUE, check.names = FALSE)
+df_QA
+```
+# filter out wanted studies
+```{r}
+df_StudyOrder <- read.csv("../output/Timeline_and_Lineage_Imputation/Studies_split_Timeperiods_ordered_by_time_periods.csv",check.names = FALSE) # generated from 1_Dominant_Lineage_Assignment.Rmd
+
+df_StudyOrder$StudyIDtoQA <- sub("\\(.+", "", df_StudyOrder$`Study ID`)
+df_StudyOrder
+
+# merging both whilst maintaining Study Order
+df_QA_filtered_ordered <- left_join(df_StudyOrder%>%select(`Covidence #`,StudyIDtoQA)%>%distinct(), #using Covidence ID and fixed Study ID from wanted papers from DE
+      df_QA %>% select(-`Study ID`), # merge QA data onto these wanted Covidence IDs and Study IDs
+      ) 
+df_QA_filtered_ordered
+```
+
+```{r}
+selected_columns <- names(df_QA_filtered_ordered)[!grepl("supporting text", names(df_QA_filtered_ordered))]
+
+df_QA_filtered_ordered_selected <- df_QA_filtered_ordered %>% select(selected_columns)
+
+# in columns which contains the NOS category, count the number of columns which contains Ø, 
+df_QA_filtered_ordered_selected_scored <- df_QA_filtered_ordered_selected %>%
+  mutate(Cohort_selection_score = rowSums(select(.,contains("Cohort: Selection"))%>%
+                                            mutate_all(str_detect,pattern="Ø"))) %>%
+  mutate(Cohort_comparability_score = rowSums(select(.,contains("Cohort: Comparability"))%>%
+                                                mutate_all(str_detect,pattern="Ø"))) %>%
+  mutate(Cohort_outcome_score = rowSums(select(.,contains("Cohort: Outcome"))%>%
+                                          mutate_all(str_detect,pattern="Ø")))
+df_QA_filtered_ordered_selected_scored
+
+write.csv(df_QA_filtered_ordered_selected_scored,"../output/QA_NOS/QA_NOS_ordered_scored.csv",row.names=FALSE)
+```
+
+```{r}
+df_QA_scores <- df_QA_filtered_ordered_selected_scored %>%
+  select(StudyIDtoQA,Cohort_selection_score,Cohort_comparability_score,Cohort_outcome_score) %>%
+  separate(StudyIDtoQA,into=c("Covidence #","Study ID"),sep="_")
+df_QA_scores
+```
+
+```{r}
+df_QA_plotted_table <- df_QA_scores %>%
+  gt() |>
+  fmt_integer(columns=c(Cohort_selection_score,Cohort_comparability_score,Cohort_outcome_score)) |>
+  data_color(columns=Cohort_selection_score,
+             fn=scales::col_numeric(
+               palette="Oranges",domain=c(0,4)
+               )
+             )|>
+  data_color(columns =Cohort_comparability_score,
+             fn=scales::col_numeric(
+               palette="Oranges",domain=c(0,1)
+               )
+             )|>
+  data_color(columns =Cohort_outcome_score,
+             fn=scales::col_numeric(
+               palette="Oranges",domain=c(0,3)
+               )
+             )
+df_QA_plotted_table
+
+df_QA_plotted_table |> gtsave('../output/QA_NOS/QA_scores.pdf')
+```
+
+
+```{r}
+#SANITY CHECK, why are some scoring 0 for comparability
+df_QA_scores %>% filter(Cohort_comparability_score==0)
+
+DE_csv = data_directory_files[str_detect(data_directory_files,
+                                         "_DE_knownDx_peerReviewed.csv")]
+# initiate cleaned df
+df_DE <- read.csv(file = DE_csv, header = TRUE, check.names = FALSE)
+df_DE
+
+df_DE %>% select(`Covidence #`,`Study ID`,`Univariate or multivariate analysis?`)
+```
+
+It is clear from the univariate or multivariate analysis column that all included multivariate. Thus, the comparability column was simply mislabeled.
+
+```{r}
+#recalculation needed
+df_DE_count_multivariate_factors <- df_DE%>% 
+  select(`Covidence #`,`Study ID`,`Multivariate analysis is adjusted by`) %>%
+  mutate(split_column = strsplit(as.character(`Multivariate analysis is adjusted by`), ';'),
+         count_split = lengths(split_column))%>%
+  mutate(NOS_cohort_comparability_score=pmin(count_split,2))
+df_DE_count_multivariate_factors
+```
+
+
+
+```{r}
+df_DE_count_multivariate_factors <- left_join(df_QA_scores,df_DE_count_multivariate_factors %>% select(`Study ID`,NOS_cohort_comparability_score)) %>% select(`Covidence #`,`Study ID`, Cohort_selection_score,NOS_cohort_comparability_score,Cohort_outcome_score)
+df_DE_count_multivariate_factors
+```
+Adding AHRQ standards
+Thresholds for converting the Newcastle-Ottawa scales to AHRQ standards (good, fair, and
+poor):
+Good quality: 3 or 4 stars in selection domain AND 1 or 2 stars in comparability domain AND 2
+or 3 stars in outcome/exposure domain
+Fair quality: 2 stars in selection domain AND 1 stars in comparability domain AND 2 or 3
+stars in outcome/exposure domain
+Poor quality: 0 or 1 star in selection domain OR 0 stars in comparability domain OR 0 or 1 stars
+in outcome/exposure domain
+```{r}
+df_DE_count_multivariate_factors <- df_DE_count_multivariate_factors %>%
+  mutate(Total_score = Cohort_selection_score+NOS_cohort_comparability_score+Cohort_outcome_score,
+         AHRQ_Quality = case_when(
+           Cohort_selection_score >=3 & NOS_cohort_comparability_score >=1 & Cohort_outcome_score >=2 ~ "Good",
+           Cohort_selection_score >= 2 & NOS_cohort_comparability_score == 1 & Cohort_outcome_score >=2 ~ "Fair",
+           TRUE ~ "Poor"
+  ))
+write.csv(df_DE_count_multivariate_factors,"../output/QA_NOS/QA_NOS_ordered_scored.csv",row.names = FALSE)
+df_DE_count_multivariate_factors
+```
+

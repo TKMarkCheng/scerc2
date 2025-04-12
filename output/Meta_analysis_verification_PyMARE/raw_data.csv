@@ -1,0 +1,204 @@
+Cohort,outcome,statistic,value,se,n,ncancer,ncontrol,Reference,wt,alpha,delta,omicron,vax50
+Breast,ICU Admission,mor,.58,.35365373,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Immunotherapy,ICU Admission,mor,0,,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Urological,Mortality,mor,1.86,.070486307,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Non-Metastatic,Mortality,mor,1.38,.058710039,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Immunotherapy,Mortality,mor,3.76,.24635798,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Gynaecological,Mortality,mor,2.8,.10036445,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Upper GI,ICU Admission,mor,.78,.50481284,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Thoracic,ICU Admission,mor,2.53,.22118975,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+CNS,Hospitalisation,mor,4.02,.13755605,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Metastatic,Mortality,mor,6.66,.061821226,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Urological,ICU Admission,mor,.89,.1927399,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Chemotherapy,Mortality,mor,7.69,.038577087,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Gynaecological,ICU Admission,mor,1.78,.31502447,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Total Haematological,ICU Admission,mor,7.7,.091964014,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Immunotherapy,Hospitalisation,mor,3.06,.15462056,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Non-Metastatic,ICU Admission,mor,.86,.26659814,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Sarcoma,ICU Admission,mor,1.78,.58099771,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Total Cancer Cohort,Mortality,mor,2.54,.011038178,15928326,127322,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Thoracic,Hospitalisation,mor,3.39,.13536933,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Urological,Mortality,mor,2.76,.29768378,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Radiotherapy,ICU Admission,mor,2.53,.17086698,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Targeted Therapy,Mortality,mor,14.12,.1306562,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Gynaecological,Hospitalisation,mor,1.77,.06443689,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Non-Metastatic,ICU Admission,mor,1.12,.19117403,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Head and Neck,Mortality,mor,2.79,.14983658,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Hormonal Therapy,ICU Admission,mor,1.21,1.0013354,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Breast,Hospitalisation,mor,1.14,.04195907,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Lower GI,Hospitalisation,mor,2.01,.039571334,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Chemotherapy,Hospitalisation,mor,4.14,.02785982,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+CNS,ICU Admission,mor,4.37,.58077246,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Non-Metastatic,ICU Admission,mor,2.11,.18094546,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Hormonal Therapy,Hospitalisation,mor,4.07,.1556311,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Non-Metastatic,Mortality,mor,2.66,.054609664,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Upper GI,Hospitalisation,mor,3.17,.057886321,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Head and Neck,Hospitalisation,mor,2.24,.094848558,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Metastatic,Hospitalisation,mor,3.57,.049486861,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Non-Metastatic,Hospitalisation,mor,1.29,.03266488,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Sarcoma,Hospitalisation,mor,2.51,.10829148,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Thoracic,Mortality,mor,4.97,.056386735,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Total Solid,Hospitalisation,mor,1.8,.017297063,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Total Cancer Cohort,Hospitalisation,mor,2.1,.0085357847,15928326,127322,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Urological,Mortality,mor,1.08,.054807369,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Non-Metastatic,Hospitalisation,mor,2.01,.039571334,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Radiotherapy,Mortality,mor,4.29,.051251851,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Thoracic,Mortality,mor,4.43,.19211721,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Radiotherapy,Hospitalisation,mor,2.39,.039950229,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Lower GI,Mortality,mor,2.36,.059554417,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Non-Metastatic,Mortality,mor,1.75,.065222442,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Targeted Therapy,Hospitalisation,mor,9.380000000000001,.092153542,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Total Solid,ICU Admission,mor,1.64,.084385648,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Non-Metastatic,Hospitalisation,mor,1.57,.044099119,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Urological,ICU Admission,mor,2.13,.70970851,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Targeted Therapy,ICU Admission,mor,21.97,.22375499,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Thoracic,Hospitalisation,mor,3.6,.041311588,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Endocrine,Mortality,mor,2.29,.2888771,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Thoracic,ICU Admission,mor,6.47,.41296038,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Endocrine,Hospitalisation,mor,2,.14677957,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Urological,Hospitalisation,mor,2.04,.18126664,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+CNS,Mortality,mor,11.35,.18294491,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Unspecified Cancer Type,Mortality,mor,,,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Total Cancer Cohort,ICU Admission,mor,2.53,.030264225,15928326,127322,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Breast,Mortality,mor,1.66,.069008574,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Upper GI,Mortality,mor,5.85,.072006777,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Urological,Hospitalisation,mor,1.78,.051214915,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Sarcoma,Mortality,mor,4.08,.14180182,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Urological,ICU Admission,mor,1.8,.23754007,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Total Haematological,Mortality,mor,4.27,.044937883,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Urological,Hospitalisation,mor,1.25,.038125038,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Total Haematological,Hospitalisation,mor,4.12,.029308764,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Metastatic,ICU Admission,mor,3.98,.19797856,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Chemotherapy,ICU Admission,mor,5.51,.10331192,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Lower GI,ICU Admission,mor,2.76,.16178696,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Hormonal Therapy,Mortality,mor,3.17,.22740045,,,,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Total Solid,Mortality,mor,2.27,.022986522,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Head and Neck,ICU Admission,mor,5.24,.27947453,,,15801004,Starkey 2023,No,No,No,Yes,≥50% Vaccinated
+Total Cancer Cohort,Mortality,mor,2,.02996096,139714,5116,134598,Turtle 2023,No,No,Yes,No,<50% Vaccinated
+Total Cancer Cohort,Severe Disease,mor,.93,.037,139714,5116,134598,Turtle 2023,No,No,Yes,No,<50% Vaccinated
+Total Cancer Cohort,ICU Admission,mor,.77,.041895084,139714,5116,134598,Turtle 2023,No,No,Yes,No,<50% Vaccinated
+Chemotherapy,ICU Admission,mor,1.9,.16394232,39435,1168,38267,Salvatore 2023 ,No,No,Yes,No,<50% Vaccinated
+Chemotherapy,Severe Disease,mor,2.9,.078147009,39435,1168,38267,Salvatore 2023 ,No,No,Yes,No,<50% Vaccinated
+Chemotherapy,Mortality,mor,3.01,.14762639,39435,1168,38267,Salvatore 2023 ,No,No,Yes,No,<50% Vaccinated
+Total Cancer Cohort,Mortality,mor,1.68,.099061206,44410,6143,38267,Salvatore 2023 ,No,No,Yes,No,<50% Vaccinated
+Total Cancer Cohort,Hospitalisation,mor,1.43,.050894115,44410,6143,38267,Salvatore 2023 ,No,No,Yes,No,<50% Vaccinated
+Chemotherapy,Hospitalisation,mor,1.59,.13706088,38804,537,38267,Salvatore 2023 ,No,No,Yes,No,<50% Vaccinated
+Chemotherapy,Mortality,mor,2.04,.24385077,38804,537,38267,Salvatore 2023 ,No,No,Yes,No,<50% Vaccinated
+Chemotherapy,ICU Admission,mor,1.58,.2580407,38804,537,38267,Salvatore 2023 ,No,No,Yes,No,<50% Vaccinated
+Total Cancer Cohort,Severe Disease,mor,1.48,.049255047,44410,6143,38267,Salvatore 2023 ,No,No,Yes,No,<50% Vaccinated
+Total Cancer Cohort,ICU Admission,mor,1.19,.10433027,44410,6143,38267,Salvatore 2023 ,No,No,Yes,No,<50% Vaccinated
+Chemotherapy,Hospitalisation,mor,2.75,.080501877,39435,1168,38267,Salvatore 2023 ,No,No,Yes,No,<50% Vaccinated
+Chemotherapy,Severe Disease,mor,1.68,.12822428,38804,537,38267,Salvatore 2023 ,No,No,Yes,No,<50% Vaccinated
+Total Cancer Cohort,Mortality,mor,1.168,.064732946,21051,10355,10696,Leuva 2022,No,No,Yes,No,≥50% Vaccinated
+Urological,Mortality,mor,.698,.11238705,21051,10355,10696,Leuva 2022,No,No,Yes,No,≥50% Vaccinated
+Lower GI,Mortality,mor,1.458,.20289269,21051,10355,10696,Leuva 2022,No,No,Yes,No,≥50% Vaccinated
+Total Haematological,Mortality,mor,2.154,.095425576,21051,10355,10696,Leuva 2022,No,No,Yes,No,≥50% Vaccinated
+Thoracic,Mortality,mor,1.955,.13994858,21051,10355,10696,Leuva 2022,No,No,Yes,No,≥50% Vaccinated
+Total Solid,Mortality,mor,.96,.071770519,21051,10355,10696,Leuva 2022,No,No,Yes,No,≥50% Vaccinated
+Total Cancer Cohort (omicron),Mortality,mor,2.864,.10027536,10650,736,9914,Konermann 2023,No,No,No,Yes,No Statement
+Total Cancer Cohort (delta),Mortality,mor,1.94,.083510913,15775,777,14998,Konermann 2023,No,No,Yes,No,No Statement
+Total Cancer Cohort,Mortality,mor,1.685,.065738291,10602,1513,9089,Konermann 2023,No,No,Yes,No,No Statement
+Total Haematological,Mortality,mhr,2.04,.078649938,457389,1193,456196,Hosseini-Moghaddam 2023,Yes,No,Yes,No,≥50% Vaccinated
+Total Solid,Mortality,mhr,1.31,.048274461,463381,7185,456196,Hosseini-Moghaddam 2023,Yes,No,Yes,No,≥50% Vaccinated
+Total Solid,Hospitalisation,mhr,1.11,.031201851,463381,7185,456196,Hosseini-Moghaddam 2023,Yes,No,Yes,No,≥50% Vaccinated
+Total Haematological,Hospitalisation,mhr,1.75,.057821948,457389,1193,456196,Hosseini-Moghaddam 2023,Yes,No,Yes,No,≥50% Vaccinated
+Total Solid,ICU Admission,mhr,.93,.061920047,457256,1060,456196,Hosseini-Moghaddam 2023,Yes,No,Yes,No,≥50% Vaccinated
+Total Haematological,ICU Admission,mhr,1.14,.10482048,456517,321,456196,Hosseini-Moghaddam 2023,Yes,No,Yes,No,≥50% Vaccinated
+Total Solid,Mortality,mor,1.94,.059918702,92712,2012,90700,Nolan 2023,No,No,Yes,No,<50% Vaccinated
+Total Solid,Mortality,mor,1.48,.044730522,95037,4337,90700,Nolan 2023,No,No,Yes,No,<50% Vaccinated
+Non-Metastatic,Mortality,mor,1.48,.046907842,,,90700,Nolan 2023,No,No,Yes,No,<50% Vaccinated
+Total Cancer Cohort,ICU Admission,mor,1.24,.028675539,97841,7141,90700,Nolan 2023,No,No,Yes,No,<50% Vaccinated
+Urological,Mortality,mor,1.05,.11293038,91328,628,90700,Nolan 2023,No,No,Yes,No,<50% Vaccinated
+Total Cancer Cohort,Mortality,mor,1.58,.035452351,97841,7141,90700,Nolan 2023,No,No,Yes,No,<50% Vaccinated
+Metastatic,Mortality,mor,1.94,.064386316,,,90700,Nolan 2023,No,No,Yes,No,<50% Vaccinated
+Breast,Mortality,mor,1.57,.1252549,91311,611,90700,Nolan 2023,No,No,Yes,No,<50% Vaccinated
+Thoracic,Mortality,mor,1.93,.095719472,91432,732,90700,Nolan 2023,No,No,Yes,No,<50% Vaccinated
+Lower GI,Mortality,mor,1.4,.090361454,91762,1062,90700,Nolan 2023,No,No,Yes,No,<50% Vaccinated
+Total Haematological,Mortality,mor,1.71,.056277953,93182,2482,90700,Nolan 2023,No,No,Yes,No,<50% Vaccinated
+Total Cancer Cohort,Severe Disease,mor,.82,.067457691,29284,1625,27659,Kodde 2023,No,Yes,No,No,No Statement
+Total Cancer Cohort,Mortality,mor,2.1,.055189986,29284,1625,27659,Kodde 2023,No,Yes,No,No,No Statement
+Total Cancer Cohort,Mortality,mor,4.59,.27808082,245,89,156,Udovica 2022,Yes,Yes,No,No,No Statement
+Total Cancer Cohort,ICU Admission,mhr,6.68,.41306898,320,64,256,Bazgir 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mhr,2.27,.30536216,320,64,256,Bazgir 2022,Yes,No,No,No,No Statement
+Chemotherapy,Mortality,mhr,1.65,,283,27,256,Bazgir 2022,Yes,No,No,No,No Statement
+Total Haematological,Mortality,mor,4.144,.30852434,366,51,315,Plais 2022,Yes,No,No,No,No Statement
+Total Solid,Mortality,mor,2.344,.30446553,369,54,315,Plais 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,Hospitalisation,mor,.79,.023422809,503011,9991,493020,Chavez-MacGregor 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,Hospitalisation,mor,1.19,.033805076,497316,4296,493020,Chavez-MacGregor 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,Severe Disease,mor,1,.059414789,497316,4296,493020,Chavez-MacGregor 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mor,.93,.047267314,503011,9991,493020,Chavez-MacGregor 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,ICU Admission,mor,.98,.038818493,503011,9991,493020,Chavez-MacGregor 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mor,1.74,.058020446,497316,4296,493020,Chavez-MacGregor 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,Severe Disease,mor,.61,.053196806,503011,9991,493020,Chavez-MacGregor 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,ICU Admission,mor,1.69,.045067873,497316,4296,493020,Chavez-MacGregor 2022,Yes,No,No,No,No Statement
+Urological,Mortality,mor,.9399999999999999,.040027145,1026365,4080,1022285,Abuhelwa 2022,Yes,No,No,No,No Statement
+Lymphoma,Mortality,mor,1.3,.1089686,,,1022285,Abuhelwa 2022,Yes,No,No,No,No Statement
+Multiple Myeloma,Mortality,mor,1.2,.12459283,,,1022285,Abuhelwa 2022,Yes,No,No,No,No Statement
+Lower GI,Mortality,mor,1.45,.062227689,1023960,1675,1022285,Abuhelwa 2022,Yes,No,No,No,No Statement
+Thoracic,Mortality,mor,1.57,.037196647,1026685,4400,1022285,Abuhelwa 2022,Yes,No,No,No,No Statement
+Breast,Mortality,mor,.96,.056936089,1025625,3340,1022285,Abuhelwa 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,Severe Disease,mor,.98,.020170722,1050045,27760,1022285,Abuhelwa 2022,Yes,No,No,No,No Statement
+Leukaemia,Mortality,mor,1.22,.091352999,,,1022285,Abuhelwa 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mor,1.21,.016059333,1050045,27760,1022285,Abuhelwa 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,ICU Admission,mhr,.9,.28064159,4292,466,3826,Serraino 2021,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mhr,1.93,.096097998,38734,466,38268,Serraino 2021,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mor,1.240445375442505,.039926596,263605,10426,253179,Kim 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,ICU Admission,mor,1.062636256217957,.041777246,263605,10426,253179,Kim 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,Severe Disease,mor,1.072232007980347,.058867432,263605,10426,253179,Kim 2022,Yes,No,No,No,No Statement
+Metastatic,Hospitalisation,mor,1.488654851913452,.023956232,263605,10426,253179,Kim 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,Hospitalisation,mor,1.299659013748169,.023956232,263605,10426,253179,Kim 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,ICU Admission,mhr,3.77,.42783743,6089,142,5947,Zhou 2023,Yes,No,No,No,No Statement
+Lower GI,ICU Admission,mhr,5.07,.62237132,5958,11,5947,Zhou 2023,Yes,No,No,No,No Statement
+Thoracic,ICU Admission,mhr,3.19,.65603298,5956,9,5947,Zhou 2023,Yes,No,No,No,No Statement
+Upper GI,ICU Admission,mhr,3.79,.62415034,5961,14,5947,Zhou 2023,Yes,No,No,No,No Statement
+Other Cancer Subtypes,ICU Admission,mhr,1.34,.42957667,6032,85,5947,Zhou 2023,Yes,No,No,No,No Statement
+Urological,ICU Admission,mhr,2.63,.69701958,5955,8,5947,Zhou 2023,Yes,No,No,No,No Statement
+Breast,ICU Admission,mhr,2.73,.65157443,5974,27,5947,Zhou 2023,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mor,1.23,.11836174,3966,1115,2851,Raad 2023,Yes,No,No,No,No Statement
+Chemotherapy,Mortality,mor,3.624,.57683557,,30,,Martin 2023,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mor,3.013,.12100127,21101,324,20777,Rugge 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,Hospitalisation,mor,2.883,.14392242,20310,263,20047,Rugge 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,ICU Admission,mor,1.049,.24542987,21101,324,20777,Rugge 2022,Yes,No,No,No,No Statement
+Total Cancer Cohort,ICU Admission,mor,1.3,.58876836,4413,33,4380,Anantharaman 2021,Yes,No,No,No,No Statement
+Total Cancer Cohort,Severe Disease,mor,.8100000000000001,.76740211,4413,33,4380,Anantharaman 2021,Yes,No,No,No,No Statement
+Total Cancer Cohort,Hospitalisation,mor,1.55,.42793348,4413,33,4380,Anantharaman 2021,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mor,2.78,.56421179,4413,33,4380,Anantharaman 2021,Yes,No,No,No,No Statement
+Chemotherapy,Severe Disease,mor,1.8,.26537687,,71,,Johannesen 2021,Yes,No,No,No,No Statement
+Immunotherapy,Severe Disease,mor,1.63,.55430573,,15,,Johannesen 2021,Yes,No,No,No,No Statement
+Surgery,Severe Disease,mor,2.19,.22828491,,,,Johannesen 2021,Yes,No,No,No,No Statement
+Total Cancer Cohort,Severe Disease,mor,2.08,.28316626,7894,53,7841,Johannesen 2021,Yes,No,No,No,No Statement
+Radiotherapy,Severe Disease,mor,2.67,.81545776,,7,,Johannesen 2021,Yes,No,No,No,No Statement
+Hormonal Therapy,Severe Disease,mor,1.7,.3188529,,45,,Johannesen 2021,Yes,No,No,No,No Statement
+Total Cancer Cohort,ICU Admission,mor,5.33,.51997954,354,17,337,Monari 2021,Yes,No,No,No,No Statement
+Chemotherapy,Mortality,mhr,2.04,,241,15,226,Sng 2020,Yes,No,No,No,No Statement
+Hormonal Therapy,Mortality,mhr,1.94,,234,8,226,Sng 2020,Yes,No,No,No,No Statement
+Targeted Therapy,Mortality,mhr,3.44,,228,2,226,Sng 2020,Yes,No,No,No,No Statement
+Radiotherapy,Mortality,mhr,1.94,,231,5,226,Sng 2020,Yes,No,No,No,No Statement
+Immunotherapy,Mortality,mhr,1.7,,230,4,226,Sng 2020,Yes,No,No,No,No Statement
+Surgery,Mortality,mhr,1.4,,229,3,226,Sng 2020,Yes,No,No,No,No Statement
+Total Cancer Cohort,Severe Disease,mor,1.31,.10340013,5556,421,5135,Alpert 2021,Yes,No,No,No,No Statement
+Total Cancer Cohort,ICU Admission,mor,1.04,.12836324,5556,421,5135,Alpert 2021,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mor,1.02,.11055146,5556,421,5135,Alpert 2021,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mhr,2.26,.24555519,557,46,511,Bertuzzi 2021,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mhr,.98,.27195776,585,117,468,Brar 2020,Yes,No,No,No,No Statement
+Total Cancer Cohort,ICU Admission,mhr,.8,.17620827,585,117,468,Brar 2020,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mor,2.18,.49661586,401,77,324,Klein 2021 ,Yes,No,No,No,<50% Vaccinated
+Total Cancer Cohort,ICU Admission,mor,.39,.42096508,401,77,324,Klein 2021 ,Yes,No,No,No,<50% Vaccinated
+Total Cancer Cohort,Severe Disease,mor,.54,.42414004,401,77,324,Klein 2021 ,Yes,No,No,No,<50% Vaccinated
+Chemotherapy,Mortality,mor,.19,1.3306224,,,,Dai 2020,Yes,No,No,No,No Statement
+Radiotherapy,Severe Disease,mor,1.555,1.2394385,,,,Dai 2020,Yes,No,No,No,No Statement
+Total Cancer Cohort,Severe Disease,mhr,4.28,.55533588,217,31,186,Dai 2020,Yes,No,No,No,No Statement
+Targeted Therapy,Severe Disease,mor,,,,,,Dai 2020,Yes,No,No,No,No Statement
+Total Cancer Cohort,Mortality,mhr,3.87,.68127567,217,31,186,Dai 2020,Yes,No,No,No,No Statement
+Thoracic,ICU Admission,mhr,4.72,.7029652,217,31,186,Dai 2020,Yes,No,No,No,No Statement
+Targeted Therapy,Mortality,mor,,,,,,Dai 2020,Yes,No,No,No,No Statement
+Thoracic,Severe Disease,mhr,4.28,.55533588,217,31,186,Dai 2020,Yes,No,No,No,No Statement
+Chemotherapy,Severe Disease,mor,.295,1.1176084,,,,Dai 2020,Yes,No,No,No,No Statement
+Surgery,Mortality,mor,1.255,.10628473,,,,Dai 2020,Yes,No,No,No,No Statement
+Thoracic,Mortality,mhr,3.87,.68127567,217,31,186,Dai 2020,Yes,No,No,No,No Statement
+Surgery,Severe Disease,mor,1.342,1.688859,,,,Dai 2020,Yes,No,No,No,No Statement
+Immunotherapy,Mortality,mor,.983,1.5512875,,,,Dai 2020,Yes,No,No,No,No Statement
+Total Cancer Cohort,ICU Admission,mhr,4.72,.7029652,217,31,186,Dai 2020,Yes,No,No,No,No Statement
+Radiotherapy,Mortality,mor,5.15,1.3988128,,,,Dai 2020,Yes,No,No,No,No Statement
+Immunotherapy,Severe Disease,mor,.368,1.3720725,,,,Dai 2020,Yes,No,No,No,No Statement
+Total Cancer Cohort (unvaccinated),Mortality,mor,.9340000000000001,.040922966,26864,13100,13764,Leuva 2022,No,No,Yes,No,<50% Vaccinated

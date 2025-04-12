@@ -1,0 +1,172 @@
+"Study ID","variant","location","Outbreak_count"
+"138865_Evans 2023","Alpha","United Kingdom",9
+"138865_Evans 2023","Delta","United Kingdom",2554
+"138865_Evans 2023","Early-clades","United Kingdom",82
+"138865_Evans 2023","Omicron_BA","United Kingdom",986038
+"138865_Evans 2023","Omicron_XBB","United Kingdom",1472
+"138896_Li 2024","Early-clades","China",0
+"138896_Li 2024","Omicron_BA","China",7440
+"138896_Li 2024","Omicron_XBB","China",39
+"140255_Park 2024","Alpha","South Korea",858
+"140255_Park 2024","Beta","South Korea",38
+"140255_Park 2024","Delta","South Korea",16619
+"140255_Park 2024","Early-clades","South Korea",5934
+"140255_Park 2024","Epsilon","South Korea",115
+"140255_Park 2024","Eta","South Korea",4
+"140255_Park 2024","Gamma","South Korea",12
+"140255_Park 2024","Iota","South Korea",4
+"140255_Park 2024","Omicron_BA","South Korea",8951
+"141132_Sullivan 2023","Alpha","United States",235499
+"141132_Sullivan 2023","Delta","United States",1221556
+"141132_Sullivan 2023","Early-clades","United States",263488
+"141132_Sullivan 2023","Epsilon","United States",65740
+"141132_Sullivan 2023","Gamma","United States",19999
+"141132_Sullivan 2023","Iota","United States",42085
+"141132_Sullivan 2023","Mu","United States",4743
+"141132_Sullivan 2023","Omicron_BA","United States",33246
+"141173_Alsakarneh 2024","Alpha","United States",235529
+"141173_Alsakarneh 2024","Delta","United States",1254888
+"141173_Alsakarneh 2024","Early-clades","United States",267488
+"141173_Alsakarneh 2024","Epsilon","United States",65742
+"141173_Alsakarneh 2024","Gamma","United States",20000
+"141173_Alsakarneh 2024","Iota","United States",42086
+"141173_Alsakarneh 2024","Mu","United States",4744
+"141173_Alsakarneh 2024","Omicron_BA","United States",1740531
+"141173_Alsakarneh 2024","Omicron_JN","United States",38048
+"141173_Alsakarneh 2024","Omicron_XBB","United States",212404
+"62120_Brar 2020","Early-clades","United States",23182
+"62182_Sng 2020","Early-clades","United Kingdom",30218
+"65844_Bertuzzi 2021","Early-clades","Italy",1281
+"66861_Chavez-MacGregor 2022","Alpha","United States",1362
+"66861_Chavez-MacGregor 2022","Delta","United States",38
+"66861_Chavez-MacGregor 2022","Early-clades","United States",159239
+"66861_Chavez-MacGregor 2022","Epsilon","United States",15562
+"66861_Chavez-MacGregor 2022","Gamma","United States",25
+"66861_Chavez-MacGregor 2022","Iota","United States",521
+"67122_Rugge 2022","Early-clades","Italy",1577
+"67144_Alpert 2021","Early-clades","United States",25219
+"67898_Plais 2022","Alpha","France",7089
+"67898_Plais 2022","Beta","France",573
+"67898_Plais 2022","Delta","France",7
+"67898_Plais 2022","Early-clades","France",14790
+"67898_Plais 2022","Eta","France",39
+"67898_Plais 2022","Gamma","France",37
+"68083_Kim 2022","Alpha","United States",152
+"68083_Kim 2022","Delta","United States",4
+"68083_Kim 2022","Early-clades","United States",89710
+"68083_Kim 2022","Epsilon","United States",3565
+"68083_Kim 2022","Gamma","United States",1
+"68083_Kim 2022","Iota","United States",69
+"68513_Udovica 2022","Alpha","Austria",1391
+"68513_Udovica 2022","Beta","Austria",247
+"68513_Udovica 2022","Early-clades","Austria",2222
+"68513_Udovica 2022","Eta","Austria",11
+"68513_Udovica 2022","Gamma","Austria",1
+"69998_Serraino 2021","Alpha","Italy",158
+"69998_Serraino 2021","Early-clades","Italy",4258
+"69998_Serraino 2021","Eta","Italy",1
+"70019_Klein 2021","Early-clades","United States",20441
+"70896_Abuhelwa 2022","Alpha","United States",152
+"70896_Abuhelwa 2022","Delta","United States",4
+"70896_Abuhelwa 2022","Early-clades","United States",116200
+"70896_Abuhelwa 2022","Epsilon","United States",3565
+"70896_Abuhelwa 2022","Gamma","United States",1
+"70896_Abuhelwa 2022","Iota","United States",69
+"71402_Salvatore 2023","Alpha","United States",235500
+"71402_Salvatore 2023","Delta","United States",1254445
+"71402_Salvatore 2023","Early-clades","United States",266004
+"71402_Salvatore 2023","Epsilon","United States",65740
+"71402_Salvatore 2023","Gamma","United States",19999
+"71402_Salvatore 2023","Iota","United States",42086
+"71402_Salvatore 2023","Mu","United States",4743
+"71402_Salvatore 2023","Omicron_BA","United States",596737
+"71512_Nolan 2023","Alpha","United States",235464
+"71512_Nolan 2023","Delta","United States",663431
+"71512_Nolan 2023","Early-clades","United States",260260
+"71512_Nolan 2023","Epsilon","United States",65733
+"71512_Nolan 2023","Gamma","United States",19986
+"71512_Nolan 2023","Iota","United States",42075
+"71512_Nolan 2023","Mu","United States",4722
+"71512_Nolan 2023","Omicron_BA","United States",37
+"71628_Turtle 2023","Alpha","United Kingdom",266476
+"71628_Turtle 2023","Delta","United Kingdom",1051520
+"71628_Turtle 2023","Early-clades","United Kingdom",132133
+"71628_Turtle 2023","Omicron_BA","United Kingdom",635425
+"71628_Turtle 2023","Omicron_XBB","United Kingdom",1
+"71628_Turtle 2023(wave 1-D614G)","Early-clades","United Kingdom",44777
+"71628_Turtle 2023(wave 2-Alpha)","Alpha","United Kingdom",207331
+"71628_Turtle 2023(wave 2-Alpha)","Delta","United Kingdom",43
+"71628_Turtle 2023(wave 2-Alpha)","Early-clades","United Kingdom",86057
+"71628_Turtle 2023(wave 2-Alpha)","Omicron_BA","United Kingdom",5
+"71628_Turtle 2023(wave 3-Delta)","Alpha","United Kingdom",55500
+"71628_Turtle 2023(wave 3-Delta)","Delta","United Kingdom",1009514
+"71628_Turtle 2023(wave 3-Delta)","Early-clades","United Kingdom",290
+"71628_Turtle 2023(wave 3-Delta)","Omicron_BA","United Kingdom",8492
+"71628_Turtle 2023(wave 4-Omicron)","Alpha","United Kingdom",8
+"71628_Turtle 2023(wave 4-Omicron)","Delta","United Kingdom",31729
+"71628_Turtle 2023(wave 4-Omicron)","Early-clades","United Kingdom",195
+"71628_Turtle 2023(wave 4-Omicron)","Omicron_BA","United Kingdom",619947
+"71628_Turtle 2023(wave 4-Omicron)","Omicron_XBB","United Kingdom",1
+"71633_Raad 2023","Alpha","France",11
+"71633_Raad 2023","Alpha","Spain",9
+"71633_Raad 2023","Alpha","United States",35
+"71633_Raad 2023","Delta","Spain",1
+"71633_Raad 2023","Early-clades","Australia",16161
+"71633_Raad 2023","Early-clades","Brazil",3896
+"71633_Raad 2023","Early-clades","France",6055
+"71633_Raad 2023","Early-clades","Japan",14554
+"71633_Raad 2023","Early-clades","Lebanon",36
+"71633_Raad 2023","Early-clades","Singapore",1430
+"71633_Raad 2023","Early-clades","South Korea",1660
+"71633_Raad 2023","Early-clades","Spain",7770
+"71633_Raad 2023","Early-clades","United States",78304
+"71633_Raad 2023","Epsilon","United States",180
+"71633_Raad 2023","Gamma","Brazil",6
+"71915_Leuva 2022","Alpha","United States",235449
+"71915_Leuva 2022","Delta","United States",1254040
+"71915_Leuva 2022","Early-clades","United States",166463
+"71915_Leuva 2022","Epsilon","United States",64375
+"71915_Leuva 2022","Gamma","United States",19999
+"71915_Leuva 2022","Iota","United States",42065
+"71915_Leuva 2022","Mu","United States",4743
+"71915_Leuva 2022","Omicron_BA","United States",499528
+"72593_Anantharaman 2021","Early-clades","United States",27492
+"72854_Konermann 2023","Alpha","Germany",103888
+"72854_Konermann 2023","Beta","Germany",2243
+"72854_Konermann 2023","Delta","Germany",175812
+"72854_Konermann 2023","Early-clades","Germany",28505
+"72854_Konermann 2023","Gamma","Germany",387
+"72854_Konermann 2023","Omicron_BA","Germany",361797
+"72854_Konermann 2023(Omicron)","Alpha","Germany",2
+"72854_Konermann 2023(Omicron)","Beta","Germany",3
+"72854_Konermann 2023(Omicron)","Delta","Germany",5933
+"72854_Konermann 2023(Omicron)","Early-clades","Germany",433
+"72854_Konermann 2023(Omicron)","Omicron_BA","Germany",350676
+"72854_Konermann 2023(WT to Delta)","Alpha","Germany",103886
+"72854_Konermann 2023(WT to Delta)","Beta","Germany",2240
+"72854_Konermann 2023(WT to Delta)","Delta","Germany",169726
+"72854_Konermann 2023(WT to Delta)","Early-clades","Germany",28070
+"72854_Konermann 2023(WT to Delta)","Gamma","Germany",387
+"72854_Konermann 2023(WT to Delta)","Omicron_BA","Germany",10800
+"73383_Hosseini-Moghaddam 2023","Alpha","Canada",44782
+"73383_Hosseini-Moghaddam 2023","Beta","Canada",1387
+"73383_Hosseini-Moghaddam 2023","Delta","Canada",111840
+"73383_Hosseini-Moghaddam 2023","Early-clades","Canada",54171
+"73383_Hosseini-Moghaddam 2023","Eta","Canada",2017
+"73383_Hosseini-Moghaddam 2023","Gamma","Canada",16276
+"73383_Hosseini-Moghaddam 2023","Omicron_BA","Canada",19129
+"73804_Starkey 2023","Alpha","England",216767
+"73804_Starkey 2023","Delta","England",821784
+"73804_Starkey 2023","Early-clades","England",38876
+"73804_Starkey 2023","Omicron_BA","England",822827
+"73804_Starkey 2023","Omicron_XBB","England",1
+"74954_Kodde 2023","Alpha","Germany",103741
+"74954_Kodde 2023","Beta","Germany",2227
+"74954_Kodde 2023","Delta","Germany",10594
+"74954_Kodde 2023","Early-clades","Germany",28218
+"74954_Kodde 2023","Gamma","Germany",387
+"75065_Zhou 2023","Early-clades","China",854
+"75567_Bazgir 2022","Alpha","Iran",50
+"75567_Bazgir 2022","Early-clades","Iran",216
+"78588_Dai 2020","Early-clades","China",648
+"81620_Johannesen 2021","Early-clades","Norway",89

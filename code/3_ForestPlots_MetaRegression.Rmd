@@ -1,0 +1,46 @@
+---
+title: "2_ForestPlots_MetaRegression"
+author: "Mark_Cheng"
+date: "2024-01-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Packages
+```{r}
+library(jsonlite)
+library(lubridate)
+library(stringr)
+library(dplyr)
+library(tidyr)
+library(glue)
+library(ggplot2)
+library(scales)
+```
+
+Referencing and guides
+https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/pooling-es.html#pooling-es-r
+https://cran.r-project.org/web/packages/forestplot/vignettes/forestplot.html
+https://lakens.github.io/statistical_inferences/11-meta.html
+
+```{r}
+primary_cancer_sites <- read.csv("../output/primary_cancer_sites_corrections_initial_analysis.csv",check.names = FALSE)
+primary_cancer_sites <- primary_cancer_sites %>% mutate_all(~if(is.character(.)) trimws(.) else .) #trimws
+primary_cancer_sites
+```
+
+```{r}
+unique(primary_cancer_sites$`Measure of Association`)
+```
+
+
+```{r}
+primary_cancer_sites %>%
+  count(prefix,outcome) %>%
+  filter(outcome=="[mortality]") %>%
+  arrange(.,desc(n))
+```
+

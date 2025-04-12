@@ -1,0 +1,30 @@
+Covidence #,Study ID,Cohort_selection_score,NOS_cohort_comparability_score,Cohort_outcome_score,Total_score,AHRQ_Quality
+73804,Starkey 2023,3,2,2,7,Good
+72854-WTD,Konermann 2023 WT-D,3,2,3,8,Good
+72854-O,Konermann 2023 Omicron,,,,,
+71628,Turtle 2023,3,2,2,7,Good
+71402,Salvatore 2023,2,2,1,5,Poor
+71915,Leuva 2022,4,2,2,8,Good
+73383,Hosseini-Moghaddam 2023,3,2,2,7,Good
+71512,Nolan 2023,3,2,2,7,Good
+74954,Kodde 2023,3,2,2,7,Good
+68513,Udovica 2022,1,2,2,5,Poor
+75567,Bazgir 2022,3,2,3,8,Good
+67898,Plais 2022,3,2,3,8,Good
+66861,Chavez-MacGregor 2022,3,2,3,8,Good
+70896,Abuhelwa 2022,3,2,3,8,Good
+69998,Serraino 2021,3,2,3,8,Good
+68083,Kim 2022,4,2,3,9,Good
+75065,Zhou 2023,3,2,3,8,Good
+71633,Raad 2023,3,2,3,8,Good
+71781,Martin 2023,2,2,2,6,Poor
+67122,Rugge 2022,3,2,1,6,Poor
+72593,Anantharaman 2021,3,2,1,6,Poor
+81620,Johannesen 2021,4,2,2,8,Good
+64534,Monari 2021,3,2,1,6,Poor
+62182,Sng 2020,2,2,1,5,Poor
+67144,Alpert 2021,3,2,1,6,Poor
+65844,Bertuzzi 2021,2,1,2,5,Fair
+62120,Brar 2020,3,2,1,6,Poor
+70019,Klein 2021,3,1,1,5,Poor
+78588,Dai 2020,3,2,2,7,Good

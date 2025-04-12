@@ -1,0 +1,71 @@
+Covidence #,Study ID,Study Country/Countries,Study Regions/Cities,Hospital(s),Study Start Date,Study Start Date (Notes),Study End Date,Study End Date (Notes),Which COVID-19 variant does the study identify?,query_country,Study_Design,Selection,Comparability,Outcome,Total
+73804,73804_Starkey 2023,England,Population Scale (England),Population Scale (England),01/11/20,NA,30/09/22,NA,Other: ORs and base rates are given for each of the four outcomes for each two month period so could be used to generate these figures,England,Cohort,***,-,**,5
+124497,124497_Brijesh 2023,United States,N/A,N/A,01/01/20,NA,21/08/22,NA,Wild Type (Ancestral/Wu-1),,Cohort,***,*,*,5
+72854,72854_Konermann 2023(Omicron),Germany,N/A,The hospital network Asklepios,01/01/22,Omicron),19/08/22,Omicron),Wild Type (Ancestral/Wu-1),,Cohort,***,*,***,7
+71628,71628_Turtle 2023,United Kingdom,N/A,N/A,17/01/20,NA,30/03/22,NA,Wild Type (Ancestral/Wu-1),,Cohort,***,*,**,6
+72854,72854_Konermann 2023(WT to Delta),Germany,N/A,The hospital network Asklepios,11/03/20,WT to Delta),31/01/22,WT to Delta),Wild Type (Ancestral/Wu-1),,Cohort,***,*,***,7
+73383,73383_Hosseini-Moghaddam 2023,Canada,Ontario,,01/01/20,NA,30/01/22,NA,Not mentioned,Canada,Cohort,***,*,**,6
+71512,71512_Nolan 2023,United States,,Duke University  Hackensack Meridian Health  Mayo Clinic (3 locations: Phoenix  AZ  Jacksonville  FL  Rochester  MN)  Memorial Sloan Kettering Cancer Center  Mount Sinai  New York University  Northwestern University  University of California-Davis  University of California-San Francisco  University of Chicago  University of Illinois at Chicago  University of Kansas  University of Maryland  University of Michigan  University of North Carolina  University of Utah  University of Wisoconsin  Vanderbilt University  Virginia Commonweatlth University  Washington University  Yale University,01/02/20,NA,30/10/21,NA,Not mentioned,US,Cohort,***,*,**,6
+74954,74954_Kodde 2023,Germany,,Helios group hospitals (85),01/01/20,NA,31/08/21,NA,Not mentioned,Germany,Cohort,***,-,**,5
+79599,79599_Noh 2023,United States,Texas USA,The University of Texas MD Anderson Cancer Center and The University of Texas Health Science Center at Houston  UTH.,01/03/20,NA,01/07/21,NA,Not mentioned,USA,Cohort,***,-,***,6
+68513,68513_Udovica 2022,Austria,Vienna,245 consecutive patients admitted for severe COVID-19 at four different COVID-19 units in four different oncologic departments in Austria. Non-cancer control from  Department of Medicine I at the Clinic Ottakring in Vienna,01/03/20,NA,30/04/21,NA,"Other: participants were not tested for strain but paper includes: "" Of note  our study was performed between March 2020 and March 2021. In that period the SARS-CoV-2 back- ground strain and the SARS-CoV-2 alpha variant were the most commonly observed variants and vaccines were not available.""",Austria,Cohort,*,*,**,4
+124006,124006_Bazgir 2022,Iran,Ilam,N/A,05/03/20,NA,20/04/21,NA,Not mentioned,Iran,Cohort,***,*,***,7
+75567,75567_Bazgir 2022,Iran,Ilam,urban primary and secondary academic hospital in Ilam.,05/03/20,NA,20/04/21,NA,,Iran,Cohort,***,*,***,7
+67898,67898_Plais 2022,France,17 French ICUs,17 French ICUs,12/03/20,NA,07/04/21,NA,Not mentioned,France,Cohort,***,*,***,7
+68304,68304_Korkusuz 2022,Turkey,N/A,Bakirkoy Dr. Sadi Konuk Training and Research  Hospital Centre,15/03/20,NA,03/03/21,NA,Not mentioned,Turkey,Cohort,****,*,***,8
+66861,66861_Chavez-MacGregor 2022,United States,N/A,N/A - but included >700 hospitals in the US,01/01/20,NA,27/02/21,NA,Not mentioned,United States,Cohort,***,*,***,7
+131660,131660_Muge 2021,Turkey,Istanbul,Prof. Dr. Murat Dilmener Emergency Hospital,01/09/20,NA,30/01/21,NA,Not mentioned,Turkey,Cohort,**,*,**,5
+73512,73512_Johansson 2023,Norway,N/A,N/A,01/03/20,NA,30/01/21,NA,Not mentioned,Norway,Cohort,**,-,**,4
+73512,73512_Johansson 2023,Denmark,N/A,N/A,01/03/20,NA,30/01/21,NA,Not mentioned,Denmark,Cohort,**,-,**,4
+73512,73512_Johansson 2023,Iceland,N/A,N/A,01/03/20,NA,30/01/21,NA,Not mentioned,Iceland,Cohort,**,-,**,4
+70896,70896_Abuhelwa 2022,United States,N/A,N/A,01/01/20,NA,30/01/21,NA,Not mentioned,United States,Cohort,***,*,***,7
+69998,69998_Serraino 2021,Italy,Friuli Venezia Giulia (FVG) region (northeastern Italy),,26/02/20,NA,30/01/21,NA,Not mentioned,Italy,Cohort,***,*,***,7
+69989,69989_Costa 2021,Brazil,N/A,N/A,01/03/20,NA,30/01/21,NA,Not mentioned,Brazil,Cohort,***,*,***,7
+68083,68083_Kim 2022,United States,N/A,N/A,01/06/20,NA,30/01/21,NA,Not mentioned,United States,Cohort,****,*,***,8
+75065,75065_Zhou 2023,China,Hong Kong,43 local hospitals and their associated ambulatory and outpatient facilities,01/01/20,NA,07/01/21,NA,Not mentioned,China,Cohort,***,-,***,6
+122739,122739_Adrian 2021,The Philippines,Nationwide,,01/02/20,NA,31/12/20,NA,Not mentioned,The Philippines,Cohort,***,*,***,7
+73036,73036_Mirgh 2021,India,Navi Mumbai,Tata Memorial Centre,22/05/20,NA,31/12/20,NA,Not mentioned,India,Cohort,*,-,***,4
+71633,71633_Raad 2023,United States,,,04/01/20,NA,15/12/20,NA,Not mentioned,USA,Cohort,***,-,***,6
+71633,71633_Raad 2023,Australia,,,04/01/20,NA,15/12/20,NA,Not mentioned,Australia,Cohort,***,-,***,6
+71633,71633_Raad 2023,Brazil,,,04/01/20,NA,15/12/20,NA,Not mentioned,Brazil,Cohort,***,-,***,6
+71633,71633_Raad 2023,France,,,04/01/20,NA,15/12/20,NA,Not mentioned,France,Cohort,***,-,***,6
+71633,71633_Raad 2023,Japan,,,04/01/20,NA,15/12/20,NA,Not mentioned,Japan,Cohort,***,-,***,6
+71633,71633_Raad 2023,Lebanon,,,04/01/20,NA,15/12/20,NA,Not mentioned,Lebanon,Cohort,***,-,***,6
+71633,71633_Raad 2023,Singapore,,,04/01/20,NA,15/12/20,NA,Not mentioned,Singapore,Cohort,***,-,***,6
+71633,71633_Raad 2023,South Korea,,,04/01/20,NA,15/12/20,NA,Not mentioned,South Korea,Cohort,***,-,***,6
+71633,71633_Raad 2023,Spain,,,04/01/20,NA,15/12/20,NA,Not mentioned,Spain,Cohort,***,-,***,6
+72612,72612_Mariniello 2021(2nd wave),Italy,Turin  Italy,San Luigi Gonzaga University Hospital,24/10/20,2nd wave),13/12/20,2nd wave),Not mentioned,Italy,Cohort,****,*,***,8
+66333,66333_Al 2021,Oman,Muscat (and linked tertiary hospitals in Oman),Royal Hospital  Muscat and its linked tertiary hospitals.,24/03/20,NA,22/11/20,NA,Not mentioned,Oman,Cohort,***,-,*,4
+61946,61946_Duarte 2020,Brazil,Brazilian Southeast region,,01/01/20,NA,28/10/20,NA,Not mentioned,Brazil,Cohort,***,*,***,7
+71781,71781_Martin 2023,Spain,Madrid,Hospital Universitario Ramón y Cajal,01/03/20,NA,01/10/20,NA,Not mentioned,Spain,Cohort,**,*,**,5
+63774,63774_Rüthrich 2021,Germany,N/A,N/A,16/03/20,NA,30/09/20,NA,Not mentioned,Germany,Cohort,**,*,**,5
+65461,65461_Al-Mozaini 2021,Saudi Arabia,Riyadh and Chittagong,King Faisal Specialist Hospital and Research Centre  Riyadh  Saudi Arabia and Park View Hospital  Chittagong  Bangladesh,30/06/20,NA,06/09/20,NA,Not mentioned,Saudi Arabia,Cohort,***,-,**,5
+65461,65461_Al-Mozaini 2021,Bangladesh,Riyadh and Chittagong,King Faisal Specialist Hospital and Research Centre  Riyadh  Saudi Arabia and Park View Hospital  Chittagong  Bangladesh,30/06/20,NA,06/09/20,NA,Not mentioned,Bangladesh,Cohort,***,-,**,5
+67122,67122_Rugge 2022,Italy,Veneto and Friuli Venezia Giulia,,22/02/20,NA,30/08/20,NA,Not mentioned,Italy,Cohort,***,*,*,5
+137597,137597_Yiğenoğlu 2020,Turkey,N/A,,11/03/20,NA,22/07/20,NA,Not mentioned,Republic of Turkey,Cohort,***,*,**,6
+72749,72749_Passamonti 2020,Italy,,,25/02/20,NA,22/07/20,NA,Not mentioned,Italy,Cohort,**,-,**,4
+72593,72593_Anantharaman 2021,United States,Northern California,n/a,25/02/20,NA,08/07/20,NA,Not mentioned,USA,Cohort,***,*,*,5
+81620,81620_Johannesen 2021,Norway,N/A,N/A,01/01/20,NA,30/06/20,NA,Not mentioned,Norway,Cohort,****,-,**,6
+64534,64534_Monari 2021,Italy,Campania region (13 cities: Naples  Caserta  Salerno  Benevento  Pozzuoli  Eboli and Vallo della Lucania),N/A,28/02/20,NA,30/06/20,NA,Not mentioned,Italy,Cohort,***,*,*,5
+62182,62182_Christopher 2020,United Kingdom,London,University College London Hospitals NHS Foundation Trust,01/03/20,NA,30/06/20,NA,Not mentioned,UK,Cohort,**,*,*,4
+69975,69975_Sahin 2021,Turkey,N/A,Public hospitals University hospitals Private centres,11/03/20,NA,29/06/20,NA,Not mentioned,Turkey,Cohort,***,*,***,7
+72735,72735_Altuntas 2021,Turkey,N/A,N/A,11/03/20,NA,28/06/20,NA,Not mentioned,Turkey,Cohort,***,*,*,5
+67144,67144_Alpert 2021,United States,New York,Mount Sinai Hospital,01/03/20,NA,26/06/20,NA,Not mentioned,USA,Cohort,***,*,*,5
+65844,65844_Bertuzzi 2021,Italy,Lombardy,IRCCS  Rozzano,27/02/20,NA,19/06/20,NA,Not mentioned,Italy,Cohort,**,-,**,4
+61478,61478_Zhang 2020,China,Wuhan,Our study was performed in five designated tertiary hospitals for the treatment of COVID-19 in Wuhan  China.,17/01/20,NA,17/06/20,NA,Not mentioned,China,Cohort,***,*,***,7
+62120,62120_Brar 2020,United States,New York City,2 New York-Presbyterian hospitals: Weill Cornell Medicine and Lower Manhattan Hospital,03/03/20,NA,14/06/20,NA,Not mentioned,USA,Cohort,***,*,*,5
+62340,62340_Westblade 2020,United States,New York,New York-Presbyterian Hospital (NYP)  Weill Cornell Medical Center  NYP Lower Manhattan Hospital  and NYP Queens,15/03/20,NA,13/06/20,NA,Not mentioned,USA,Cohort,***,*,***,7
+72919,72919_Cook 2022,United States,Washington D.C.,MedStar Georgetown University Hospital and Washington Hospital Center,01/03/20,NA,31/05/20,NA,Not mentioned,USA,Cohort,***,-,***,6
+128789,128789_Joaquin 2020,Spain,N/A,,01/03/20,NA,30/05/20,NA,Not mentioned,Spain,Cohort,**,*,**,5
+70002,70002_Lunski 2021,United States,Louisiana,36 different hospitals and clinics across the state  which ranged from tertiary care centres to primary care office,01/03/20,NA,30/05/20,NA,Not mentioned,US,Cohort,****,-,*,5
+72884,72884_Mohamed 2021,United States,Louisiana  New Orleans,Tulane Medical Center,27/02/20,NA,27/05/20,NA,Not mentioned,USA,Cohort,***,-,*,4
+81415,81415_Mohamed 2021,United States,New York  USA,8 Hospitals comprising the Mount Sinai Health System (Mount Sinai Beth Israel  Mount Sinai Brooklyn  Mount Sinai Hospital  Mount Sinai Queens  Mount Sinai Morningside  Mount Sinai West  New York Eye and Ear Infirmary of Mount Sinai  Mount Sinai South Nassau).,28/03/20,NA,26/05/20,NA,Not mentioned,USA,Cohort,***,-,*,4
+66084,66084_Zhou 2021,China,Wuhan,Taikang Hospital Other temporary hospitals of Wuhan,10/02/20,NA,15/05/20,NA,Not mentioned,China,Cohort,***,*,*,5
+61253,61253_Shoumariyeh 2020,Germany,Freiburg,University Hospital of Freiburg,27/02/20,NA,10/05/20,NA,Not mentioned,Germany,Cohort,**,*,*,4
+61922,61922_Mehta 2020,United States,New York City,Montefiore Health System,18/03/20,NA,08/05/20,NA,Not mentioned,USA,Cohort,**,*,*,4
+70028,70028_Sanchez-Pina 2020,Spain,Madrid,Universitario “12 de Octubre”  Instituto de Investigación Sanitaria Hospital,07/03/20,NA,07/05/20,NA,Not mentioned,Spain,Cohort,****,*,***,8
+72989,72989_Li 2020,China,Wuhan,Union Hospital  Wuhan Central Hospital  General Hospital of Central Theater Command  PLA  Wuhan Jinyintan Hospital,20/01/20,NA,04/05/20,NA,Not mentioned,China,Cohort,***,-,***,6
+65975,65975_Cai 2021,China,Wuhan,Tongji hospital (Optical Valley Branch and Sino-French New City Branch),04/02/20,NA,30/04/20,NA,Not mentioned,China,Cohort,***,*,***,7
+72612,72612_Mariniello 2021(1st wave),Italy,Turin  Italy,San Luigi Gonzaga University Hospital,09/03/20,1st wave),28/04/20,1st wave),Not mentioned,Italy,Cohort,****,*,***,8
+66531,66531_Chai 2021,China,Wuhan  Hubei Province,Union Hospital  Affiliated Dongfeng Hospital  The Central Hospital of Wuhan,01/01/20,NA,17/04/20,NA,Not mentioned,China,Cohort,***,*,***,7
+78588,78588_Dai 2020,China,Wuhan,6 hospitals in Wuhan  China: Zhongnan  Hospital  of  Wuhan  University   The  Leishenshan  Hospital   Hubei  Cancer  Hospital   Union Hospital affiliated to Tongji Medical College  The Central Hospital of Wuhan  Wuhan Seventh hospital,01/01/20,NA,31/03/20,NA,Not mentioned,China,Cohort,***,*,**,6

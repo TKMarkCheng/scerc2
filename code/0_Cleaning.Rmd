@@ -1,0 +1,183 @@
+---
+title: "0_Exploration_and_cleaning"
+author: "Mark_Cheng"
+date: "2023-12-15"
+output: html_document
+---
+
+Key Goals: 
+1. Remove preprints
+2. Remove papers where cancer is a comorbidity, i.e. cancer vs non-cancer is not the main focus
+3. Remove papers where cancer diagnosis recency is ambiguous (>1 year)
+4. clean up the study IDs (last names)
+5. remove newlines
+
+# read in and Remove preprints
+```{r setup}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(dplyr, tidyr, stringr)
+
+data_directory = "../data/"
+data_directory_files = paste0(data_directory,list.files(data_directory))
+# find the files - make sure they are in the data folder, and have these substrings
+#DE_csv filename is edited when downloaded from covidence to ensure unique DE.csv suffix
+DE_csv = data_directory_files[str_detect(data_directory_files,"DE.csv")]
+included_list_csv = data_directory_files[str_detect(data_directory_files,"included_csv")]
+
+
+# Read DE.csv file with preserving spaces and special characters in colnames
+df_with_unknown_dx_with_preprints <- read.csv(DE_csv,header = TRUE, check.names = FALSE)
+#remove_preprints
+df_with_unknown_dx <- subset(df_with_unknown_dx_with_preprints,`Peer-reviewed or Preprint`!="Preprint")
+
+df_with_unknown_dx
+```
+
+# Cleaning
+```{r}
+#inlcuded_df is all the screened and included papers, which includes the metadata status, most important being the tags
+included_df <- read.csv(included_list_csv)
+included_df
+
+#removes cancer as comorbidity
+included_df_true_c_vs_ns <- included_df[grepl("true cancer vs non-cancer",included_df$Tags),]
+
+#which papers have ambiguous cancer diagnosis timing - AND NEEDS RE-INTERPRETATION?
+ambiguous_cancer_substrings <- c("cancer diagnosis time unknown","subsets in cancer diagnosis recency")
+ambiguous_cancer_papers <- included_df_true_c_vs_ns[grepl(paste(ambiguous_cancer_substrings, collapse = "|"), included_df_true_c_vs_ns$Tags), ] %>%
+  filter(!str_detect(Tags,"univariate only"))
+write.csv(ambiguous_cancer_papers,"../output/testing_different_sets/Ambiguous_cancer_papers_set.csv",row.names = FALSE)
+
+#remove papers where cancer diagnosis is ambiguous, leaving only active cancers
+included_df_true_c_vs_ns_active <- included_df_true_c_vs_ns %>% 
+  filter(!str_detect(Tags,"cancer diagnosis time unknown \\(do not proceed"))
+
+included_df_true_c_vs_ns_active
+
+# use the above to remove DE_df with unknown diagnosis time
+df <- df_with_unknown_dx[paste0("#",df_with_unknown_dx$`Covidence #`) %in% included_df_true_c_vs_ns_active$Covidence..,]
+df
+```
+
+```{r}
+# correct study ID
+#correct Covidence ID inherited Study ID with extracted last name
+df_rename <- df%>%
+  mutate(first_author_last_name = str_split(`First Author (Last name and Initials)`,",| ",simplify=TRUE)[,1]) %>%
+  select(`Study ID`,`Covidence #`,`First Author (Last name and Initials)`,first_author_last_name)
+
+df_rename <- df_rename %>%
+  mutate(year =str_extract(`Study ID`,"\\d{4}$")) %>%
+  mutate(`Study ID` = ifelse(str_detect(`Study ID`, "^[A-Z] \\d{4}$"), #if follows the format of [initial] [year] that covidence allocates when can't detect last name
+                                     paste0(first_author_last_name," ",year),
+                                     `Study ID`))
+## reassign corrected Study ID onto df
+df$`Study ID` <- df_rename$`Study ID`
+
+# remove newlines
+df <- df %>%
+  mutate_all(~gsub("\n", " ", .))
+
+df
+```
+
+
+```{r}
+#sanity check - the tags of papers in these included papers
+included_df_true_c_vs_ns_active[paste0("#",df_with_unknown_dx$`Covidence #`) %in%
+                                  included_df_true_c_vs_ns_active$Covidence..,]$Tags
+# what papers are included by tag but does not have a consensus DE?
+included_df_true_c_vs_ns_active[!included_df_true_c_vs_ns_active$Covidence.. %in%
+                                  paste0("#",df$`Covidence #`),]$Covidence..
+# sanity check - not included in DE but included by Tag should be 0
+df[!paste0("#",df$`Covidence #`) %in% included_df_true_c_vs_ns_active$Covidence..,]
+```
+
+The papers included by tag but does not have a consensus DE are:
+72854,
+124497
+are currently still in progress.
+128722 is a preprint 2020
+131660 is a peer-reviewed article, accidentally marked as preprint
+135365	is a preprint 2022
+136941	is a preprint 2020
+137477	is a preprint 2020
+
+## which papers are multivariate analysis only?
+```{r}
+# only include papers with multivariate analysis
+df$`Univariate or multivariate analysis?` %>% table() %>% data.frame()
+
+
+df_total <- df %>% group_by(`Univariate or multivariate analysis?`) %>% summarise(sum(as.numeric(`Total study size (number of patients)`)),sum(as.numeric(`Cancer Total number`)),sum(as.numeric(`Control (non-cancer) Total number`)))
+df_total
+
+write.csv(df_total,"../temporary_testing/total_uni_multi.csv") 
+```
+
+```{r}
+
+df_count_outliers <- df[df$`Univariate or multivariate analysis?` %in% c("univariate","univariate; Other: crude","univariate; multivariate"),] %>%
+  select(`Covidence #`,"Univariate or multivariate analysis?","Study ID","Total study size (number of patients)","Cancer Total number","Control (non-cancer) Total number")
+
+df_count_outliers
+
+df_count_outliers
+write.csv(df_count_outliers,"../temporary_testing/total_uni_multi_NAs.csv")
+
+## only pick up papers with multivariate
+df <- df %>% filter(str_detect(`Univariate or multivariate analysis?`,"multivariate"))
+```
+
+
+# brief clean
+```{r}
+#replace p value with p-value so it doesn't get mixed with value[outcome]
+colnames(df) <- gsub("p value","p-value",colnames(df))
+#unify 95% CI and 95% confidence interval
+colnames(df) <- gsub("95% confidence interval","95% CI",colnames(df))
+#unify Measure of Association (OR/RR etc.)
+colnames(df) <- gsub("Measure of Association \\(OR\\/RR etc.\\)","Measure of Association",colnames(df))
+colnames(df) <- gsub("Measure of Association \\(OR/RR etc\\)","Measure of Association",colnames(df),ignore.case = TRUE)
+colnames(df) <- gsub("Measure of Association \\(OR/RR\\)","Measure of Association",colnames(df),ignore.case = TRUE)
+colnames(df) <- gsub("measurement of association \\(OR/RR\\)","Measure of Association",colnames(df),ignore.case = TRUE)
+
+colnames(df) <- gsub("Measure of Association \\(OR/RR etc\\)","Measure of Association",colnames(df))
+colnames(df) <- gsub("Measure of Association \\(OR/RR\\)","Measure of Association",colnames(df))
+#unify event total
+colnames(df) <- gsub("Cancer: Event/Total","cancer: Event/Total",colnames(df))
+#unify Value and value
+colnames(df) <- gsub("Value","value",colnames(df))
+#unify { and [
+colnames(df) <- gsub("\\{","[",colnames(df))
+
+# Make column names unique without modifying spaces and special characters
+df <- df %>%
+  setNames(make.unique(names(.)))
+df
+```
+
+```{r}
+#exclude papers tagged explicitly with "univariate only"
+univariate_only_list = included_df_true_c_vs_ns_active %>% 
+  filter(str_detect(Tags,"univariate only")) %>%
+  select(Covidence..) %>%
+  mutate(Covidence.. = sub("^#","",Covidence..)) %>%
+  as.list()
+print(glue::glue("{univariate_only_list} papers with univariate only tag"))
+#removal step
+df <- df[!df$`Covidence #` %in% univariate_only_list$Covidence..,]
+df
+```
+
+
+
+```{r}
+#export
+output_string <- sub("\\.csv$","_knownDx_peerReviewed.csv",DE_csv)
+
+write.csv(df,file =output_string,row.names = FALSE)
+```
+
+
+

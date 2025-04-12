@@ -1,0 +1,31 @@
+"","Covidence #","Study ID","Chemotherapy Total number of patients","Chemotherapy Comment [incl. name of targeted/immunotherapy]","Chemotherapy Comment","Hormonal therapy Total number of patients","Hormonal therapy Comment [incl. name of targeted/immunotherapy]","Hormonal therapy Comment","Targeted therapy (RTK inhibitor/mAb against receptors) Total number of patients","Targeted therapy (RTK inhibitor/mAb against receptors) Comment [incl. name of targeted/immunotherapy]","Targeted therapy (RTK inhibitor/mAb against receptors) Comment","radiotherapy Total number of patients","radiotherapy Comment [incl. name of targeted/immunotherapy]","radiotherapy Comment","immunotherapy (immune checkpoint inhibitors/CAR-T) Total number of patients","immunotherapy (immune checkpoint inhibitors/CAR-T) Comment [incl. name of targeted/immunotherapy]","immunotherapy (immune checkpoint inhibitors/CAR-T) Comment","surgery Total number of patients","surgery Comment [incl. name of targeted/immunotherapy]","surgery Comment"
+"1",141173,"Alsakarneh 2024","4958","","","1011",NA,NA,"1837","",NA,"1418",NA,NA,10,NA,NA,"N/A",NA,NA
+"2",138896,"Li 2024","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"3",73804,"Starkey 2023","","","","",NA,NA,"","B/T-cell antibody therapy",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"4",72854,"Konermann 2023","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"5",140255,"Park 2024","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"6",71628,"Turtle 2023","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"7",71402,"Salvatore 2023","1168;537","Most recent chemo within past year; most recent chemo one to 3 years ago ","Most recent chemo within past year; most recent chemo one to 3 years ago ","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"8",71915,"Leuva 2022","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"9",73383,"Hosseini-Moghaddam 2023","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"10",141132,"Sullivan 2023","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"11",71512,"Nolan 2023","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"12",74954,"Kodde 2023","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"13",68513,"Udovica 2022","45","","","5",NA,NA,"13","",NA,"5",NA,NA,4,NA,NA,"9",NA,NA
+"14",75567,"Bazgir 2022","28","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"15",67898,"Plais 2022","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"16",66861,"Chavez-MacGregor 2022","Chemotherapy: 1634; Chemo-immunotherapy: 195","","","Targeted therapy or endocrine therapy: 1068",NA,NA,"Targeted therapy or endocrine therapy: 1068","",NA,"592",NA,NA,806,NA,NA,"",NA,NA
+"17",70896,"Abuhelwa 2022","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"18",69998,"Serraino 2021","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"19",68083,"Kim 2022","NR","","","",NA,NA,"","",NA,"NR",NA,NA,NA,NA,NA,"",NA,NA
+"20",75065,"Zhou 2023","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"21",71633,"Raad 2023","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"22",67122,"Rugge 2022","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"23",72593,"Anantharaman 2021","12","","","11",NA,NA,"14","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"24",81620,"Johannesen 2021","71","Chemotherapy including targeted therapy and immunotherapy last 3 months","","45",NA,NA,NA,"",NA,"7",NA,NA,15,NA,NA,"90",NA,NA
+"25",62182,"Sng 2020","15","","","8",NA,NA,"2","",NA,"5",NA,NA,4,NA,NA,"3",NA,NA
+"26",67144,"Alpert 2021","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"27",65844,"Bertuzzi 2021","13","","","4",NA,NA,"1","",NA,"5",NA,NA,4,NA,NA,"21",NA,NA
+"28",62120,"Brar 2020","52","","","32",NA,NA,"","",NA,"14",NA,NA,NA,NA,NA,"21",NA,NA
+"29",70019,"Klein 2021","","","","",NA,NA,"","",NA,"",NA,NA,NA,NA,NA,"",NA,NA
+"30",78588,"Dai 2020","10","","","",NA,NA,"3","",NA,"8",NA,NA,4,NA,NA,"7",NA,NA

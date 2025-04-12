@@ -1,0 +1,724 @@
+---
+title: "2_reshaping_ORsRRs"
+author: "Mark_Cheng"
+date: "2023-12-19"
+output: html_document
+---
+
+```{r}
+# load libraries
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(dplyr, tidyr, stringr,readxl)
+
+data_directory = "../data/"
+data_directory_files = paste0(data_directory,list.files(data_directory))
+
+DE_csv = data_directory_files[str_detect(data_directory_files,
+                                         "_DE_knownDx_peerReviewed.csv")]
+# initiate cleaned df
+df <- read.csv(file = DE_csv, header = TRUE, check.names = FALSE)
+df
+
+## rearrange df to chronological order
+df_location_date <- read.csv("../output/Timeline_and_Lineage_Imputation/Studies_split_Timeperiods_ordered_by_time_periods.csv",check.names = FALSE)
+study_order <- df_location_date %>% distinct(`Covidence #`) %>% pull()
+
+df <- df %>% arrange(match(`Covidence #`,study_order))
+df
+```
+
+
+#Pseudocode
+Observations for columns:
+1. A-D Covidence automatic - Covidence ID, Study ID (Last Name + publication year), title
+2. E-AA: General study information, definitions, study design, recruitment strategy
+3. AB-AN: Baseline characteristics Table
+4. AP-EH: Comorbidities Table
+5. EI-EL: Definitions of outcomes of severity, ICU admission/critical, mortality, severe disease
+6. EM: if univariate and/or multivariate is used, EN: What is included in multivariable analysis adjustments
+7. Main Tables, Primary cancer site, metastasis status, treatment type, COVID variants, COVID vaccination status
+8. each tables have the same repeating 27 columns for each row (Total + 6x columns for 4 outcomes + 2 comments).
+Except for therapy type and COVID variant tables which has additional col2: PERCENTAGE
+
+  col1:Total Number of Patients in that stratified group
+  Mortality x6
+  - Measure of Association (OR/RR etc.) [mortality]
+  - value [mortality]
+  - 95% confidence interval [mortality]
+  - p value [mortality]
+  - Cancer: Event/Total [mortality]
+  - Non-cancer: Event/Total [mortality]
+  ICU x6
+  - Measure of Association (OR/RR etc.) [ICU]
+  - value [ICU]
+  - 95% confidence interval [ICU]
+  - p value [ICU]
+  - Cancer: Event/Total [ICU]
+  - Non-cancer: Event/Total [ICU]
+  severe disease x6
+  - Measure of Association (OR/RR etc.) [severe disease]
+  - value [severe disease]
+  - 95% confidence interval [severe disease]
+  - p value [severe disease]
+  - Cancer: Event/Total [severe disease]
+  - Non-cancer: Event/Total [severe disease]
+  
+  col20:Comment
+  hospitalisation x6
+  - Measure of Association (OR/RR etc.) [hospitalisation]
+  - value [hospitalisation]	95% confidence interval [hospitalisation]
+  - p value [hospitalisation]
+  - Cancer: Event/Total [hospitalisation]
+  - Non-cancer: Event/Total [hospitalisation]
+  
+  col27:Comment
+
+# Only pick out papers with multivariate analysis - stop for now
+```{r}
+df$`Univariate or multivariate analysis?`
+# df <- df[grepl(pattern = "multivariate",df$`Univariate or multivariate analysis?`),]
+# df <- subset(df,`Covidence #`!=128789) #128789 does not actually provided mOR (crude OR/CI/p-values calculated as univariate/multivariate analysis not provided for outcomes of interest)
+```
+# Finding the tables
+## Table of baseline characteristics
+```{r}
+baseline_start_col = which(colnames(df)=="Baseline characteristics:")
+baseline_end_col = which(colnames(df)=="Which COVID-19 variant does the study identify?")
+df_baseline_characteristics <- df%>%
+  select(c(1, #keep Covidence ID
+           ((baseline_start_col+1):(baseline_end_col-1))
+           )
+         )# gets the baseline characteristics table
+df_baseline_characteristics
+
+write.csv(df_baseline_characteristics,"../output/processed_tables/baseline_characteristics.csv",row.names = FALSE)
+```
+
+```{r how many cancer and non-cancer patients are there in total?}
+df_baseline_characteristics$`Cancer Total number`
+
+df_baseline_characteristics$`Control (non-cancer) Total number`
+```
+# find comorbidity table
+
+```{r}
+#remove MoA, OR/RR value, 95% confidence interval, and p value of comorbidities
+comorb_start_col = which(colnames(df)=="Co-morbidities:") # column name before the comorbidity table
+comorb_end_col = which(colnames(df)=="Definition of severity") #column name after the comorbidity table
+df_comorbidity <- df %>%
+  select(c(1,2,"Cancer Total number","Control (non-cancer) Total number",((comorb_start_col+1):(comorb_end_col-1)))) # de-select the comorbidity table
+
+df_comorbidity
+
+#for Abe
+write.csv(df_comorbidity,"../output/abe_tables_graphs/ComorbidityTable_forAbe.csv")
+```
+
+# Result Tables
+## Common Functions
+### 1. Comment merging function
+Function built to merge all comments to last instance in table, and remove all but last instance.
+```{r collapse comments}
+collapse_comment_to_last_instance <- function(df){
+  # 1. Identify columns with the substring "Comment"
+  comment_columns <- grep("Comment", names(df), value = TRUE)
+  # 2. Extract substring before "Comment"
+  prefix <- sub("(.*)Comment.*", "\\1", comment_columns)
+  # Create a placeholder dataframe for merging
+  merging_comment_df <- df[, comment_columns, drop = FALSE]
+  # 3. Merge columns with the same prefix in merging_comment_df
+  for (p in unique(prefix)) {
+    cols_to_merge <- comment_columns[startsWith(comment_columns, p)]
+    merging_comment_df[p] <- apply(df[cols_to_merge], 1, function(row) paste(row, collapse = ""))
+  }
+  # 4. Create a new dataframe new_df
+  new_df <- df
+  # 5. Match merging_comment_df back into new_df based on the last instance
+  for (p in unique(prefix)) {
+    last_instance_col <- tail(comment_columns[startsWith(comment_columns, p)], 1)
+    new_df[last_instance_col] <- merging_comment_df[p]
+  }
+  # 6. Remove non-last instance of each unique substring in new_df
+  for (p in unique(prefix)) {
+    cols_to_remove <- setdiff(comment_columns[startsWith(comment_columns, p)], tail(comment_columns[startsWith(comment_columns, p)], 1))
+    new_df <- new_df[, !names(new_df) %in% cols_to_remove, drop = FALSE]
+  }
+  # 7. retrurn the modified dataframe
+  return(new_df)
+}
+```
+### 2. function to Insert underscore between rowname and column name in flattened table to easier split and pivot later
+```{r}
+add_underscore_between_rowname_columnname <- function(df,example_prefix){
+  #example_prefix is a regex string, and thus escape code(\\) are needed if () and other escape characters are included
+  example_prefix = paste0("^",example_prefix," ") #^specifies start of the pattern, to avoid cases like *vaccinated* and un*vaccinated*
+  #Change row-column separator of flattened table from default " " to "_" 
+  suffixes <- colnames(df)[
+  grepl(example_prefix, colnames(df))] %>% #examples "{example_prefix} {suffix}"
+  sub(example_prefix,"",.) #remove prefix to get {suffix} only
+  # Replace the space before the suffix in column names with underscores for each suffix for easier splitting later
+  for (substring in suffixes) {
+  df <- setNames(df, gsub(paste0(" ", substring), paste0("_", substring), colnames(df),fixed = TRUE))
+  }
+ return(df)
+}
+```
+### 3. function serires to perform first pivots and filter 
+pivot long, separate by _, then pivot wide again to make original table rownames (e.g. Cancer types, treatment, metastasis status) unique columns, like in data collection template
+```{r}
+first_pivot_long <- function(df_with_unique_delimiter_between_prefix_and_suffix,sep="_"){
+  # first perform a long pivot, to get the 2 columns:
+  #prefix (original table row names) and suffix (original table column names)
+  long_data <- df_with_unique_delimiter_between_prefix_and_suffix %>% 
+    gather(key = "key", value = "value", -`Covidence #`)
+  #separate wider so suffixes can be pivoted
+  long_data <- separate(long_data, key, into = c("prefix", "suffix"), sep = sep) 
+  return (long_data)
+}
+
+first_pivot_wide <- function(long_data){
+  # then pivot wide, to get 26 columns of recorded outcomes 
+  wide_data <- long_data%>%
+    pivot_wider(id_cols=c(`Covidence #`,prefix),names_from = suffix,values_from = value)
+  return(wide_data)
+}
+first_pivoted_wide_filter <- function(wide_data){
+  # filter away rows where no values are provided
+  wide_data_filtered <- wide_data %>%
+    # change all "" to NA, spare column 1 which will be Covidence #
+    mutate_at(2:(ncol(wide_data)), ~ifelse(. == "", NA, .)) %>%
+    # retain as long as any of the important values is not NA. 1-3 are Covidence #, prefix, Total Number of Patients, last one is Comment.1, and thus are spared in this filter
+    filter(if_any(4:(ncol(wide_data)-1), ~(!is.na(.))))
+  return(wide_data_filtered)
+}
+```
+### 4. Function series to perform SECOND pivots and filter
+pivot long, and then wide again
+To pool different outcomes (mortality, ICU admission, severity etc.) onto a column so we can filter as such
+```{r}
+second_pivot_long_wide_filter <- function(df,
+                              ID_columns=c("Covidence #","prefix",
+                                           "Total Number of Patients","Comment.1"),
+                              to_filter=TRUE){
+  print(ID_columns)
+  #convery spacer between colname and outcome to _ for easier separation
+  colnames(df) <- gsub(pattern=" \\[",replacement="_\\[",colnames(df))
+  #pivot long
+  df_long2 <- df %>%
+    gather(key="key",value="value",
+           -ID_columns) %>%
+    #separate by underscore
+    separate(key,into=c("measurement","outcome"),sep="_")
+  #then pivot wider
+  df_wide2 <- df_long2 %>%
+    pivot_wider(id_cols=c(ID_columns,"outcome"),
+                names_from = measurement,values_from=value)
+  #optionally filter
+  if(to_filter==TRUE){
+    #change all empty "" to NA
+    # retain as long as any of the important values (MoA, MoA value, p-value, proportion) is not NA
+    print(length(ID_columns))
+    df_wide2_filtered <- df_wide2 %>% mutate_at(2:(ncol(df_wide2)),~ifelse(. =="",NA,.)) %>%
+      filter(if_any((length(ID_columns)+2):ncol(df_wide2),~(!is.na(.))))
+    
+    return(df_wide2_filtered)
+  }else{
+    return(df_wide2)
+  }
+}
+```
+### 5. Check if formating is correct - same number of semicolons where necessary
+```{r}
+semi_colon_check <- function(df,
+                             ID_columns){
+  sparing_columns = (0:length(ID_columns)+1)
+  df_semi_colons_count <- df %>%
+    mutate_at(vars(-sparing_columns),~str_count(as.character(.),";")) %>%
+  rowwise() %>% 
+  mutate(same_number_of_semicolons=
+           all(c_across(-sparing_columns))==first(c_across(-sparing_columns))
+         )#find which rows have the same number of semicolons as thus can be properly delimiter splitted
+  final_df = merge(df,df_semi_colons_count,by = c(ID_columns,"outcome"),
+                   suffixes = c("","_number_of_semicolons"))
+  return(final_df)
+}
+```
+## Acting on Data Tables
+
+### For Primary cancer sites
+Covidence ID + each row is 26 items (1 total + 4 outcomes x6 measurements + 1 comment)
+```{r}
+primary_site_start_col <- which(colnames(df)=="Primary Cancer Site:") # column name before the comorbidity table
+primary_site_end_col <- which(colnames(df)=="Metastasis status:") # column name before the comorbidity table
+
+#1st clean, pivot and filter
+df_1site <- df %>%
+  select(all_of(c(1, #keep Covidence ID
+                  (primary_site_start_col+1):(primary_site_end_col-1)
+                  ))) %>%
+  collapse_comment_to_last_instance() %>%
+  add_underscore_between_rowname_columnname(example_prefix = "Thoracic \\(lung, mesothelioma\\)") %>%
+  first_pivot_long() %>%
+  first_pivot_wide() %>%
+  first_pivoted_wide_filter()
+  
+df_1site
+#2nd pivot, filter
+df_1site_wide2_filtered<- second_pivot_long_wide_filter(df_1site,ID_columns = c(
+  "Covidence #","prefix","Total Number of Patients","Comment.1"),
+  to_filter = TRUE)
+df_1site_wide2_filtered
+
+
+## Total number of patients for Abe
+df %>%
+  select(all_of(c(1,2, #keep Covidence ID
+                  (primary_site_start_col+1):(primary_site_end_col-1)
+                  ))) %>%
+  select(all_of(c(1,2,
+                  contains("patients",ignore.case=TRUE)))) %>%
+  write.csv("../output/abe_tables_graphs/CancerTypeTable_forAbe.csv")
+```
+
+
+```{r}
+# sanity check - which papers do NOT have TOTAL cancers mortality
+df$`Covidence #`[!df$`Covidence #` %in% df_1site_wide2_filtered[
+  (df_1site_wide2_filtered$prefix == "Total (OF ALL CANCERS)") & 
+    (df_1site_wide2_filtered$outcome == "[mortality]")
+   ,]
+  $`Covidence #`]
+```
+128789 focuses on multiple myeloma.
+81620 describes a mixed outcome - outcomes are defined as death, or admission to hiospital. So there is no mortality data.
+79599 no description of mortality.
+75065 describes a composite outcome of composite endpoint of requirement for intubation, ICU admission and 30-day mortality.
+73383 splits into solid and hematalogical, with no calculations of mixed/Total mortality.
+72749,72735, haematological malignancies.
+*62340 values stored at Other - as total patients have patients with ct value >32. Currently being fixed as our criteria is Ct below 35.*
+
+
+### Third step: Adding the univariate/multivariate (measure of association) column by ; delimiters
+#### at the moment not there yet due to unequal number of semicolons
+
+```{r}
+df_1site_wide2_filtered_semicolon_count <- semi_colon_check(
+  df_1site_wide2_filtered,ID_columns = c("Covidence #","prefix",
+                                         "Total Number of Patients","Comment.1")
+  )
+df_1site_wide2_filtered_semicolon_count
+
+df_1site_wide2_filtered_semicolon_count %>% count(same_number_of_semicolons) # summarise count how many true, false, NA
+
+write.csv(df_1site_wide2_filtered_semicolon_count,
+          "../output/processed_tables/primary_cancer_sites_corrections.csv",row.names = FALSE)
+```
+
+## Initial separate and export in cases which can be succesfully separate_longer_delim
+## 7. Actually perform semi-colon row splits, then widen columns by event/total proportions
+IMPORTANT DO NOT DELETE
+```{r}
+last_semi_colon_split <- function(df,
+                                  ID_columns){
+  sparing_columns = length(ID_columns)+1 #+1 to prevent catching [outcome]
+  final_df <- df %>%
+    separate_longer_delim((sparing_columns+1):(sparing_columns+1+5),delim=";")
+  #5 columns are measure of association, value,  95% CI, p-value, cancer: Event/Total, Non-cancer: Event/Total
+  return (final_df)
+}
+
+widen_decimals_fractions <- function(df,cancer_proportion_col,control_proportion_col){
+  df %>% mutate(
+    "cancer(event/total)"=as.numeric(str_extract(df[[cancer_proportion_col]],"[[:digit:]]+\\.[[:digit:]]+")),
+    "cancer(event count)"=as.integer(str_extract(df[[cancer_proportion_col]],"([[:digit:]]+(?=\\/))")),
+    "cancer(total count)"=as.integer(str_extract(df[[cancer_proportion_col]],"((?<=\\/)[[:digit:]]+)"))
+    ) %>%
+    mutate(
+    "non-cancer(event/total)"=as.numeric(str_extract(df[[control_proportion_col]],"[[:digit:]]+\\.[[:digit:]]+")),
+    "non-cancer(event count)"=as.integer(str_extract(df[[control_proportion_col]],"([[:digit:]]+(?=\\/))")),
+    "non-cancer(total count)"=as.integer(str_extract(df[[control_proportion_col]],"((?<=\\/)[[:digit:]]+)"))
+    )
+}
+
+df_1site_wide2_filtered_semicolon_count_splitted <- last_semi_colon_split(
+  df_1site_wide2_filtered_semicolon_count,
+  ID_columns = c("Covidence #","prefix",
+                 "Total Number of Patients","Comment.1")
+  ) %>%
+  widen_decimals_fractions(cancer_proportion_col = "cancer: Event/Total",
+                         control_proportion_col = "Non-cancer: Event/Total")
+df_1site_wide2_filtered_semicolon_count_splitted
+write.csv(df_1site_wide2_filtered_semicolon_count_splitted,file = "../output/processed_tables/primary_cancer_sites_AnalysisReady.csv",row.names = FALSE)
+```
+## Metastasis status
+```{r}
+metastasis_start_col <- which(colnames(df)=="Metastasis status:") # column name before the mets table
+metastasis_end_col <- which(colnames(df)=="Treatment type:") # column name before the mets table
+
+df_metastasis <- df %>%
+  select(all_of(c(1, #keep Covidence ID
+                  (metastasis_start_col+1):(metastasis_end_col-1)))) %>%
+  collapse_comment_to_last_instance() %>%
+  add_underscore_between_rowname_columnname(example_prefix = "Unknown") %>%
+  first_pivot_long() %>%
+  first_pivot_wide() %>%
+  first_pivoted_wide_filter()
+df_metastasis
+
+mets_ID_columns <- c("Covidence #","prefix","Total number of Patients","Comment.1")
+df_metastasis <- second_pivot_long_wide_filter(df_metastasis,
+                                               ID_columns = mets_ID_columns,
+                                               to_filter = TRUE)
+df_metastasis
+
+df_metastasis <- semi_colon_check(
+  df_metastasis,ID_columns = mets_ID_columns
+  )
+df_metastasis
+df_metastasis %>% count(same_number_of_semicolons)
+write.csv(df_metastasis,
+          "../output/processed_tables/metastasis_status_corrections.csv",row.names = FALSE)
+
+df_metastasis_final_split <- last_semi_colon_split(
+  df_metastasis,ID_columns = mets_ID_columns
+  ) %>%
+  widen_decimals_fractions(cancer_proportion_col = "cancer: Event/Total",
+                           control_proportion_col = "Non-cancer: Event/Total")
+df_metastasis_final_split
+
+write.csv(df_metastasis_final_split,
+          "../output/processed_tables/metastasis_status_AnalysisReady.csv",row.names = FALSE)
+```
+
+
+### Treatment type - 27 columns as repeating unit instead
+EXTRA COLUMN (1 total + *1 PERCENTAGE* +  4 outcomes x6 measurements + 1 comment) means everything repeats every 27 columns, rather than 26 columns like previous
+```{r}
+treatment_start_col <- which(colnames(df)=="Treatment type:") # column name before the treatment table
+treatment_end_col <- which(colnames(df)=="COVID variants:") # column name before the treatment table
+treatment_ID_cols <- c("Covidence #","prefix","Total number of patients","percentage","Comment")
+
+
+df_treatment <- df %>%
+  select(all_of(c(1, #keep Covidence ID
+                  (treatment_start_col+1):(treatment_end_col-1)))) %>%
+  collapse_comment_to_last_instance() %>%
+  add_underscore_between_rowname_columnname(example_prefix="Chemotherapy") %>%
+  first_pivot_long() %>%
+  first_pivot_wide() %>%
+  first_pivoted_wide_filter()
+
+df_treatment
+
+df_treatment<- second_pivot_long_wide_filter(df_treatment,
+                                             ID_columns = treatment_ID_cols,
+                                             to_filter = TRUE)
+df_treatment
+
+df_treatment <- semi_colon_check(df_treatment,ID_columns = treatment_ID_cols)
+df_treatment
+df_treatment %>% count(same_number_of_semicolons)
+write.csv(df_treatment,"../output/processed_tables/treatment_type_corrections.csv",row.names=FALSE)
+
+df_treatment_final_split <- last_semi_colon_split(
+  df_treatment,ID_columns = treatment_ID_cols
+  ) %>%
+  widen_decimals_fractions(cancer_proportion_col = "cancer: Event/Total",
+                           control_proportion_col = "Non-cancer: Event/Total")
+df_treatment_final_split
+
+write.csv(df_treatment_final_split,
+          "../output/processed_tables/treatment_status_AnalysisReady.csv",row.names = FALSE)
+
+## Total number of patients for Abe
+df %>%
+  select(all_of(c(1,2, #keep Covidence ID
+                  (treatment_start_col+1):(treatment_end_col-1)
+                  ))) %>%
+  select(all_of(c(1,2,
+                  matches('patients|comment|total number',ignore.case=TRUE)))) %>%
+  write.csv("../output/abe_tables_graphs/CancerTreatmentTable_forAbe.csv")
+```
+
+### COVID variants - 27 columns as repeating unit instead
+EXTRA COLUMN (1 total + *1 PERCENTAGE* +  4 outcomes x6 measurements + 1 comment) means everything repeats every 27 columns, rather than 26 columns like previous
+```{r}
+variant_start_col <- which(colnames(df)=="COVID variants:") # column name before the variant table
+variant_end_col <- which(colnames(df)=="COVID vaccination status:") # column name before the variant table
+variant_ID_columns = c("Covidence #","prefix","Total Number of patients","Percentage","Comment.1")
+
+df_variant <- df %>%
+  select(all_of(c(1, #keep Covidence ID
+                  (variant_start_col+1):(variant_end_col-1))))
+colnames(df_variant) <- colnames(df_variant)%>% gsub(
+  pattern = "Measure of Association \\(OR/RR etc.\\) \\{severe\\]",
+  replacement = "Measure of Association (OR/RR etc.) [severe]", 
+  ) %>% gsub(
+    pattern="\\.[0-9]+$",
+    replacement="",
+  ) # fix required for typo { instead of [
+  
+df_variant <- df_variant %>%
+  collapse_comment_to_last_instance() %>% #first time to reassign and regain suffix for repeating Comment
+  collapse_comment_to_last_instance() %>% #second time to truly collapse
+  add_underscore_between_rowname_columnname(example_prefix = "Beta") %>%
+  first_pivot_long() %>%
+  first_pivot_wide() %>%
+  first_pivoted_wide_filter()
+
+df_variant
+
+df_variant <- second_pivot_long_wide_filter(df_variant,ID_columns = variant_ID_columns,
+                                            to_filter = TRUE)
+df_variant
+
+df_variant <- semi_colon_check(df_variant,ID_columns = variant_ID_columns)
+df_variant
+df_variant %>% count(same_number_of_semicolons)
+write.csv(df_variant,"../output/processed_tables/variants_corrections.csv",row.names=FALSE)
+
+df_variant_final_split <- last_semi_colon_split(
+  df_variant,ID_columns = variant_ID_columns
+  )%>%
+  widen_decimals_fractions(cancer_proportion_col = "cancer: Event/Total",
+                           control_proportion_col = "Non-cancer: Event/Total")
+df_variant_final_split
+
+write.csv(df_variant_final_split,"../output/processed_tables/variants_AnalysisReady.csv")
+```
+
+### vaccination status
+```{r}
+vaccination_start_col <- which(colnames(df)=="COVID vaccination status:") # column name before the vaccination table
+vaccination_end_col <- which(colnames(df)=="Is individual patient data available?") # column name before the vaccination table
+vaccination_IDcols <- c("Covidence #","prefix","Total number of patients","Percentage","Comment")
+
+df_vaccination <- df %>%
+  select(all_of(c(1, #keep Covidence ID
+                  (vaccination_start_col+1):(vaccination_end_col-1)
+                  ))) %>%
+  collapse_comment_to_last_instance() %>%
+  add_underscore_between_rowname_columnname(example_prefix = "vaccinated") %>%
+  first_pivot_long()%>%
+  first_pivot_wide() %>%
+  first_pivoted_wide_filter()
+
+df_vaccination
+
+df_vaccination <- second_pivot_long_wide_filter(df_vaccination,
+                                                ID_columns = vaccination_IDcols)
+df_vaccination
+df_vaccination <- semi_colon_check(df_vaccination,ID_columns = vaccination_IDcols)
+df_vaccination
+df_vaccination %>% count(same_number_of_semicolons)
+write.csv(df_vaccination,"../output/processed_tables/vaccination_corrections.csv",row.names=FALSE)
+
+df_vaccination_final_split <-
+  last_semi_colon_split(df_vaccination,ID_columns=vaccination_IDcols
+    ) %>%
+  widen_decimals_fractions(cancer_proportion_col = "cancer: Event/Total",
+                           control_proportion_col = "Non-cancer: Event/Total")
+df_vaccination_final_split
+
+write.csv(df_vaccination_final_split,"../output/processed_tables/vaccination_AnalysisReady.csv")
+```
+
+#Grouping effect sizes and preparation for meta-analysis and meta-regression
+
+## step 1: rbinding primary cancer site, treatment type, and metastasis status. 
+
+```{r}
+# add in the percentage column, which exists in df_treatment and onwards but not in df_1site and df_metastasis
+df_1site_final_to_stack <- cbind(df_1site_wide2_filtered_semicolon_count_splitted[1:3],percentage=NA,
+                                 df_1site_wide2_filtered_semicolon_count_splitted[4:ncol(df_1site_wide2_filtered_semicolon_count_splitted)])
+df_metastasis_final_to_stack <- cbind(df_metastasis_final_split[1:3],percentage=NA,
+                                 df_metastasis_final_split[4:ncol(df_metastasis_final_split)])
+# rename them so they share the same colnames
+colnames(df_1site_final_to_stack) <- colnames(df_treatment_final_split)
+colnames(df_metastasis_final_to_stack) <- colnames(df_treatment_final_split)
+df_1site_metastasis_treatment <- bind_rows(df_1site_final_to_stack, df_metastasis_final_to_stack, df_treatment_final_split)
+
+# Identify columns with the substring "_semicolons"
+columns_to_remove <- grep("_semicolons", names(df_1site_metastasis_treatment))
+
+# Remove columns with the substring "_semicolons"
+df_1site_metastasis_treatment <- df_1site_metastasis_treatment%>%select(-all_of(columns_to_remove))%>%
+  mutate(across(where(is.character), trimws))  # trim whitesapces if is.character
+  
+# if the event/total proportion can be calculated but is not present, add it.
+df_1site_metastasis_treatment
+df_1site_metastasis_treatment <- df_1site_metastasis_treatment %>% 
+  mutate(`cancer(event/total)`=if_else(condition = is.na(df_1site_metastasis_treatment$`cancer(event/total)`),
+                                       as.numeric(df_1site_metastasis_treatment$`cancer(event count)`)/as.numeric(df_1site_metastasis_treatment$`cancer(total count)`),
+                                       as.numeric(df_1site_metastasis_treatment$`cancer(event/total)`)
+                                       )
+         ) %>%
+  mutate(`non-cancer(event/total)`=if_else(condition = is.na(df_1site_metastasis_treatment$`non-cancer(event/total)`),
+                                       as.numeric(df_1site_metastasis_treatment$`non-cancer(event count)`)/as.numeric(df_1site_metastasis_treatment$`non-cancer(total count)`),
+                                       as.numeric(df_1site_metastasis_treatment$`non-cancer(event/total)`)
+                                       )
+         )
+# correct instances where % are used instead of decimal
+df_1site_metastasis_treatment %>%
+  mutate(`cancer(event/total)`=if_else(condition = df_1site_metastasis_treatment$`cancer(event/total)` > 1.1, # correct instances where people put down % rather than 
+                                       df_1site_metastasis_treatment$`cancer(event/total)`/100,
+                                       df_1site_metastasis_treatment$`cancer(event/total)`
+                                       )
+         ) %>%
+  mutate(`non-cancer(event/total)`=if_else(condition = df_1site_metastasis_treatment$`non-cancer(event/total)` > 1.1, # correct instances where people put down % rather than 
+                                       df_1site_metastasis_treatment$`non-cancer(event/total)`/100,
+                                       df_1site_metastasis_treatment$`non-cancer(event/total)`
+                                       )
+         )
+# calculate cOR where possible (event/total)
+cOR_required_condition <- is.na(df_1site_metastasis_treatment$value) ## find where OR/HR value is NA 
+
+df_1site_metastasis_treatment <- df_1site_metastasis_treatment %>% #calculate OR
+  mutate(value=ifelse(is.na(value),
+                      `cancer(event/total)`/`non-cancer(event/total)`,
+                      value)) %>%
+  mutate(`Measure of Association` = ifelse((cOR_required_condition & # was original NA
+                                                    !is.na(value) # but was able to yield a crude OR
+                                                  ),
+                                           "calculatedOR", #call its measure of association cOR
+                                           `Measure of Association`) #otherwise keep as it was 
+           )
+# calculate standard error (se)
+df_1site_metastasis_treatment <- df_1site_metastasis_treatment %>%
+  mutate(se=sqrt(1/`cancer(event count)`+
+                   1/`cancer(total count)`+
+                   1/`non-cancer(event count)`+
+                   1/`non-cancer(total count)`
+                 )
+         )
+# add in if univariate or multivariate or if ambiguous
+df_1site_metastasis_treatment <- df_1site_metastasis_treatment %>% mutate(
+  model=case_when(
+    str_detect(tolower(`Measure of Association`),"calculated|crude|(u|c|^)(or|rr|hr)") ~"univariate",
+    str_detect(tolower(`Measure of Association`),"(m|a)(or|rr|hr)") ~"multivariate",
+    TRUE~"manualclarificationrequired"
+  )
+)
+df_1site_metastasis_treatment
+```
+
+```{r}
+#adding in variants and vaccination of each study
+df_vaccination_percentages <- df %>%
+  select(all_of(c(1, #keep Covidence ID
+                  (vaccination_start_col+1):(vaccination_end_col-1)
+                  ))) %>%
+  collapse_comment_to_last_instance() %>%
+  select(`Covidence #`,`vaccinated Total number of patients`,`vaccinated Percentage`,`vaccinated Comment`,
+         `unvaccinated Total number of patients`,`unvaccinated Percentage`,`unvaccinated Comment`)
+df_vaccination_percentages
+write.csv(df_vaccination_percentages,"../output/processed_tables/vaccination_status_percentages_manualchanges.csv",row.names = FALSE)
+# manual correction
+df_vaccination_percentages<- readxl::read_excel("../output/processed_tables/vaccination_status_percentages_manualchanges.xlsx")
+df_vaccination_percentages
+```
+
+```{r}
+df_variant <- df %>%
+  select(all_of(c(1, #keep Covidence ID
+                  (variant_start_col+1):(variant_end_col-1))))
+colnames(df_variant) <- colnames(df_variant)%>% gsub(
+  pattern = "Measure of Association \\(OR/RR etc.\\) \\{severe\\]",
+  replacement = "Measure of Association (OR/RR etc.) [severe]", 
+  ) %>% gsub(
+    pattern="\\.[0-9]+$",
+    replacement="",
+  ) # fix required for typo { instead of [
+df_variant <- df_variant %>%
+  collapse_comment_to_last_instance() %>% #first time to reassign and regain suffix for repeating Comment
+  collapse_comment_to_last_instance() #second time to truly collapse
+
+desired_variant_columns <- grep("(Total Number of patients|Percentage)",names(df_variant),value=TRUE)
+  
+df_variant_selected <- df_variant[,c("Covidence #",desired_variant_columns)]
+df_variant_selected
+```
+
+```{r}
+#https://github.com/nextstrain/ncov-clades-schema?tab=readme-ov-file
+#https://nextstrain.org/ncov/gisaid/global/6m
+clade_names <- read.csv("../data/lineage/Nextstrain_clade_alias.csv",skip = 3)
+#manual corrections
+clade_names <- clade_names %>%
+  mutate(variant=case_when(
+    common_name==""~"Early-clades",
+    startsWith(common_name,"XBB")~"Omicron_XBB",
+    startsWith(common_name,"BA")~"Omicron_BA",
+    common_name=="Omicron,B.1.1.628"~"Omicron_BA",
+    common_name=="BQ.1"~"Omicron_BA",
+    common_name=="CH.1.1"~"Omicron_BA",
+    common_name=="EG.5.1"~"Omicron_XBB",
+    common_name=="HK.3"~"Omicron_XBB",
+    TRUE~common_name
+  )) %>%
+  arrange(nextstrain_clade)
+
+desired_variant_order <- unique(clade_names$variant)
+```
+
+
+```{r}
+#imputed variant information
+assigned_lineages <- read.csv("../output/Timeline_and_Lineage_Imputation/studies_LAPIS_Outbreak_variant_percentage.csv",check.names = FALSE)
+assigned_lineages <- assigned_lineages %>%
+  group_by(`Study ID`,source) %>%
+  slice(which.max(freq))%>%
+  group_by(`Study ID`)%>%
+  summarise(
+    dateFrom=toString(unique(na.omit(dateFrom))),
+    dateTo=toString(unique(na.omit(dateTo))),
+    imputation_source=toString(unique(source)),
+    imputed_variant=toString(unique(variant)),
+    LAPIS_sumcount=sum(sumcount,na.rm = TRUE),
+    Outbreak_count_total=sum(Outbreak_count_total,na.rm = TRUE)) %>%
+  separate(`Study ID`,into=c("Covidence #","Study ID"),sep="_")
+assigned_lineages
+```
+
+```{r}
+merged_characteristics_regression <- merge(assigned_lineages,by.x ="Covidence #",
+                                           df_variant_selected,by.y="Covidence #")
+merged_characteristics_regression <- merge(merged_characteristics_regression,by.x="Covidence #",
+                                           df_vaccination_percentages,by.y = "Covidence #",all = TRUE)
+
+df_baseline_characteristics_selected <- df_baseline_characteristics
+
+merged_characteristics_regression <- merge(merged_characteristics_regression,df_baseline_characteristics_selected,by="Covidence #")
+
+merged_characteristics_regression
+write.csv(merged_characteristics_regression,file = "../output/processed_tables/ForJAMES_CharacteristicsForRegression_ByStudy.csv")
+```
+
+```{r}
+merged_characteristics_regression_withValues <- merge(merged_characteristics_regression,
+      df_1site_metastasis_treatment,
+      by="Covidence #")
+
+merged_characteristics_regression_withValues
+```
+
+
+```{r}
+df_comorbidity_percentages <- df_comorbidity[,c(1,
+                  grep("Percentage",colnames(df_comorbidity)))]
+
+merged_characteristics_regression_withValues_withComorb <- merge(
+  merged_characteristics_regression_withValues,df_comorbidity_percentages,by="Covidence #")
+
+merged_characteristics_regression_withValues_withComorb
+write.csv(merged_characteristics_regression_withValues_withComorb,"../output/processed_tables/ForJAMES_CharacteristicsForRegression_ByStudy_withComorbs.csv")
+
+merged_characteristics_regression_withValues_withComorb_new <- merged_characteristics_regression_withValues_withComorb %>% filter(`Covidence #` %in% c("70019","71402","71915"))
+merged_characteristics_regression_withValues_withComorb_new
+write.csv(merged_characteristics_regression_withValues_withComorb_new,"../output/processed_tables/70019_71402_71915/ForJAMES_CharacteristicsForRegression_ByStudy_withComorbs.csv")
+
+```
+
+```{r}
+merged_characteristics_regression_withValues_withComorb %>% filter(`Study ID`=="Hosseini-Moghaddam 2023")
+```
